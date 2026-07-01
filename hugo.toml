@@ -1,27 +1,58 @@
-baseURL = "https://example.com/"
+baseURL = "https://hgbk.mll.cc.cd/"
 theme = "hugo-primer-blog"
-title = "My Blog"
+title = "蝴蝶飞"
 
 defaultContentLanguage = "zh"
-defaultContentLanguageInSubdir = false
+defaultContentLanguageInSubdir = true
 
 enableGitInfo = false
 enableRobotsTXT = true
 
 [languages]
-[languages.en]
-contentDir = "content/en"
-languageName = "English"
-weight = 1
-[languages.en.params]
-description = "A blog powered by Hugo and Primer CSS"
+  [languages.zh]
+    contentDir = "content/zh"
+    languageName = "中文简体"
+    weight = 1
+    # 👇 關鍵核心：強迫中文語系生成自己的分類頁面
+    [languages.zh.taxonomies]
+      category = "categories"
+      tag = "tags"
+    [languages.zh.params]
+      description = "一个由 Hugo 和 Primer CSS 驱动的博客"
+    
+    # 這裡的網址我們直接用最純粹的中文，配合上面新加的設定，絕對能對準！
+[[languages.zh.menus.main]]
+      name = "首页"
+      url = "/zh/"
+      weight = 1
 
-[languages.zh]
-contentDir = "content/zh"
-languageName = "中文简体"
-weight = 2
-[languages.zh.params]
-description = "一个由 Hugo 和 Primer CSS 驱动的博客"
+    [[languages.zh.menus.main]]
+      name = "网络收藏"
+      url = "/zh/categories/collection/"  # 👈 有了上面的實體資料夾，直接這樣寫絕不會錯
+      weight = 2
+
+    [[languages.zh.menus.main]]
+      name = "琐事"
+      url = "/zh/categories/trivia/"
+      weight = 3
+[languages.en]
+    contentDir = "content/en"
+    languageName = "English"
+    weight = 2
+    # 👇 英文語系也保持獨立
+    [languages.en.taxonomies]
+      category = "categories"
+      tag = "tags"
+    [languages.en.params]
+      description = "A blog powered by Hugo and Primer CSS"
+    [[languages.en.menus.main]]
+      name = "Home"
+      url = "/en/"
+      weight = 1
+    [[languages.en.menus.main]]
+      name = "Posts"
+      url = "/en/posts/"
+      weight = 2
 
 [languages.ja]
 contentDir = "content/ja"
@@ -29,7 +60,12 @@ languageName = "日本語"
 weight = 3
 [languages.ja.params]
 description = "Hugo と Primer CSS で構築されたブログ"
-
+name = "Home"
+      weight = 1
+    [[languages.en.menus.main]]
+      name = "Posts"
+      url = "/ja/posts/"
+      weight = 3
 [params]
 author = "Your Name" 
 dateFormat = "2006-01-02" 

@@ -6,7 +6,7 @@ author: "蝴蝶飞"
 description: ""
 image: "featured.jpg"
 tags: [""]
-categories: [""]
+categories: ["trivia"]
 archives: [""]
 ---
 

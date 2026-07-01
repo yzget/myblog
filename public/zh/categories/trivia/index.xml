@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>琐事 on 蝴蝶飞</title>
+		<link>http://localhost:1313/zh/categories/trivia/</link>
+		<description>Recent content in 琐事 on 蝴蝶飞</description>
+		<generator>Hugo</generator>
+		<language>zh</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 01 Jul 2026 22:24:49 +0800</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/zh/categories/trivia/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title></title>
+				<link>http://localhost:1313/zh/posts/sdfa/</link>
+				<pubDate>Wed, 01 Jul 2026 22:24:49 +0800</pubDate>
+				<guid>http://localhost:1313/zh/posts/sdfa/</guid>
+				<description>&lt;p&gt;如果对方是个反倒是公司的给对方给对方归档公司的苟富贵地方士大夫广东省给对方归档给对方广东省公司的&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>My Game Story</title>
+				<link>http://localhost:1313/zh/posts/my-game-story/</link>
+				<pubDate>Wed, 01 Jul 2026 22:05:53 +0800</pubDate>
+				<guid>http://localhost:1313/zh/posts/my-game-story/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

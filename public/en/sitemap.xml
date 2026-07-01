@@ -2,54 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/en/archives/2024-08/</loc>
-    <lastmod>2024-08-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/archives/2024-08/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://localhost:1313/ja/archives/2024-08/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/archives/</loc>
-    <lastmod>2024-08-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/archives/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost:1313/archives/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://localhost:1313/ja/archives/"
-                />
-  </url><url>
     <loc>http://localhost:1313/en/categories/</loc>
     <lastmod>2024-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/categories/"
+                hreflang="zh"
+                href="http://localhost:1313/zh/categories/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="http://localhost:1313/categories/"
+                hreflang="en"
+                href="http://localhost:1313/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -87,39 +52,19 @@
                 href="http://localhost:1313/ja/tags/github/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/</loc>
-    <lastmod>2024-08-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost:1313/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://localhost:1313/ja/"
-                />
-  </url><url>
     <loc>http://localhost:1313/en/posts/</loc>
     <lastmod>2024-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/posts/"
+                hreflang="zh"
+                href="http://localhost:1313/zh/posts/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="http://localhost:1313/posts/"
+                hreflang="en"
+                href="http://localhost:1313/en/posts/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -148,13 +93,13 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/tags/"
+                hreflang="zh"
+                href="http://localhost:1313/zh/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="http://localhost:1313/tags/"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -192,19 +137,24 @@
                 href="http://localhost:1313/ja/tags/version-control/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/archives/2024-07/</loc>
-    <lastmod>2024-07-15T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/en/</loc>
+    <lastmod>2024-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/zh/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/archives/2024-07/"
+                href="http://localhost:1313/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://localhost:1313/ja/archives/2024-07/"
+                href="http://localhost:1313/ja/"
                 />
   </url><url>
     <loc>http://localhost:1313/en/categories/development/</loc>
@@ -282,21 +232,6 @@
                 href="http://localhost:1313/ja/tags/ssr/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/archives/2024-06/</loc>
-    <lastmod>2024-06-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/archives/2024-06/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://localhost:1313/ja/archives/2024-06/"
-                />
-  </url><url>
     <loc>http://localhost:1313/en/tags/api/</loc>
     <lastmod>2024-06-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -355,21 +290,6 @@
                 rel="alternate"
                 hreflang="ja"
                 href="http://localhost:1313/ja/posts/sample-post-13/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/archives/2024-05/</loc>
-    <lastmod>2024-05-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/archives/2024-05/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://localhost:1313/ja/archives/2024-05/"
                 />
   </url><url>
     <loc>http://localhost:1313/en/tags/cloud/</loc>
@@ -447,21 +367,6 @@
                 href="http://localhost:1313/ja/posts/sample-post-12/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/archives/2024-04/</loc>
-    <lastmod>2024-04-15T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/archives/2024-04/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://localhost:1313/ja/archives/2024-04/"
-                />
-  </url><url>
     <loc>http://localhost:1313/en/categories/database/</loc>
     <lastmod>2024-04-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -535,21 +440,6 @@
                 rel="alternate"
                 hreflang="ja"
                 href="http://localhost:1313/ja/posts/sample-post-11/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/archives/2024-03/</loc>
-    <lastmod>2024-03-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/archives/2024-03/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://localhost:1313/ja/archives/2024-03/"
                 />
   </url><url>
     <loc>http://localhost:1313/en/tags/authentication/</loc>
@@ -627,21 +517,6 @@
                 href="http://localhost:1313/ja/tags/security/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/archives/2024-02/</loc>
-    <lastmod>2024-02-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/archives/2024-02/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://localhost:1313/ja/archives/2024-02/"
-                />
-  </url><url>
     <loc>http://localhost:1313/en/tags/automation/</loc>
     <lastmod>2024-02-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -715,21 +590,6 @@
                 rel="alternate"
                 hreflang="ja"
                 href="http://localhost:1313/ja/tags/testing/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/archives/2024-01/</loc>
-    <lastmod>2024-01-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/archives/2024-01/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://localhost:1313/ja/archives/2024-01/"
                 />
   </url><url>
     <loc>http://localhost:1313/en/tags/demo/</loc>
@@ -982,21 +842,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/en/archives/2023-12/</loc>
-    <lastmod>2023-12-25T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/archives/2023-12/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://localhost:1313/ja/archives/2023-12/"
-                />
-  </url><url>
     <loc>http://localhost:1313/en/tags/deployment/</loc>
     <lastmod>2023-12-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1145,21 +990,6 @@
                 rel="alternate"
                 hreflang="ja"
                 href="http://localhost:1313/ja/posts/sample-post-6/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/archives/2023-11/</loc>
-    <lastmod>2023-11-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/archives/2023-11/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://localhost:1313/ja/archives/2023-11/"
                 />
   </url><url>
     <loc>http://localhost:1313/en/tags/design/</loc>

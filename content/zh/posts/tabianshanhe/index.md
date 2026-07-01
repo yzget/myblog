@@ -3,7 +3,7 @@ title: "踏遍壯麗山河"
 date: 2026-07-01T20:12:00+08:00
 draft: false
 tags: ["山河", "旅行", "瑣事"]
-categories: ["瑣事"]
+categories: ["collection"]
 image: "xiyang.jpg"
 ---
 

@@ -1,4 +1,4 @@
-# My Blog
+# 蝴蝶飞
 
 > Hugo と Primer CSS で構築されたブログ
 
