@@ -1,4 +1,23 @@
-baseURL = 'https://example.org/'
-locale = 'en-us'
-title = 'My New Hugo Project'
+# 1. 基础配置
+# 【重要】等一下把下面这个链接换成 Vercel 分配给你的实际 https://xxx.vercel.app 网址
+baseURL = 'https://myblog-eight-xi.vercel.app/' 
+languageCode = 'zh-cn'
+title = '蝴蝶飞'
 theme = "kopi"
+
+# 2. kopi 主题的高级全局参数（补全主题所需参数）
+[params]
+    author = "你的名字"
+    description = "蝴蝶飞的个人博客"
+    # 这里可以根据 kopi 主题的文档后续添加：样式、小图标、社交链接等
+
+# 3. 导航栏菜单配置（解决页面没导航、空白的问题）
+[[menu.main]]
+    name = "首页"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "文章"
+    url = "/posts/"
+    weight = 2

@@ -18,7 +18,7 @@
 				<link>http://localhost:1313/posts/hello-world/</link>
 				<pubDate>Wed, 01 Jul 2026 17:44:15 +0800</pubDate>
 				<guid>http://localhost:1313/posts/hello-world/</guid>
-				<description></description>
+				<description>&lt;p&gt;极其重要： 看到那行 draft = true（草稿）了吗？如果它是 true，在你最终打包网站时，这篇文章不会被显示出来。&#xA;当你写完准备发布时，一定要把它改成 draft = false。&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>My First Post</title>
