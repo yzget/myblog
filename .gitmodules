@@ -1,3 +1,9 @@
 [submodule "themes/kopi"]
 	path = themes/kopi
 	url = https://github.com/bect/kopi.git
+[submodule "themes/jijian"]
+	path = themes/jijian
+	url = https://github.com/hcllmsx/hugo-jijian.git
+[submodule "themes/hugo-primer-blog"]
+	path = themes/hugo-primer-blog
+	url = https://github.com/ngs/hugo-primer-blog.git

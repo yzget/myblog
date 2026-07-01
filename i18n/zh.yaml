@@ -1,0 +1,73 @@
+# Navigation
+toggleMenu: "切换菜单"
+selectLanguage: "选择语言"
+
+# Theme
+toggleTheme: "切换主题"
+themeLight: "浅色模式"
+themeDark: "暗色模式"
+themeAuto: "系统主题"
+
+# Content
+back: "返回"
+tableOfContents: "目录"
+relatedContent: "相关文章"
+lastUpdatedOn: "最后更新于"
+readingTime: "阅读时长: {{ .Count }} 分钟"
+latestPosts: "最新文章"
+recentPosts: "近期文章"
+noPosts: "未找到文章。"
+
+# Alerts
+alertNote: "备注"
+alertTip: "提示"
+alertImportant: "重要"
+alertWarning: "警告"
+alertCaution: "注意"
+
+# Codeblock
+codeCopy: "复制"
+codeCopied: "已复制！"
+
+# Taxonomy
+tags: "标签"
+categories: "分类"
+archive: "归档"
+more: "更多"
+
+# 404
+pageNotFound: "404 错误：页面不存在"
+backToHome: "返回首页"
+
+# Search
+searchTitle: "搜索"
+searchPlaceholder: "输入关键词..."
+searchResultTitle: "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"
+
+# Footer
+builtWith: "使用 {{ .Generator }} 构建"
+designedBy: "主题 {{ .Theme }} 由 {{ .DesignedBy }} 设计"
+
+# Cookies
+cookiesTitle: "Cookie 同意"
+cookiesText: "我们使用 Cookie 来增强您的浏览体验并分析网站流量。"
+cookiesAcceptAll: "接受所有"
+cookiesDeny: "拒绝"
+cookiesManagePreferences: "管理偏好设置"
+cookiesSettingsTitle: "Cookie 偏好设置"
+cookiesSavePreferences: "保存偏好设置"
+cookiesCancel: "取消"
+cookiesFooterLink: "Cookie 设置"
+cookiesCommentsDisabled: "评论已禁用，直到您接受功能性 Cookie。"
+cookiesNecessaryTitle: "必要"
+cookiesNecessaryText: "这些 Cookie 是网站运行所必需的，无法禁用。"
+cookiesAnalyticsTitle: "分析"
+cookiesAnalyticsText: "这些 Cookie 帮助我们了解访问者如何与我们的网站互动。"
+cookiesFunctionalTitle: "功能性"
+cookiesFunctionalText: "这些 Cookie 启用评论和嵌入内容等功能。"
+
+# Pagination
+pagination: "分页"
+jumpToPage: "跳转到页码"
+jump: "跳转"
+pressEnter: "按 Enter 键跳转"

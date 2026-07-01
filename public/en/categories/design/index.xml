@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Design on My Blog</title>
+		<link>http://localhost:1313/en/categories/design/</link>
+		<description>Recent content in Design on My Blog</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 05 Jan 2024 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/en/categories/design/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Introduction to Primer CSS</title>
+				<link>http://localhost:1313/en/posts/primer-css-guide/</link>
+				<pubDate>Fri, 05 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/en/posts/primer-css-guide/</guid>
+				<description>&lt;p&gt;Primer is GitHub&amp;rsquo;s design system and CSS framework. It provides a set of guidelines and components to create consistent, accessible interfaces.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-primer&#34;&gt;What is Primer?&lt;/h2&gt;&#xA;&lt;p&gt;Primer is built around three core pillars:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Primitives&lt;/strong&gt; - Design tokens for colors, spacing, and typography&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;CSS&lt;/strong&gt; - Utility classes and component styles&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Components&lt;/strong&gt; - React and ViewComponent implementations&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h2&gt;&#xA;&lt;p&gt;Install Primer CSS via npm:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;npm install @primer/css&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Import the CSS in your project:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code data-lang=&#34;scss&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;@import&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;@primer/css/index.scss&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;utility-classes&#34;&gt;Utility Classes&lt;/h2&gt;&#xA;&lt;p&gt;Primer provides a comprehensive set of utility classes:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Sample Post 5: Lorem Ipsum</title>
+				<link>http://localhost:1313/en/posts/sample-post-5/</link>
+				<pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/en/posts/sample-post-5/</guid>
+				<description>&lt;p&gt;This is sample post number 5. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.&lt;/p&gt;&#xA;&lt;h2 id=&#34;content&#34;&gt;Content&lt;/h2&gt;&#xA;&lt;p&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&lt;/p&gt;&#xA;&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;&#xA;&lt;p&gt;Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
