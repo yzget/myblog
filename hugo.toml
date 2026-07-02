@@ -99,6 +99,11 @@ name = "About"
 url = "/about/"
 weight = 4
 
+[[menus.main]]
+    name = "RSS"
+    url = "https://hgbk.mll.cc.cd/index.xml" # 对应 home 的 RSS 路径
+    weight = 5          # 排序权重，数字越大越靠后
+
 [[menus.footer]]
 name = "Privacy"
 url = "/privacy/"
@@ -108,11 +113,6 @@ weight = 1
 name = "Terms"
 url = "/terms/"
 weight = 2
-
-[[menus.main]]
-    name = "RSS"
-    url = "https://hgbk.mll.cc.cd/index.xml" # 对应 home 的 RSS 路径
-    weight = 5          # 排序权重，数字越大越靠后
 
 [taxonomies]
 archive = "archives"
