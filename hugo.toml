@@ -3,14 +3,14 @@ theme = "hugo-primer-blog"
 title = "蝴蝶飞"
 
 defaultContentLanguage = "zh"
-defaultContentLanguageInSubdir = true
+defaultContentLanguageInSubdir = false
 
 enableGitInfo = false
 enableRobotsTXT = true
 
 [languages]
   [languages.zh]
-    contentDir = "content/posts"
+    contentDir = "content"
     languageName = "中文简体"
     weight = 1
     # 👇 關鍵核心：強迫中文語系生成自己的分類頁面
@@ -80,29 +80,8 @@ x = "yzgetr"
 
 [menus]
 [[menus.main]]
-name = "Home"
-url = "/"
-weight = 1
-
-[[menus.main]]
-name = "Posts"
-url = "/posts/"
-weight = 2
-
-[[menus.main]]
-name = "Tags"
-url = "/tags/"
-weight = 3
-
-[[menus.main]]
-name = "About"
-url = "/about/"
-weight = 4
-
-[[menus.main]]
 name = "RSS"
-url = "https://hgbk.mll.cc.cd/zh/index.xml" # 对应 home 的 RSS 路径
-weight = 5          # 排序权重，数字越大越靠后
+url = "https://hgbk.mll.cc.cd/zh/index.xml" # 对应 home 的 RSS 路径   
 
 [[menus.footer]]
 name = "Privacy"
@@ -113,13 +92,6 @@ weight = 1
 name = "Terms"
 url = "/terms/"
 weight = 2
-
-[outputs]
-home = ["HTML", "RSS", "LLMS"]
-page = ["HTML", "Markdown"]
-section = ["HTML", "RSS"]
-taxonomy = ["HTML"]
-term = ["HTML", "RSS"]
 
 [taxonomies]
 archive = "archives"
@@ -144,6 +116,13 @@ tabWidth = 4
 [markup.goldmark]
 [markup.goldmark.renderer]
 unsafe = true
+
+[outputs]
+home = ["HTML", "RSS", "LLMS"]
+page = ["HTML", "Markdown"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML"]
+term = ["HTML", "RSS"]
 
 [sitemap]
 changefreq = "weekly"

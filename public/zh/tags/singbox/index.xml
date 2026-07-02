@@ -15,16 +15,16 @@
 			<atom:link href="http://localhost:1313/zh/tags/singbox/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>gui-singbox路由规则集设置</title>
-				<link>http://localhost:1313/zh/posts/guisingbox-guise/</link>
+				<link>http://localhost:1313/zh/guisingbox-guise/</link>
 				<pubDate>Thu, 02 Jul 2026 15:06:31 +0800</pubDate>
-				<guid>http://localhost:1313/zh/posts/guisingbox-guise/</guid>
+				<guid>http://localhost:1313/zh/guisingbox-guise/</guid>
 				<description>&lt;p&gt;gui-singbox路由规则集设置&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;第一条：国内域名分流 (geosite-cn)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 勾选或填入 geosite-cn&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 选择 dns_direct&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 不勾选（关闭）&lt;/li&gt;&#xA;&lt;li&gt;点击保存。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;第二条：国内地理位置分流 (geosite-geolocation-cn)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 勾选或填入 geosite-geolocation-cn&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 选择 dns_direct&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 不勾选（关闭）&lt;/li&gt;&#xA;&lt;li&gt;点击保存。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol start=&#34;3&#34;&gt;&#xA;&lt;li&gt;第三条：关闭国外 IPv6 优化（专门解决报错的那一条！）&#xA;既然不能留空，我们就让它强制接管国内规则的 IPv6 请求，这样既不会报错，又完美实现了策略：&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 依然填入或勾选 geosite-cn&lt;/li&gt;&#xA;&lt;li&gt;解析策略组 (Strategy)： 必须选择 ipv4_only（强制关闭国外 IPv6，防止网页卡顿）&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 选择 dns_direct&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 不勾选（关闭）&lt;/li&gt;&#xA;&lt;li&gt;点击保存。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol start=&#34;4&#34;&gt;&#xA;&lt;li&gt;第四条：漏网之鱼平替（抓取所有国外网站）&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 填入或勾选 geosite-cn&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 必须选择你的国外加密服务器 dns_proxy&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 必须勾选（开启）&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
 			</item>
 			<item>
 				<title>gui-singbox路由服务器设置</title>
-				<link>http://localhost:1313/zh/posts/singboxluyou/</link>
+				<link>http://localhost:1313/zh/singboxluyou/</link>
 				<pubDate>Wed, 01 Jul 2026 22:05:53 +0800</pubDate>
-				<guid>http://localhost:1313/zh/posts/singboxluyou/</guid>
+				<guid>http://localhost:1313/zh/singboxluyou/</guid>
 				<description>&lt;p&gt;添加两组 DNS 服务器（Servers）&#xA;在添加规则之前，必须先在 “服务器 (Servers)” 列表里点击“添加”，建立好这两名接线员：&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-国内直连-dns&#34;&gt;1. 国内直连 DNS&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： udp&lt;/li&gt;&#xA;&lt;li&gt;名称： dns_direct&lt;/li&gt;&#xA;&lt;li&gt;服务器/地址： 223.5.5.5&lt;/li&gt;&#xA;&lt;li&gt;端口： 53&lt;/li&gt;&#xA;&lt;li&gt;出站标签： direct&lt;/li&gt;&#xA;&lt;li&gt;解析本 DNS 服务器域名的 DNS： 留空 / 无&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2-国外加密-dns&#34;&gt;2. 国外加密 DNS&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： https&lt;/li&gt;&#xA;&lt;li&gt;名称： dns_proxy&lt;/li&gt;&#xA;&lt;li&gt;服务器/地址： 1.1.1.1&lt;/li&gt;&#xA;&lt;li&gt;路径： /dns-query&lt;/li&gt;&#xA;&lt;li&gt;端口： 443&lt;/li&gt;&#xA;&lt;li&gt;出站标签： 选择你的主力代理组（如 🚀 节点选择 或 Proxy）&lt;/li&gt;&#xA;&lt;li&gt;解析本 DNS 服务器域名的 DNS： 下拉选择 dns_direct&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
 			</item>
 	</channel>

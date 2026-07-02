@@ -17,17 +17,7 @@
                 href="http://localhost:1313/zh-cn/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh-cn/posts/guisingbox-guise/</loc>
-    <lastmod>2026-07-02T15:06:31+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/zhsdvs/posts/guisingbox-guise/</loc>
-    <lastmod>2026-07-02T15:06:31+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/posts/</loc>
+    <loc>http://localhost:1313/zh-cn/zh-cn/posts/guisingbox-guise/</loc>
     <lastmod>2026-07-02T15:06:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -36,33 +26,8 @@
     <lastmod>2026-07-02T15:06:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/tags/singbox/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/singbox/"
-                />
   </url><url>
-    <loc>http://localhost:1313/zh-cn/tags/</loc>
-    <lastmod>2026-07-02T15:06:31+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/zhsdvs/</loc>
+    <loc>http://localhost:1313/zh-cn/zh-cn/</loc>
     <lastmod>2026-07-02T15:06:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -86,58 +51,23 @@
     <lastmod>2026-07-02T15:06:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/"
-                />
   </url><url>
     <loc>http://localhost:1313/zh-cn/tags/guisingbox/</loc>
     <lastmod>2026-07-01T22:24:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/tags/guisingbox/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/guisingbox/"
-                />
   </url><url>
-    <loc>http://localhost:1313/zh-cn/posts/singbox/</loc>
+    <loc>http://localhost:1313/zh-cn/zh-cn/posts/singbox/</loc>
     <lastmod>2026-07-01T22:24:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/zhsdvs/posts/singbox/</loc>
-    <lastmod>2026-07-01T22:24:49+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/posts/singboxluyou/</loc>
+    <loc>http://localhost:1313/zh-cn/zh-cn/posts/singboxluyou/</loc>
     <lastmod>2026-07-01T22:05:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/zhsdvs/posts/singboxluyou/</loc>
-    <lastmod>2026-07-01T22:05:53+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/posts/banshengfuchen/</loc>
-    <lastmod>2026-07-01T20:15:00+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/zhsdvs/posts/banshengfuchen/</loc>
+    <loc>http://localhost:1313/zh-cn/zh-cn/posts/banshengfuchen/</loc>
     <lastmod>2026-07-01T20:15:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -146,123 +76,68 @@
     <lastmod>2026-07-01T20:15:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/tags/%E6%84%9F%E6%82%9F/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/%E6%84%9F%E6%82%9F/"
-                />
   </url><url>
     <loc>http://localhost:1313/zh-cn/tags/%E4%BA%BA%E6%83%85%E4%B8%96%E6%95%85/</loc>
     <lastmod>2026-07-01T20:15:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/tags/%E4%BA%BA%E6%83%85%E4%B8%96%E6%95%85/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/%E4%BA%BA%E6%83%85%E4%B8%96%E6%95%85/"
-                />
   </url><url>
     <loc>http://localhost:1313/zh-cn/tags/%E7%91%A3%E4%BA%8B/</loc>
     <lastmod>2026-07-01T20:15:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/tags/%E7%91%A3%E4%BA%8B/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/%E7%91%A3%E4%BA%8B/"
-                />
   </url><url>
     <loc>http://localhost:1313/zh-cn/tags/%E6%97%85%E8%A1%8C/</loc>
     <lastmod>2026-07-01T20:12:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/tags/%E6%97%85%E8%A1%8C/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/%E6%97%85%E8%A1%8C/"
-                />
   </url><url>
     <loc>http://localhost:1313/zh-cn/tags/%E5%B1%B1%E6%B2%B3/</loc>
     <lastmod>2026-07-01T20:12:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/tags/%E5%B1%B1%E6%B2%B3/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/%E5%B1%B1%E6%B2%B3/"
-                />
   </url><url>
     <loc>http://localhost:1313/zh-cn/tags/%E7%90%90%E4%BA%8B/</loc>
     <lastmod>2026-07-01T20:12:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/zh-cn/zh-cn/posts/tabianshanhe/</loc>
+    <lastmod>2026-07-01T20:12:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/zh-cn/tags/</loc>
+    <lastmod>2026-07-01T20:10:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="posts"
-                href="http://localhost:1313/posts/tags/%E7%90%90%E4%BA%8B/"
+                href="http://localhost:1313/posts/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/%E7%90%90%E4%BA%8B/"
+                href="http://localhost:1313/zh-cn/tags/"
                 />
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/posts/tabianshanhe/</loc>
-    <lastmod>2026-07-01T20:12:00+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/zhsdvs/posts/tabianshanhe/</loc>
-    <lastmod>2026-07-01T20:12:00+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/zh-cn/tags/%E5%A4%A7%E6%B5%B7/</loc>
     <lastmod>2026-07-01T20:10:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/tags/%E5%A4%A7%E6%B5%B7/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/%E5%A4%A7%E6%B5%B7/"
-                />
   </url><url>
-    <loc>http://localhost:1313/zh-cn/posts/dahaihuxi/</loc>
+    <loc>http://localhost:1313/zh-cn/categories/%E7%90%90%E4%BA%8B/</loc>
     <lastmod>2026-07-01T20:10:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/zhsdvs/posts/dahaihuxi/</loc>
+    <loc>http://localhost:1313/zh-cn/tags/%E6%A0%87%E7%AD%BE/dahaihuxi/</loc>
+    <lastmod>2026-07-01T20:10:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/zh-cn/zh-cn/posts/dahaihuxi/</loc>
     <lastmod>2026-07-01T20:10:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -271,33 +146,9 @@
     <lastmod>2026-07-01T20:10:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/tags/%E7%B6%B2%E7%B5%A1%E6%94%B6%E8%97%8F/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/%E7%B6%B2%E7%B5%A1%E6%94%B6%E8%97%8F/"
-                />
   </url><url>
     <loc>http://localhost:1313/zh-cn/tags/%E8%87%AA%E7%84%B6/</loc>
     <lastmod>2026-07-01T20:10:00+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="posts"
-                href="http://localhost:1313/posts/tags/%E8%87%AA%E7%84%B6/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/%E8%87%AA%E7%84%B6/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/categories/%E7%90%90%E4%BA%8B/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

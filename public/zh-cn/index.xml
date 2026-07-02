@@ -15,86 +15,51 @@
 			<atom:link href="http://localhost:1313/zh-cn/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>gui-singbox路由规则集设置</title>
-				<link>http://localhost:1313/zh-cn/posts/guisingbox-guise/</link>
+				<link>http://localhost:1313/zh-cn/zh-cn/posts/guisingbox-guise/</link>
 				<pubDate>Thu, 02 Jul 2026 15:06:31 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/posts/guisingbox-guise/</guid>
-				<description>&lt;p&gt;gui-singbox路由规则集设置&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;第一条：国内域名分流 (geosite-cn)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 勾选或填入 geosite-cn&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 选择 dns_direct&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 不勾选（关闭）&lt;/li&gt;&#xA;&lt;li&gt;点击保存。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;第二条：国内地理位置分流 (geosite-geolocation-cn)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 勾选或填入 geosite-geolocation-cn&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 选择 dns_direct&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 不勾选（关闭）&lt;/li&gt;&#xA;&lt;li&gt;点击保存。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol start=&#34;3&#34;&gt;&#xA;&lt;li&gt;第三条：关闭国外 IPv6 优化（专门解决报错的那一条！）&#xA;既然不能留空，我们就让它强制接管国内规则的 IPv6 请求，这样既不会报错，又完美实现了策略：&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 依然填入或勾选 geosite-cn&lt;/li&gt;&#xA;&lt;li&gt;解析策略组 (Strategy)： 必须选择 ipv4_only（强制关闭国外 IPv6，防止网页卡顿）&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 选择 dns_direct&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 不勾选（关闭）&lt;/li&gt;&#xA;&lt;li&gt;点击保存。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol start=&#34;4&#34;&gt;&#xA;&lt;li&gt;第四条：漏网之鱼平替（抓取所有国外网站）&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 填入或勾选 geosite-cn&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 必须选择你的国外加密服务器 dns_proxy&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 必须勾选（开启）&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-			</item>
-			<item>
-				<title>gui-singbox路由规则集设置</title>
-				<link>http://localhost:1313/zh-cn/zhsdvs/posts/guisingbox-guise/</link>
-				<pubDate>Thu, 02 Jul 2026 15:06:31 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/zhsdvs/posts/guisingbox-guise/</guid>
+				<guid>http://localhost:1313/zh-cn/zh-cn/posts/guisingbox-guise/</guid>
 				<description>&lt;p&gt;gui-singbox路由规则集设置&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;第一条：国内域名分流 (geosite-cn)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 勾选或填入 geosite-cn&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 选择 dns_direct&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 不勾选（关闭）&lt;/li&gt;&#xA;&lt;li&gt;点击保存。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;第二条：国内地理位置分流 (geosite-geolocation-cn)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 勾选或填入 geosite-geolocation-cn&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 选择 dns_direct&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 不勾选（关闭）&lt;/li&gt;&#xA;&lt;li&gt;点击保存。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol start=&#34;3&#34;&gt;&#xA;&lt;li&gt;第三条：关闭国外 IPv6 优化（专门解决报错的那一条！）&#xA;既然不能留空，我们就让它强制接管国内规则的 IPv6 请求，这样既不会报错，又完美实现了策略：&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 依然填入或勾选 geosite-cn&lt;/li&gt;&#xA;&lt;li&gt;解析策略组 (Strategy)： 必须选择 ipv4_only（强制关闭国外 IPv6，防止网页卡顿）&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 选择 dns_direct&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 不勾选（关闭）&lt;/li&gt;&#xA;&lt;li&gt;点击保存。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol start=&#34;4&#34;&gt;&#xA;&lt;li&gt;第四条：漏网之鱼平替（抓取所有国外网站）&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： 选择 规则集 (rule set)&lt;/li&gt;&#xA;&lt;li&gt;规则动作： 选择 路由&lt;/li&gt;&#xA;&lt;li&gt;规则集 (rule set) 名字： 填入或勾选 geosite-cn&lt;/li&gt;&#xA;&lt;li&gt;目标 DNS 服务器标签： 必须选择你的国外加密服务器 dns_proxy&lt;/li&gt;&#xA;&lt;li&gt;反向匹配： 必须勾选（开启）&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
 			</item>
 			<item>
 				<title>最新guisingbox路由规则</title>
-				<link>http://localhost:1313/zh-cn/posts/singbox/</link>
+				<link>http://localhost:1313/zh-cn/zh-cn/posts/singbox/</link>
 				<pubDate>Wed, 01 Jul 2026 22:24:49 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/posts/singbox/</guid>
-				<description>&lt;p&gt;最新guisingbox路由规则，规则-dns修改&amp;mdash;&lt;/p&gt;&#xA;&lt;h2 id=&#34;-第一部分路由规则route-rules大扫除与完美排序&#34;&gt;🛠️ 第一部分：路由规则（Route Rules）大扫除与完美排序&lt;/h2&gt;&#xA;&lt;p&gt;请在客户端左侧菜单进入 **「路由规则 / Route Rules」** 页面，完成以下三步：&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-清理垃圾与多余规则&#34;&gt;1. 清理垃圾与多余规则&lt;/h3&gt;&#xA;&lt;p&gt;点击规则右侧的 **「垃圾桶图标」**，彻底删除以下条目：&lt;/p&gt;&#xA;&lt;p&gt;* ❌ 删掉名字拼错的 `category-ad5-al-geosite.srs` 规则。&lt;/p&gt;&#xA;&lt;p&gt;* ❌ 删掉没有 `.srs` 后缀的 `Category-Ads` 规则。&lt;/p&gt;&#xA;&lt;p&gt;* ❌ 删掉带有 `gfw-geosite.srs` 的最后一行规则（已用海外大网完美兜底，无需重叠）。&lt;/p&gt;&#xA;&lt;h3 id=&#34;2-修正-youtube-的套娃指向&#34;&gt;2. 修正 YouTube 的“套娃”指向&lt;/h3&gt;&#xA;&lt;p&gt;* 找到条件为 `youtube-geosite.srs` 的那一行，点击 **「编辑」**。&lt;/p&gt;&#xA;&lt;p&gt;* 将它的 **「目标出站 / Outbound」** 选项，从原本套娃的虚拟组改为直连主策略： **`🚀 节点选择`**。&lt;/p&gt;&#xA;&lt;p&gt;* *(随后去左侧「策略组」页面，把原本那个叫 `📹️ YouTube视频` 的空壳策略组直接删掉)*。&lt;/p&gt;&#xA;&lt;h3 id=&#34;3-鼠标拖动完成黄金排序从上到下&#34;&gt;3. 鼠标拖动，完成黄金排序（从上到下）&lt;/h3&gt;&#xA;&lt;p&gt;用鼠标拖动规则，严格调整为以下顺序：&lt;/p&gt;&#xA;&lt;p&gt;* 🔝 **【最顶部：基石与拦截】**&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;`protocol: dns` ➡️ `hijack-dns`&lt;/li&gt;&#xA;&lt;li&gt;`inbound: tun-in` ➡️ `sniff`&lt;/li&gt;&#xA;&lt;li&gt;`category-ads-all-geosite.srs` ➡️ `🛑 全球拦截`&lt;/li&gt;&#xA;&lt;li&gt;`protocol: quic` ➡️ `🛑 全球拦截`&lt;/li&gt;&#xA;&lt;li&gt;`network: icmp` ➡️ `🎯 全球直连`&lt;/li&gt;&#xA;&lt;li&gt;`clash_mode: direct` ➡️ `🎯 全球直连`&lt;/li&gt;&#xA;&lt;li&gt;`clash_mode: global` ➡️ `GLOBAL`&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;* 🚀 **【重点：特种海外精准分流】**（必须排在大陆直连上方，防止 AI 误伤走香港）&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>最新guisingbox路由规则</title>
-				<link>http://localhost:1313/zh-cn/zhsdvs/posts/singbox/</link>
-				<pubDate>Wed, 01 Jul 2026 22:24:49 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/zhsdvs/posts/singbox/</guid>
+				<guid>http://localhost:1313/zh-cn/zh-cn/posts/singbox/</guid>
 				<description>&lt;p&gt;最新guisingbox路由规则，规则-dns修改&amp;mdash;&lt;/p&gt;&#xA;&lt;h2 id=&#34;-第一部分路由规则route-rules大扫除与完美排序&#34;&gt;🛠️ 第一部分：路由规则（Route Rules）大扫除与完美排序&lt;/h2&gt;&#xA;&lt;p&gt;请在客户端左侧菜单进入 **「路由规则 / Route Rules」** 页面，完成以下三步：&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-清理垃圾与多余规则&#34;&gt;1. 清理垃圾与多余规则&lt;/h3&gt;&#xA;&lt;p&gt;点击规则右侧的 **「垃圾桶图标」**，彻底删除以下条目：&lt;/p&gt;&#xA;&lt;p&gt;* ❌ 删掉名字拼错的 `category-ad5-al-geosite.srs` 规则。&lt;/p&gt;&#xA;&lt;p&gt;* ❌ 删掉没有 `.srs` 后缀的 `Category-Ads` 规则。&lt;/p&gt;&#xA;&lt;p&gt;* ❌ 删掉带有 `gfw-geosite.srs` 的最后一行规则（已用海外大网完美兜底，无需重叠）。&lt;/p&gt;&#xA;&lt;h3 id=&#34;2-修正-youtube-的套娃指向&#34;&gt;2. 修正 YouTube 的“套娃”指向&lt;/h3&gt;&#xA;&lt;p&gt;* 找到条件为 `youtube-geosite.srs` 的那一行，点击 **「编辑」**。&lt;/p&gt;&#xA;&lt;p&gt;* 将它的 **「目标出站 / Outbound」** 选项，从原本套娃的虚拟组改为直连主策略： **`🚀 节点选择`**。&lt;/p&gt;&#xA;&lt;p&gt;* *(随后去左侧「策略组」页面，把原本那个叫 `📹️ YouTube视频` 的空壳策略组直接删掉)*。&lt;/p&gt;&#xA;&lt;h3 id=&#34;3-鼠标拖动完成黄金排序从上到下&#34;&gt;3. 鼠标拖动，完成黄金排序（从上到下）&lt;/h3&gt;&#xA;&lt;p&gt;用鼠标拖动规则，严格调整为以下顺序：&lt;/p&gt;&#xA;&lt;p&gt;* 🔝 **【最顶部：基石与拦截】**&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;`protocol: dns` ➡️ `hijack-dns`&lt;/li&gt;&#xA;&lt;li&gt;`inbound: tun-in` ➡️ `sniff`&lt;/li&gt;&#xA;&lt;li&gt;`category-ads-all-geosite.srs` ➡️ `🛑 全球拦截`&lt;/li&gt;&#xA;&lt;li&gt;`protocol: quic` ➡️ `🛑 全球拦截`&lt;/li&gt;&#xA;&lt;li&gt;`network: icmp` ➡️ `🎯 全球直连`&lt;/li&gt;&#xA;&lt;li&gt;`clash_mode: direct` ➡️ `🎯 全球直连`&lt;/li&gt;&#xA;&lt;li&gt;`clash_mode: global` ➡️ `GLOBAL`&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;* 🚀 **【重点：特种海外精准分流】**（必须排在大陆直连上方，防止 AI 误伤走香港）&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>gui-singbox路由服务器设置</title>
-				<link>http://localhost:1313/zh-cn/posts/singboxluyou/</link>
+				<link>http://localhost:1313/zh-cn/zh-cn/posts/singboxluyou/</link>
 				<pubDate>Wed, 01 Jul 2026 22:05:53 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/posts/singboxluyou/</guid>
-				<description>&lt;p&gt;添加两组 DNS 服务器（Servers）&#xA;在添加规则之前，必须先在 “服务器 (Servers)” 列表里点击“添加”，建立好这两名接线员：&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-国内直连-dns&#34;&gt;1. 国内直连 DNS&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： udp&lt;/li&gt;&#xA;&lt;li&gt;名称： dns_direct&lt;/li&gt;&#xA;&lt;li&gt;服务器/地址： 223.5.5.5&lt;/li&gt;&#xA;&lt;li&gt;端口： 53&lt;/li&gt;&#xA;&lt;li&gt;出站标签： direct&lt;/li&gt;&#xA;&lt;li&gt;解析本 DNS 服务器域名的 DNS： 留空 / 无&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2-国外加密-dns&#34;&gt;2. 国外加密 DNS&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： https&lt;/li&gt;&#xA;&lt;li&gt;名称： dns_proxy&lt;/li&gt;&#xA;&lt;li&gt;服务器/地址： 1.1.1.1&lt;/li&gt;&#xA;&lt;li&gt;路径： /dns-query&lt;/li&gt;&#xA;&lt;li&gt;端口： 443&lt;/li&gt;&#xA;&lt;li&gt;出站标签： 选择你的主力代理组（如 🚀 节点选择 或 Proxy）&lt;/li&gt;&#xA;&lt;li&gt;解析本 DNS 服务器域名的 DNS： 下拉选择 dns_direct&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-			</item>
-			<item>
-				<title>gui-singbox路由服务器设置</title>
-				<link>http://localhost:1313/zh-cn/zhsdvs/posts/singboxluyou/</link>
-				<pubDate>Wed, 01 Jul 2026 22:05:53 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/zhsdvs/posts/singboxluyou/</guid>
+				<guid>http://localhost:1313/zh-cn/zh-cn/posts/singboxluyou/</guid>
 				<description>&lt;p&gt;添加两组 DNS 服务器（Servers）&#xA;在添加规则之前，必须先在 “服务器 (Servers)” 列表里点击“添加”，建立好这两名接线员：&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-国内直连-dns&#34;&gt;1. 国内直连 DNS&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： udp&lt;/li&gt;&#xA;&lt;li&gt;名称： dns_direct&lt;/li&gt;&#xA;&lt;li&gt;服务器/地址： 223.5.5.5&lt;/li&gt;&#xA;&lt;li&gt;端口： 53&lt;/li&gt;&#xA;&lt;li&gt;出站标签： direct&lt;/li&gt;&#xA;&lt;li&gt;解析本 DNS 服务器域名的 DNS： 留空 / 无&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2-国外加密-dns&#34;&gt;2. 国外加密 DNS&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： https&lt;/li&gt;&#xA;&lt;li&gt;名称： dns_proxy&lt;/li&gt;&#xA;&lt;li&gt;服务器/地址： 1.1.1.1&lt;/li&gt;&#xA;&lt;li&gt;路径： /dns-query&lt;/li&gt;&#xA;&lt;li&gt;端口： 443&lt;/li&gt;&#xA;&lt;li&gt;出站标签： 选择你的主力代理组（如 🚀 节点选择 或 Proxy）&lt;/li&gt;&#xA;&lt;li&gt;解析本 DNS 服务器域名的 DNS： 下拉选择 dns_direct&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
 			</item>
 			<item>
 				<title>半生浮沉，看透人情世故</title>
-				<link>http://localhost:1313/zh-cn/posts/banshengfuchen/</link>
+				<link>http://localhost:1313/zh-cn/zh-cn/posts/banshengfuchen/</link>
 				<pubDate>Wed, 01 Jul 2026 20:15:00 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/posts/banshengfuchen/</guid>
-				<description>&lt;p&gt;人情世故，四個字，寫盡了生活的酸甜苦辣。&lt;/p&gt;&#xA;&lt;p&gt;年輕時總覺得世界是非黑即白的，追求絕對的率真；中年後才明白，真正的人情世故不是圓滑世故，而是一種看破不說破的善良，一種設身處地為他人著想的溫柔。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/life.png&#34; alt=&#34;人情世故的感悟&#34; loading=&#34;lazy&#34;&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;h3 id=&#34;生活的智慧&#34;&gt;生活的智慧&lt;/h3&gt;&#xA;&lt;p&gt;古人云：「世事洞明皆學問，人情練達即文章。」&#xA;在復雜的世界裡，保持內心的純粹與熱愛。不怨天尤人，不隨波逐流。正如這方小小的博客天地，任憑外面風浪再大，這裡依然是我記錄真實生活、安放靈魂的港灣。&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>半生浮沉，看透人情世故</title>
-				<link>http://localhost:1313/zh-cn/zhsdvs/posts/banshengfuchen/</link>
-				<pubDate>Wed, 01 Jul 2026 20:15:00 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/zhsdvs/posts/banshengfuchen/</guid>
+				<guid>http://localhost:1313/zh-cn/zh-cn/posts/banshengfuchen/</guid>
 				<description>&lt;p&gt;人情世故，四個字，寫盡了生活的酸甜苦辣。&lt;/p&gt;&#xA;&lt;p&gt;年輕時總覺得世界是非黑即白的，追求絕對的率真；中年後才明白，真正的人情世故不是圓滑世故，而是一種看破不說破的善良，一種設身處地為他人著想的溫柔。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/life.png&#34; alt=&#34;人情世故的感悟&#34; loading=&#34;lazy&#34;&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;h3 id=&#34;生活的智慧&#34;&gt;生活的智慧&lt;/h3&gt;&#xA;&lt;p&gt;古人云：「世事洞明皆學問，人情練達即文章。」&#xA;在復雜的世界裡，保持內心的純粹與熱愛。不怨天尤人，不隨波逐流。正如這方小小的博客天地，任憑外面風浪再大，這裡依然是我記錄真實生活、安放靈魂的港灣。&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>踏遍壯麗山河</title>
-				<link>http://localhost:1313/zh-cn/posts/tabianshanhe/</link>
+				<link>http://localhost:1313/zh-cn/zh-cn/posts/tabianshanhe/</link>
 				<pubDate>Wed, 01 Jul 2026 20:12:00 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/posts/tabianshanhe/</guid>
-				<description>&lt;p&gt;走過許多路，最不能忘懷的依舊是祖國的壯麗山河。&lt;/p&gt;&#xA;&lt;p&gt;高山巍峨，直插雲霄，那是大地的脊梁；江河奔騰，源遠流長，那是大地的血脈。站在山巔俯瞰群山起伏，那種「一覽眾山小」的豪情油然而生。&lt;/p&gt;&#xA;&lt;h3 id=&#34;歲月的沉澱&#34;&gt;歲月的沉澱&lt;/h3&gt;&#xA;&lt;p&gt;大山歷經千萬年的風雨巍然不動，河流奔流不息帶走歲月的泥沙。行走在山河之間，才懂得時間的厚重。將這些瑣碎的震撼記錄在文字裡，若干年後回看，依然能感受到那份山風與江水的溫度。&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>踏遍壯麗山河</title>
-				<link>http://localhost:1313/zh-cn/zhsdvs/posts/tabianshanhe/</link>
-				<pubDate>Wed, 01 Jul 2026 20:12:00 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/zhsdvs/posts/tabianshanhe/</guid>
+				<guid>http://localhost:1313/zh-cn/zh-cn/posts/tabianshanhe/</guid>
 				<description>&lt;p&gt;走過許多路，最不能忘懷的依舊是祖國的壯麗山河。&lt;/p&gt;&#xA;&lt;p&gt;高山巍峨，直插雲霄，那是大地的脊梁；江河奔騰，源遠流長，那是大地的血脈。站在山巔俯瞰群山起伏，那種「一覽眾山小」的豪情油然而生。&lt;/p&gt;&#xA;&lt;h3 id=&#34;歲月的沉澱&#34;&gt;歲月的沉澱&lt;/h3&gt;&#xA;&lt;p&gt;大山歷經千萬年的風雨巍然不動，河流奔流不息帶走歲月的泥沙。行走在山河之間，才懂得時間的厚重。將這些瑣碎的震撼記錄在文字裡，若干年後回看，依然能感受到那份山風與江水的溫度。&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>聽，大海的呼吸</title>
-				<link>http://localhost:1313/zh-cn/posts/dahaihuxi/</link>
+				<link>http://localhost:1313/zh-cn/tags/%E6%A0%87%E7%AD%BE/dahaihuxi/</link>
 				<pubDate>Wed, 01 Jul 2026 20:10:00 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/posts/dahaihuxi/</guid>
+				<guid>http://localhost:1313/zh-cn/tags/%E6%A0%87%E7%AD%BE/dahaihuxi/</guid>
 				<description>&lt;p&gt;每當站在海岸線上，看著潮起潮落，總覺得人類的煩惱在浩瀚的大海面前顯得如此渺小。&lt;/p&gt;&#xA;&lt;p&gt;海浪一遍遍地拍打著沙灘，像是大地永不停歇的呼吸。藍色的海水延伸到天邊，與天空融為一體，分不清哪裡是海，哪裡是天。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;#ZgotmplZ&#34; alt=&#34;蔚藍的大海&#34; loading=&#34;lazy&#34; title=&#34;hy.jpeg&#34;&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;h3 id=&#34;海的包容&#34;&gt;海的包容&lt;/h3&gt;&#xA;&lt;p&gt;大海之所以偉大，是因為它能容納無數的河流。無論是清澈的溪流，還是渾濁的江水，一旦匯入大海，便都擁有了同一種蔚藍。寫博客、做收藏也是如此，將網絡上的點滴匯聚於此，終成自己的思想之海。&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>聽，大海的呼吸</title>
-				<link>http://localhost:1313/zh-cn/zhsdvs/posts/dahaihuxi/</link>
+				<link>http://localhost:1313/zh-cn/zh-cn/posts/dahaihuxi/</link>
 				<pubDate>Wed, 01 Jul 2026 20:10:00 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/zhsdvs/posts/dahaihuxi/</guid>
+				<guid>http://localhost:1313/zh-cn/zh-cn/posts/dahaihuxi/</guid>
 				<description>&lt;p&gt;每當站在海岸線上，看著潮起潮落，總覺得人類的煩惱在浩瀚的大海面前顯得如此渺小。&lt;/p&gt;&#xA;&lt;p&gt;海浪一遍遍地拍打著沙灘，像是大地永不停歇的呼吸。藍色的海水延伸到天邊，與天空融為一體，分不清哪裡是海，哪裡是天。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;#ZgotmplZ&#34; alt=&#34;蔚藍的大海&#34; loading=&#34;lazy&#34; title=&#34;hy.jpeg&#34;&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;h3 id=&#34;海的包容&#34;&gt;海的包容&lt;/h3&gt;&#xA;&lt;p&gt;大海之所以偉大，是因為它能容納無數的河流。無論是清澈的溪流，還是渾濁的江水，一旦匯入大海，便都擁有了同一種蔚藍。寫博客、做收藏也是如此，將網絡上的點滴匯聚於此，終成自己的思想之海。&lt;/p&gt;</description>
 			</item>
 	</channel>
