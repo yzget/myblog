@@ -3,8 +3,8 @@
 > 一个由 Hugo 和 Primer CSS 驱动的博客
 
 ## Posts
-- [gui-singbox路由规则集设置](http://localhost:1313/posts/guisingbox-guise/index.md): gui-singbox路由规则集设置
-第一条：国内域名分流 (geosite-cn) 类型： 选择 规则集 (rule set) 规则动作： 选择 路由 规则集 (rule set) 名字： 勾选或填入 geosite-cn 目标 DNS 服务器标签： 选择 dns_direct 反向匹配： 不勾选（关闭） 点击保存。 第二条：国内地理位置分流 (geosite-geolocation-cn) 类型： 选择 规则集 (rule set) 规则动作： 选择 路由 规则集 (rule set) 名字： 勾选或填入 geosite-geolocation-cn 目标 DNS 服务器标签： 选择 dns_direct 反向匹配： 不勾选（关闭） 点击保存。 第三条：关闭国外 IPv6 优化（专门解决报错的那一条！） 既然不能留空，我们就让它强制接管国内规则的 IPv6 请求，这样既不会报错，又完美实现了策略： 类型： 选择 规则集 (rule set) 规则动作： 选择 路由 规则集 (rule set) 名字： 依然填入或勾选 geosite-cn 解析策略组 (Strategy)： 必须选择 ipv4_only（强制关闭国外 IPv6，防止网页卡顿） 目标 DNS 服务器标签： 选择 dns_direct 反向匹配： 不勾选（关闭） 点击保存。 第四条：漏网之鱼平替（抓取所有国外网站） 类型： 选择 规则集 (rule set) 规则动作： 选择 路由 规则集 (rule set) 名字： 填入或勾选 geosite-cn 目标 DNS 服务器标签： 必须选择你的国外加密服务器 dns_proxy 反向匹配： 必须勾选（开启） 
+- [Hugo+主题 头像设置参考](http://localhost:1313/posts/hugotouxiangshezhi/index.md): 主题所带头像可能放置的位置和更改自己头像的一些方法
+- [gui-singbox路由规则集设置](http://localhost:1313/posts/guisingbox-guise/index.md): 路由规则集国内外分流
 - [最新guisingbox路由规则](http://localhost:1313/posts/singbox/index.md): 最新guisingbox路由规则，规则-dns修改&mdash;
 🛠️ 第一部分：路由规则（Route Rules）大扫除与完美排序 请在客户端左侧菜单进入 **「路由规则 / Route Rules」** 页面，完成以下三步：
 1. 清理垃圾与多余规则 点击规则右侧的 **「垃圾桶图标」**，彻底删除以下条目：

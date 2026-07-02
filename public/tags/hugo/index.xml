@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Hugo on 蝴蝶飞</title>
+		<link>http://localhost:1313/tags/hugo/</link>
+		<description>Recent content in Hugo on 蝴蝶飞</description>
+		<generator>Hugo</generator>
+		<language>zh</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 02 Jul 2026 19:46:51 +0800</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Hugo&#43;主题 头像设置参考</title>
+				<link>http://localhost:1313/posts/hugotouxiangshezhi/</link>
+				<pubDate>Thu, 02 Jul 2026 19:46:51 +0800</pubDate>
+				<guid>http://localhost:1313/posts/hugotouxiangshezhi/</guid>
+				<description>&lt;p&gt;笔记&#xA;📘 Hugo 头像与 Favicon 完整配置（hugo-primer-blog）&#xA;🧭 一、整体结构先理解（非常重要）&lt;/p&gt;&#xA;&lt;p&gt;在 Hugo 里，“头像/图标”通常分三类：&lt;/p&gt;&#xA;&lt;p&gt;类型 作用 本质&#xA;favicon 浏览器标签页图标 网站级静态资源&#xA;article avatar 文章/作者头像 主题 partial 渲染&#xA;sidebar avatar 侧边栏 aboutme 头像 partial 模块&#xA;🟡 二、标签页头像（Favicon）&#xA;📍 1. 真实生效代码位置&lt;/p&gt;&#xA;&lt;p&gt;你的主题代码是：&lt;/p&gt;&#xA;&lt;link rel=&#34;icon&#34; href=&#34;{{ .Site.Params.faviconIco | default &#34;favicon.ico&#34; | relURL }}&#34; type=&#34;image/x-icon&#34;&gt; 📍 2. 读取优先级（非常关键） ✅ 优先级顺序： hugo.toml 里的配置 /static/favicon.ico（默认兜底） 📂 3. 可能存在的文件路径 ✔ 推荐标准路径： static/favicon.ico static/favicon.png static/apple-touch-icon.png ⚙️ 4. 正确配置方式（推荐） 👉 hugo.toml [params] faviconIco = &#34;/favicon.ico&#34; faviconPng = &#34;/favicon.png&#34; 🧨 5. 对应 theme 代码位置&#xA;一般在：&#xA;&lt;p&gt;themes/hugo-primer-blog/layouts/partials/head.html&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

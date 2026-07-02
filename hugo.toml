@@ -49,7 +49,7 @@ showReadingTime = true
 showShareButtons = true 
 sidebar = true 
 twitterSite = "yzgetr" 
-
+faviconIco = "/images/favicon.ico"
 # Sidebar modules (loaded from layouts/partials/sidebar/*.html)
 # Order determines display order
 [[params.sidebarModules]]

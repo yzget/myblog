@@ -3,7 +3,7 @@ title: "gui-singbox路由规则集设置"
 date: 2026-07-02T15:06:31+08:00
 draft: false
 author: "蝴蝶飞"
-description: ""
+description: "路由规则集国内外分流"
 image: "/images/guisingbox2.jpg"
 tags: ["singbox"]
 categories: ["网络收藏"]
