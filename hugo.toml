@@ -9,7 +9,7 @@ enableGitInfo = false
 enableRobotsTXT = true
 
 [languages]
-  [languages.posts]
+  [languages.zh]
     contentDir = "content/posts"
     languageName = "中文简体"
     weight = 1
@@ -114,6 +114,13 @@ name = "Terms"
 url = "/terms/"
 weight = 2
 
+[outputs]
+home = ["HTML", "RSS", "LLMS"]
+page = ["HTML", "Markdown"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML"]
+term = ["HTML", "RSS"]
+
 [taxonomies]
 archive = "archives"
 category = "categories"
@@ -137,13 +144,6 @@ tabWidth = 4
 [markup.goldmark]
 [markup.goldmark.renderer]
 unsafe = true
-
-[outputs]
-home = ["HTML", "RSS", "LLMS"]
-page = ["HTML", "Markdown"]
-section = ["HTML", "RSS"]
-taxonomy = ["HTML"]
-term = ["HTML", "RSS"]
 
 [sitemap]
 changefreq = "weekly"
