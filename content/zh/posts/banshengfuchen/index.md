@@ -3,7 +3,7 @@ title: "半生浮沉，看透人情世故"
 date: 2026-07-01T20:15:00+08:00
 draft: false
 tags: ["人情世故", "感悟", "瑣事"]
-categories: ["collection"]
+categories: ["网络收藏"]
 image: "haian.jpg"
 ---
 

@@ -3,7 +3,7 @@ title: "聽，大海的呼吸"
 date: 2026-07-01T20:10:00+08:00
 draft: false
 tags: ["大海", "自然", "網絡收藏"]
-categories: ["collection"]
+categories: ["网络收藏"]
 image: "hy.jpeg"
 ---
 

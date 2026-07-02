@@ -8,8 +8,8 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="http://localhost:1313/zh/categories/"
+                hreflang="zh-cn"
+                href="http://localhost:1313/zh-cn/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -58,8 +58,8 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="http://localhost:1313/zh/posts/"
+                hreflang="zh-cn"
+                href="http://localhost:1313/zh-cn/posts/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -93,8 +93,8 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="http://localhost:1313/zh/tags/"
+                hreflang="zh-cn"
+                href="http://localhost:1313/zh-cn/tags/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -143,8 +143,8 @@
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="http://localhost:1313/zh/"
+                hreflang="zh-cn"
+                href="http://localhost:1313/zh-cn/"
                 />
     <xhtml:link
                 rel="alternate"

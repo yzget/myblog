@@ -5,7 +5,7 @@ draft: false
 author: "蝴蝶飞"
 description: ""
 image: "featured.jpg"
-tags: [""]
-categories: ["trivia"]
+tags: ["琐事"]
+categories: ["琐事"]
 archives: [""]
 ---

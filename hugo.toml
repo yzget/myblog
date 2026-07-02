@@ -2,38 +2,38 @@ baseURL = "https://hgbk.mll.cc.cd/"
 theme = "hugo-primer-blog"
 title = "蝴蝶飞"
 
-defaultContentLanguage = "zh"
+defaultContentLanguage = "zh-cn"
 defaultContentLanguageInSubdir = true
 
 enableGitInfo = false
 enableRobotsTXT = true
 
 [languages]
-  [languages.zh]
+  [languages.zh-cn]
     contentDir = "content/zh"
     languageName = "中文简体"
     weight = 1
     # 👇 關鍵核心：強迫中文語系生成自己的分類頁面
-    [languages.zh.taxonomies]
+    [languages.zh-cn.taxonomies]
       category = "categories"
       tag = "tags"
-    [languages.zh.params]
+    [languages.zh-cn.params]
       description = "一个由 Hugo 和 Primer CSS 驱动的博客"
     
     # 這裡的網址我們直接用最純粹的中文，配合上面新加的設定，絕對能對準！
-[[languages.zh.menus.main]]
+[[languages.zh-cn.menus.main]]
       name = "首页"
-      url = "/zh/"
+      url = "/"
       weight = 1
 
-    [[languages.zh.menus.main]]
+    [[languages.zh-cn.menus.main]]
       name = "网络收藏"
-      url = "/zh/categories/collection/"  # 👈 有了上面的實體資料夾，直接這樣寫絕不會錯
+      url = "/categories/网络收藏/"  # 👈 有了上面的實體資料夾，直接這樣寫絕不會錯
       weight = 2
 
-    [[languages.zh.menus.main]]
+    [[languages.zh-cn.menus.main]]
       name = "琐事"
-      url = "/zh/categories/trivia/"
+      url = "/categories/琐事/"
       weight = 3
 [languages.en]
     contentDir = "content/en"
@@ -67,7 +67,7 @@ name = "Home"
       url = "/ja/posts/"
       weight = 3
 [params]
-author = "Your Name" 
+author = "蝴蝶飞" 
 dateFormat = "2006-01-02" 
 defaultTheme = "auto" 
 description = "A blog powered by Hugo and Primer CSS" 
@@ -78,7 +78,7 @@ showAuthor = true
 showReadingTime = true 
 showShareButtons = true 
 sidebar = true 
-twitterSite = "your-username" 
+twitterSite = "yzgetr" 
 
 # Sidebar modules (loaded from layouts/partials/sidebar/*.html)
 # Order determines display order
@@ -104,9 +104,9 @@ partial = "archive"
 partial = "links"
 
 [params.social]
-bluesky = "your-username.bsky.social"
-github = "your-username"
-x = "your-username"
+bluesky = "hudiefei.bsky.social"
+github = "yzget"
+x = "yzgetr"
 
 [menus]
 [[menus.main]]
