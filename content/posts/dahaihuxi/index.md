@@ -5,6 +5,7 @@ draft: false
 tags: ["大海", "自然", "網絡收藏"]
 categories: ["网络收藏"]
 image: "hy.jpeg"
+comments: true
 ---
 
 每當站在海岸線上，看著潮起潮落，總覺得人類的煩惱在浩瀚的大海面前顯得如此渺小。

@@ -50,6 +50,7 @@ showShareButtons = true
 sidebar = true 
 twitterSite = "yzgetr" 
 faviconIco = "/images/favicon.ico"
+comments = true
 # Sidebar modules (loaded from layouts/partials/sidebar/*.html)
 # Order determines display order
 [[params.sidebarModules]]
@@ -77,6 +78,7 @@ partial = "links"
 bluesky = "hudiefei.bsky.social"
 github = "yzget"
 x = "yzgetr"
+
 
 [menus]
 [[menus.main]]
