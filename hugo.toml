@@ -100,9 +100,9 @@ url = "/about/"
 weight = 4
 
 [[menus.main]]
-    name = "RSS"
-    url = "https://hgbk.mll.cc.cd/zh/index.xml" # 对应 home 的 RSS 路径
-    weight = 5          # 排序权重，数字越大越靠后
+name = "RSS"
+url = "https://hgbk.mll.cc.cd/zh/index.xml" # 对应 home 的 RSS 路径
+weight = 5          # 排序权重，数字越大越靠后
 
 [[menus.footer]]
 name = "Privacy"
