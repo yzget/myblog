@@ -28,11 +28,11 @@
 				<description>&lt;p&gt;最新guisingbox路由规则，规则-dns修改&amp;mdash;&lt;/p&gt;&#xA;&lt;h2 id=&#34;-第一部分路由规则route-rules大扫除与完美排序&#34;&gt;🛠️ 第一部分：路由规则（Route Rules）大扫除与完美排序&lt;/h2&gt;&#xA;&lt;p&gt;请在客户端左侧菜单进入 **「路由规则 / Route Rules」** 页面，完成以下三步：&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-清理垃圾与多余规则&#34;&gt;1. 清理垃圾与多余规则&lt;/h3&gt;&#xA;&lt;p&gt;点击规则右侧的 **「垃圾桶图标」**，彻底删除以下条目：&lt;/p&gt;&#xA;&lt;p&gt;* ❌ 删掉名字拼错的 `category-ad5-al-geosite.srs` 规则。&lt;/p&gt;&#xA;&lt;p&gt;* ❌ 删掉没有 `.srs` 后缀的 `Category-Ads` 规则。&lt;/p&gt;&#xA;&lt;p&gt;* ❌ 删掉带有 `gfw-geosite.srs` 的最后一行规则（已用海外大网完美兜底，无需重叠）。&lt;/p&gt;&#xA;&lt;h3 id=&#34;2-修正-youtube-的套娃指向&#34;&gt;2. 修正 YouTube 的“套娃”指向&lt;/h3&gt;&#xA;&lt;p&gt;* 找到条件为 `youtube-geosite.srs` 的那一行，点击 **「编辑」**。&lt;/p&gt;&#xA;&lt;p&gt;* 将它的 **「目标出站 / Outbound」** 选项，从原本套娃的虚拟组改为直连主策略： **`🚀 节点选择`**。&lt;/p&gt;&#xA;&lt;p&gt;* *(随后去左侧「策略组」页面，把原本那个叫 `📹️ YouTube视频` 的空壳策略组直接删掉)*。&lt;/p&gt;&#xA;&lt;h3 id=&#34;3-鼠标拖动完成黄金排序从上到下&#34;&gt;3. 鼠标拖动，完成黄金排序（从上到下）&lt;/h3&gt;&#xA;&lt;p&gt;用鼠标拖动规则，严格调整为以下顺序：&lt;/p&gt;&#xA;&lt;p&gt;* 🔝 **【最顶部：基石与拦截】**&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;`protocol: dns` ➡️ `hijack-dns`&lt;/li&gt;&#xA;&lt;li&gt;`inbound: tun-in` ➡️ `sniff`&lt;/li&gt;&#xA;&lt;li&gt;`category-ads-all-geosite.srs` ➡️ `🛑 全球拦截`&lt;/li&gt;&#xA;&lt;li&gt;`protocol: quic` ➡️ `🛑 全球拦截`&lt;/li&gt;&#xA;&lt;li&gt;`network: icmp` ➡️ `🎯 全球直连`&lt;/li&gt;&#xA;&lt;li&gt;`clash_mode: direct` ➡️ `🎯 全球直连`&lt;/li&gt;&#xA;&lt;li&gt;`clash_mode: global` ➡️ `GLOBAL`&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;* 🚀 **【重点：特种海外精准分流】**（必须排在大陆直连上方，防止 AI 误伤走香港）&lt;/p&gt;</description>
 			</item>
 			<item>
-				<title>My Game Story</title>
-				<link>http://localhost:1313/zh-cn/posts/my-game-story/</link>
+				<title>gui-singbox路由服务器设置</title>
+				<link>http://localhost:1313/zh-cn/posts/singboxluyou/</link>
 				<pubDate>Wed, 01 Jul 2026 22:05:53 +0800</pubDate>
-				<guid>http://localhost:1313/zh-cn/posts/my-game-story/</guid>
-				<description></description>
+				<guid>http://localhost:1313/zh-cn/posts/singboxluyou/</guid>
+				<description>&lt;p&gt;添加两组 DNS 服务器（Servers）&#xA;在添加规则之前，必须先在 “服务器 (Servers)” 列表里点击“添加”，建立好这两名接线员：&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-国内直连-dns&#34;&gt;1. 国内直连 DNS&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： udp&lt;/li&gt;&#xA;&lt;li&gt;名称： dns_direct&lt;/li&gt;&#xA;&lt;li&gt;服务器/地址： 223.5.5.5&lt;/li&gt;&#xA;&lt;li&gt;端口： 53&lt;/li&gt;&#xA;&lt;li&gt;出站标签： direct&lt;/li&gt;&#xA;&lt;li&gt;解析本 DNS 服务器域名的 DNS： 留空 / 无&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2-国外加密-dns&#34;&gt;2. 国外加密 DNS&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类型： https&lt;/li&gt;&#xA;&lt;li&gt;名称： dns_proxy&lt;/li&gt;&#xA;&lt;li&gt;服务器/地址： 1.1.1.1&lt;/li&gt;&#xA;&lt;li&gt;路径： /dns-query&lt;/li&gt;&#xA;&lt;li&gt;端口： 443&lt;/li&gt;&#xA;&lt;li&gt;出站标签： 选择你的主力代理组（如 🚀 节点选择 或 Proxy）&lt;/li&gt;&#xA;&lt;li&gt;解析本 DNS 服务器域名的 DNS： 下拉选择 dns_direct&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
 			</item>
 			<item>
 				<title>半生浮沉，看透人情世故</title>

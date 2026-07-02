@@ -18,7 +18,8 @@
 * 🔝 **【最顶部：基石与拦截】**
 `protocol: dns` ➡️ `hijack-dns` `inbound: tun-in` ➡️ `sniff` `category-ads-all-geosite.srs` ➡️ `🛑 全球拦截` `protocol: quic` ➡️ `🛑 全球拦截` `network: icmp` ➡️ `🎯 全球直连` `clash_mode: direct` ➡️ `🎯 全球直连` `clash_mode: global` ➡️ `GLOBAL` * 🚀 **【重点：特种海外精准分流】**（必须排在大陆直连上方，防止 AI 误伤走香港）
 
-- [My Game Story](http://localhost:1313/zh-cn/posts/my-game-story/index.md): 
+- [gui-singbox路由服务器设置](http://localhost:1313/zh-cn/posts/singboxluyou/index.md): 添加两组 DNS 服务器（Servers） 在添加规则之前，必须先在 “服务器 (Servers)” 列表里点击“添加”，建立好这两名接线员：
+1. 国内直连 DNS 类型： udp 名称： dns_direct 服务器/地址： 223.5.5.5 端口： 53 出站标签： direct 解析本 DNS 服务器域名的 DNS： 留空 / 无 2. 国外加密 DNS 类型： https 名称： dns_proxy 服务器/地址： 1.1.1.1 路径： /dns-query 端口： 443 出站标签： 选择你的主力代理组（如 🚀 节点选择 或 Proxy） 解析本 DNS 服务器域名的 DNS： 下拉选择 dns_direct 
 - [半生浮沉，看透人情世故](http://localhost:1313/zh-cn/posts/banshengfuchen/index.md): 人情世故，四個字，寫盡了生活的酸甜苦辣。
 年輕時總覺得世界是非黑即白的，追求絕對的率真；中年後才明白，真正的人情世故不是圓滑世故，而是一種看破不說破的善良，一種設身處地為他人著想的溫柔。
 生活的智慧 古人云：「世事洞明皆學問，人情練達即文章。」 在復雜的世界裡，保持內心的純粹與熱愛。不怨天尤人，不隨波逐流。正如這方小小的博客天地，任憑外面風浪再大，這裡依然是我記錄真實生活、安放靈魂的港灣。
