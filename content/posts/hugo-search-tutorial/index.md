@@ -269,11 +269,3 @@ HTML
 多语言与菜单隔离：因为我们已经在 header.html 模板中硬编码写入了独立的、带有点击事件的按钮，请确保 hugo.toml 的 [[menu.main]] 或其他多语言菜单中不含有跳转到 /search/ 的多余配置，保持导航栏清爽。
 
 自动化同步：后续撰写、修改或删除任何 Markdown 文章时，无需手动维护搜索。Hugo 在打包时会自动更新数据文件，弹窗搜索结果会全自动实时同步！  
-`color`
-> sadsd  
-gfgfd  
-hghgfh
-
-``` bash
-$ alist restart
-```
