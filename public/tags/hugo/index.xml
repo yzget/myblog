@@ -10,9 +10,16 @@
 		
 		
 		
-			<lastBuildDate>Thu, 02 Jul 2026 19:46:51 +0800</lastBuildDate>
+			<lastBuildDate>Fri, 03 Jul 2026 12:30:08 +0800</lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>为 Hugo Primer Blog 主题添加现代化智能自适应弹窗搜索功能</title>
+				<link>http://localhost:1313/posts/hugo-search-tutorial/</link>
+				<pubDate>Fri, 03 Jul 2026 12:30:08 +0800</pubDate>
+				<guid>http://localhost:1313/posts/hugo-search-tutorial/</guid>
+				<description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;本教程将介绍如何不修改主题源码，通过在 Hugo 站点根目录进行扩展，为 `Hugo Primer Blog` 主题添加一个**现代化的、圆角设计的、且能自动适应白天/夜间模式**的本地实时搜索弹窗（基于 Fuse.js）。&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## 🛠️ 核心原理与文件目录结构&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;本方案采用 **Hugo 模板覆写机制（Lookup Order）**，所有新建或修改的文件均位于你的**网站根目录**下，绝不破坏 `themes/` 里的主题源码，后续主题升级不受影响。&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;你需要准备或修改的文件目录结构如下：&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;```text&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;您的站点根目录/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── content/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── hugo.toml (或 config.toml)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└── layouts/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ├── _default/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    │   └── index.json        &amp;lt;-- 1. 负责生成搜索数据索引&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    └── partials/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── header.html       &amp;lt;-- 2. 覆写导航栏，挂载搜索按钮与组件&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        └── search-modal.html &amp;lt;-- 3. 弹窗的 HTML 结构、美化样式与搜索逻辑&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;详细实现步骤&#xA;第一步：配置 hugo.toml 生成 JSON 索引&#xA;我们需要让 Hugo 在打包网站时，自动将所有文章的标题、摘要和内容生成一个 index.json 文件，供前端检索。&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Hugo&#43;主题 头像设置参考</title>
 				<link>http://localhost:1313/posts/hugotouxiangshezhi/</link>

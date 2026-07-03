@@ -3,10 +3,9 @@
 > 一个由 Hugo 和 Primer CSS 驱动的博客
 
 ## Posts
+- [为 Hugo Primer Blog 主题添加现代化智能自适应弹窗搜索功能](http://localhost:1313/posts/hugo-search-tutorial/index.md): 为主题添加现代化智能自适应弹窗搜索功能
 - [Hugo+主题 头像设置参考](http://localhost:1313/posts/hugotouxiangshezhi/index.md): 主题所带头像可能放置的位置和更改自己头像的一些方法
-- [gui-singbox路由规则集设置](http://localhost:1313/posts/guisingbox-guise/index.md): 路由规则集国内外分流
-- [最新guisingbox路由规则](http://localhost:1313/posts/singbox/index.md): 最新guisingbox路由规则，规则-dns修改&mdash;
-🛠️ 第一部分：路由规则（Route Rules）大扫除与完美排序 请在客户端左侧菜单进入 **「路由规则 / Route Rules」** 页面，完成以下三步：
+- [最新guisingbox路由规则](http://localhost:1313/posts/singbox/index.md): 最新guisingbox路由规则，规则-dns修改&mdash; 🛠️ 第一部分：路由规则（Route Rules）大扫除与完美排序 请在客户端左侧菜单进入 **「路由规则 / Route Rules」** 页面，完成以下三步：
 1. 清理垃圾与多余规则 点击规则右侧的 **「垃圾桶图标」**，彻底删除以下条目：
 * ❌ 删掉名字拼错的 `category-ad5-al-geosite.srs` 规则。
 * ❌ 删掉没有 `.srs` 后缀的 `Category-Ads` 规则。
@@ -18,8 +17,6 @@
 * 🔝 **【最顶部：基石与拦截】**
 `protocol: dns` ➡️ `hijack-dns` `inbound: tun-in` ➡️ `sniff` `category-ads-all-geosite.srs` ➡️ `🛑 全球拦截` `protocol: quic` ➡️ `🛑 全球拦截` `network: icmp` ➡️ `🎯 全球直连` `clash_mode: direct` ➡️ `🎯 全球直连` `clash_mode: global` ➡️ `GLOBAL` * 🚀 **【重点：特种海外精准分流】**（必须排在大陆直连上方，防止 AI 误伤走香港）
 
-- [gui-singbox路由服务器设置](http://localhost:1313/posts/singboxluyou/index.md): 添加两组 DNS 服务器（Servers） 在添加规则之前，必须先在 “服务器 (Servers)” 列表里点击“添加”，建立好这两名接线员：
-1. 国内直连 DNS 类型： udp 名称： dns_direct 服务器/地址： 223.5.5.5 端口： 53 出站标签： direct 解析本 DNS 服务器域名的 DNS： 留空 / 无 2. 国外加密 DNS 类型： https 名称： dns_proxy 服务器/地址： 1.1.1.1 路径： /dns-query 端口： 443 出站标签： 选择你的主力代理组（如 🚀 节点选择 或 Proxy） 解析本 DNS 服务器域名的 DNS： 下拉选择 dns_direct 
 - [半生浮沉，看透人情世故](http://localhost:1313/posts/banshengfuchen/index.md): 人情世故，四個字，寫盡了生活的酸甜苦辣。
 年輕時總覺得世界是非黑即白的，追求絕對的率真；中年後才明白，真正的人情世故不是圓滑世故，而是一種看破不說破的善良，一種設身處地為他人著想的溫柔。
 生活的智慧 古人云：「世事洞明皆學問，人情練達即文章。」 在復雜的世界裡，保持內心的純粹與熱愛。不怨天尤人，不隨波逐流。正如這方小小的博客天地，任憑外面風浪再大，這裡依然是我記錄真實生活、安放靈魂的港灣。

@@ -8,10 +8,27 @@ defaultContentLanguageInSubdir = false
 enableGitInfo = false
 enableRobotsTXT = true
 
+[outputs]
+home = ["HTML", "RSS", "LLMS", "JSON"]
+page = ["HTML", "Markdown"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML"]
+term = ["HTML", "RSS"]
+[mediaTypes]
+  [mediaTypes."application/json"]
+    suffixes = ["json"]
+
+[outputFormats]
+  [outputFormats.JSON]
+    mediaType = "application/json"
+    baseName = "index"       # 确保生成的文件名叫 index.json
+    isPlainText = true       # 告诉 Hugo 这是纯文本模板，需要解析里面的 {{ ... }}
+
+
 [languages]
   [languages.zh]
     contentDir = "content"
-    languageName = "中文简体"
+    label = "中文简体"
     weight = 1
     # 👇 關鍵核心：強迫中文語系生成自己的分類頁面
     [languages.zh.taxonomies]
@@ -78,12 +95,21 @@ partial = "links"
 bluesky = "hudiefei.bsky.social"
 github = "yzget"
 x = "yzgetr"
+[params.page.code]
+  # 开启代码块复制按钮
+  copy = true 
 
 
 [menus]
 [[menus.main]]
 name = "RSS"
 url = "https://hgbk.mll.cc.cd/zh/index.xml" # 对应 home 的 RSS 路径   
+ weight = 1
+
+#[[menu.main]]
+  #name = "🔍 搜索"  # 直接在这里加一个 Emoji 放大镜，非常直观
+ # url = "/search/"
+ # weight = 2       # 数字越小越靠前，你可以把它排在第一位或者最后一位
 
 [[menus.footer]]
 name = "Privacy"
@@ -115,16 +141,6 @@ noClasses = false
 noHl = false
 style = "github"
 tabWidth = 4
-[markup.goldmark]
-[markup.goldmark.renderer]
-unsafe = true
-
-[outputs]
-home = ["HTML", "RSS", "LLMS"]
-page = ["HTML", "Markdown"]
-section = ["HTML", "RSS"]
-taxonomy = ["HTML"]
-term = ["HTML", "RSS"]
 
 [sitemap]
 changefreq = "weekly"

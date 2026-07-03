@@ -1,0 +1,103 @@
+<div id="search-modal" class="search-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: flex-start; padding-top: 12vh; backdrop-filter: blur(2px);">
+    
+    <div id="modal-content" class="search-modal-content" style="width: 90%; max-width: 600px; border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; max-height: 70vh; display: flex; flex-direction: column; border: 1px solid rgba(128,128,128,0.2);">
+        
+        <button id="close-search" style="position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; line-height: 1; color: inherit; opacity: 0.7;">&times;</button>
+        
+        <h3 style="margin-top: 0; margin-bottom: 1.2rem; font-size: 1.25rem; font-weight: 600; color: inherit;">搜索文章</h3>
+        
+        <input type="text" id="modal-search-input" placeholder="输入关键词实时搜索..." style="width: 100%; padding: 0.75rem 1.2rem; font-size: 1rem; border: 1px solid rgba(128,128,128,0.3); border-radius: 24px; outline: none; transition: all 0.2s ease;">
+        
+        <div id="modal-search-results" style="margin-top: 1.2rem; overflow-y: auto; flex: 1; padding-right: 5px;"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let fuse;
+    const searchModal = document.getElementById('search-modal');
+    const modalContent = document.getElementById('modal-content');
+    const searchInput = document.getElementById('modal-search-input');
+    const searchResults = document.getElementById('modal-search-results');
+    const closeSearch = document.getElementById('close-search');
+
+    // 输入框聚焦时的发光效果
+    searchInput.addEventListener('focus', () => {
+        searchInput.style.borderColor = '#0366d6';
+        searchInput.style.boxShadow = '0 0 0 3px rgba(3,102,214,0.25)';
+    });
+    searchInput.addEventListener('blur', () => {
+        searchInput.style.borderColor = 'rgba(128,128,128,0.3)';
+        searchInput.style.boxShadow = 'none';
+    });
+
+    // 异步获取索引
+    fetch('{{ "index.json" | absURL }}')
+        .then(response => response.json())
+        .then(data => {
+            fuse = new Fuse(data, {
+                keys: ['title', 'summary', 'content'],
+                threshold: 0.4
+            });
+        });
+
+    // 监听输入搜索
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value;
+        if (!query) {
+            searchResults.innerHTML = '';
+            return;
+        }
+        if(!fuse) return;
+        const results = fuse.search(query);
+        
+        if (results.length === 0) {
+            searchResults.innerHTML = '<p style="font-size:0.9rem; padding: 0 0.5rem; opacity: 0.7;">没有找到相关文章</p>';
+            return;
+        }
+        
+        let html = '';
+        results.forEach(result => {
+            const item = result.item;
+            html += `
+                <div class="search-item" style="margin-bottom: 0.8rem; border-bottom: 1px solid rgba(128,128,128,0.1); padding: 0.6rem 0.8rem; border-radius: 8px; transition: background 0.2s;">
+                    <h4 style="margin: 0 0 0.3rem 0; font-size: 1.05rem;"><a href="${item.permalink}" style="color: #0366d6; text-decoration: none; font-weight: 600;">${item.title}</a></h4>
+                    <p style="font-size: 0.88rem; margin: 0; line-height: 1.5; opacity: 0.8;">${item.summary}</p>
+                </div>
+            `;
+        });
+        searchResults.innerHTML = html;
+    });
+
+    // 💡 核心改动：打开弹窗时，实时“偷取”网页当前的背景色和文字颜色
+    window.openSearchModal = function(e) {
+        if(e) e.preventDefault();
+        
+        // 抓取页面 body 当前生效的真实颜色
+        const bodyStyles = window.getComputedStyle(document.body);
+        const currentBg = bodyStyles.backgroundColor;
+        const currentTextColor = bodyStyles.color;
+
+        // 将抓到的颜色强制灌给弹窗和输入框
+        modalContent.style.backgroundColor = currentBg;
+        modalContent.style.color = currentTextColor;
+        searchInput.style.backgroundColor = currentBg === 'rgba(0, 0, 0, 0)' || currentBg === 'transparent' ? '#fff' : currentBg;
+        searchInput.style.color = currentTextColor;
+
+        searchModal.style.display = 'flex';
+        searchInput.focus(); 
+    }
+
+    window.closeSearchModal = function() {
+        searchModal.style.display = 'none';
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+    }
+
+    closeSearch.addEventListener('click', closeSearchModal);
+    searchModal.addEventListener('click', (e) => { if (e.target === searchModal) closeSearchModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearchModal(); });
+});
+</script>

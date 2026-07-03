@@ -13,7 +13,7 @@
 <meta name="twitter:description" content="一个由 Hugo 和 Primer CSS 驱动的博客"><meta name="twitter:image" content="https://picsum.photos/seed/ogimage/1200/630"><meta name="twitter:site" content="@yzgetr">
 <link rel="canonical" href="http://localhost:1313/">
 
-<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/index.xml" title="蝴蝶飞"><link rel="alternate" type="text/plain" href="http://localhost:1313/llms.txt" title="蝴蝶飞"><link rel="stylesheet" href="/css/primer.min.c12daf26af408c64f29cc993dd5ab422334e71e50fa7198111b729fdf674e34d.css" integrity="sha256-wS2vJq9AjGTynMmT3Vq0IjNOceUPpxmBEbcp/fZ0400=">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/index.xml" title="蝴蝶飞"><link rel="alternate" type="text/plain" href="http://localhost:1313/llms.txt" title="蝴蝶飞"><link rel="alternate" type="application/json" href="http://localhost:1313/index.json" title="蝴蝶飞"><link rel="stylesheet" href="/css/primer.min.c12daf26af408c64f29cc993dd5ab422334e71e50fa7198111b729fdf674e34d.css" integrity="sha256-wS2vJq9AjGTynMmT3Vq0IjNOceUPpxmBEbcp/fZ0400=">
 
 <link rel="stylesheet" href="/css/custom.min.44f76475abc99bc3028656bd061d05d398c1b30eefd8ef829d03d0a85e7e5ff2.css" integrity="sha256-RPdkdavJm8MChla9Bh0F05jBsw7v2O&#43;CnQPQqF5&#43;X/I=">
 
@@ -52,6 +52,12 @@
     }
   })();
 </script>
+
+
+<link rel="stylesheet" href="http://localhost:1313/css/custom.min.css">
+
+
+<script src="http://localhost:1313/js/custom.min.js" defer></script>
 </head>
 <body>
   <div class="d-flex flex-column min-height-full"><header class="AppHeader">
@@ -59,7 +65,14 @@
     <div class="AppHeader-globalBar-start">
       <a href="/" class="AppHeader-logo" aria-label="蝴蝶飞"><span class="AppHeader-logo-text">蝴蝶飞</span></a>
 
-      <nav class="AppHeader-nav" aria-label="主导航"><a href="/" class="AppHeader-nav-item">首页</a><a href="/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/" class="AppHeader-nav-item">网络收藏</a><a href="/categories/%E7%90%90%E4%BA%8B/" class="AppHeader-nav-item">琐事</a></nav>
+      <nav class="AppHeader-nav" aria-label="主导航"><a href="/" class="AppHeader-nav-item">首页</a><a href="/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/" class="AppHeader-nav-item">网络收藏</a><a href="/categories/%E7%90%90%E4%BA%8B/" class="AppHeader-nav-item">琐事</a><a href="#" onclick="openSearchModal(event)" class="AppHeader-nav-item" aria-label="Search" style="display: inline-flex; align-items: center; cursor: pointer;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>搜索</span>
+        </a>
+      </nav>
     </div>
 
     <div class="AppHeader-globalBar-end"><button type="button" id="theme-toggle"
@@ -84,10 +97,123 @@
 </div>
   </div>
 </header>
-<main class="flex-auto">
+
+<div id="search-modal" class="search-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: flex-start; padding-top: 12vh; backdrop-filter: blur(2px);">
+    
+    <div id="modal-content" class="search-modal-content" style="width: 90%; max-width: 600px; border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; max-height: 70vh; display: flex; flex-direction: column; border: 1px solid rgba(128,128,128,0.2);">
+        
+        <button id="close-search" style="position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; line-height: 1; color: inherit; opacity: 0.7;">&times;</button>
+        
+        <h3 style="margin-top: 0; margin-bottom: 1.2rem; font-size: 1.25rem; font-weight: 600; color: inherit;">搜索文章</h3>
+        
+        <input type="text" id="modal-search-input" placeholder="输入关键词实时搜索..." style="width: 100%; padding: 0.75rem 1.2rem; font-size: 1rem; border: 1px solid rgba(128,128,128,0.3); border-radius: 24px; outline: none; transition: all 0.2s ease;">
+        
+        <div id="modal-search-results" style="margin-top: 1.2rem; overflow-y: auto; flex: 1; padding-right: 5px;"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let fuse;
+    const searchModal = document.getElementById('search-modal');
+    const modalContent = document.getElementById('modal-content');
+    const searchInput = document.getElementById('modal-search-input');
+    const searchResults = document.getElementById('modal-search-results');
+    const closeSearch = document.getElementById('close-search');
+
+    
+    searchInput.addEventListener('focus', () => {
+        searchInput.style.borderColor = '#0366d6';
+        searchInput.style.boxShadow = '0 0 0 3px rgba(3,102,214,0.25)';
+    });
+    searchInput.addEventListener('blur', () => {
+        searchInput.style.borderColor = 'rgba(128,128,128,0.3)';
+        searchInput.style.boxShadow = 'none';
+    });
+
+    
+    fetch('http:\/\/localhost:1313\/index.json')
+        .then(response => response.json())
+        .then(data => {
+            fuse = new Fuse(data, {
+                keys: ['title', 'summary', 'content'],
+                threshold: 0.4
+            });
+        });
+
+    
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value;
+        if (!query) {
+            searchResults.innerHTML = '';
+            return;
+        }
+        if(!fuse) return;
+        const results = fuse.search(query);
+        
+        if (results.length === 0) {
+            searchResults.innerHTML = '<p style="font-size:0.9rem; padding: 0 0.5rem; opacity: 0.7;">没有找到相关文章</p>';
+            return;
+        }
+        
+        let html = '';
+        results.forEach(result => {
+            const item = result.item;
+            html += `
+                <div class="search-item" style="margin-bottom: 0.8rem; border-bottom: 1px solid rgba(128,128,128,0.1); padding: 0.6rem 0.8rem; border-radius: 8px; transition: background 0.2s;">
+                    <h4 style="margin: 0 0 0.3rem 0; font-size: 1.05rem;"><a href="${item.permalink}" style="color: #0366d6; text-decoration: none; font-weight: 600;">${item.title}</a></h4>
+                    <p style="font-size: 0.88rem; margin: 0; line-height: 1.5; opacity: 0.8;">${item.summary}</p>
+                </div>
+            `;
+        });
+        searchResults.innerHTML = html;
+    });
+
+    
+    window.openSearchModal = function(e) {
+        if(e) e.preventDefault();
+        
+        
+        const bodyStyles = window.getComputedStyle(document.body);
+        const currentBg = bodyStyles.backgroundColor;
+        const currentTextColor = bodyStyles.color;
+
+        
+        modalContent.style.backgroundColor = currentBg;
+        modalContent.style.color = currentTextColor;
+        searchInput.style.backgroundColor = currentBg === 'rgba(0, 0, 0, 0)' || currentBg === 'transparent' ? '#fff' : currentBg;
+        searchInput.style.color = currentTextColor;
+
+        searchModal.style.display = 'flex';
+        searchInput.focus(); 
+    }
+
+    window.closeSearchModal = function() {
+        searchModal.style.display = 'none';
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+    }
+
+    closeSearch.addEventListener('click', closeSearchModal);
+    searchModal.addEventListener('click', (e) => { if (e.target === searchModal) closeSearchModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearchModal(); });
+});
+</script><main class="flex-auto">
       <div class="container-xl px-3 px-md-4 px-lg-5 py-4"><div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-md"><div class="Layout-main"><div class="Box">
       <div class="Box-header">
         <h2 class="Box-title">最新文章</h2>
+      </div><div class="Box-row">
+        <article class="d-flex flex-column flex-md-row"><div class="mr-md-3 mb-2 mb-md-0" style="flex-shrink: 0;">
+            <a href="/posts/hugo-search-tutorial/"><img src="/images/sousuo.jpg" alt="为 Hugo Primer Blog 主题添加现代化智能自适应弹窗搜索功能" loading="lazy" class="rounded-2" style="width: 200px; height: 120px; object-fit: cover;"></a>
+          </div><div class="flex-auto">
+            <h3 class="f3 lh-condensed mb-1">
+              <a href="/posts/hugo-search-tutorial/" class="Link--primary">为 Hugo Primer Blog 主题添加现代化智能自适应弹窗搜索功能</a>
+            </h3><div class="d-flex flex-items-center color-fg-muted f6 mb-2"><time datetime="2026-07-03T12:30:08&#43;08:00">
+                2026-07-03
+              </time><span class="mx-2">&middot;</span><span>5 最短阅读时间</span><span class="mx-2">&middot;</span><span>蝴蝶飞</span></div><p class="color-fg-muted mb-2">为主题添加现代化智能自适应弹窗搜索功能</p><div class="d-flex flex-wrap"><a href="/tags/hugo/" class="Label Label--secondary mr-1 mb-1">hugo</a></div></div>
+        </article>
       </div><div class="Box-row">
         <article class="d-flex flex-column flex-md-row"><div class="mr-md-3 mb-2 mb-md-0" style="flex-shrink: 0;">
             <a href="/posts/hugotouxiangshezhi/"><img src="/images/shujia.jpg" alt="Hugo&#43;主题 头像设置参考" loading="lazy" class="rounded-2" style="width: 200px; height: 120px; object-fit: cover;"></a>
@@ -100,37 +226,15 @@
         </article>
       </div><div class="Box-row">
         <article class="d-flex flex-column flex-md-row"><div class="mr-md-3 mb-2 mb-md-0" style="flex-shrink: 0;">
-            <a href="/posts/guisingbox-guise/"><img src="/images/guisingbox2.jpg" alt="gui-singbox路由规则集设置" loading="lazy" class="rounded-2" style="width: 200px; height: 120px; object-fit: cover;"></a>
-          </div><div class="flex-auto">
-            <h3 class="f3 lh-condensed mb-1">
-              <a href="/posts/guisingbox-guise/" class="Link--primary">gui-singbox路由规则集设置</a>
-            </h3><div class="d-flex flex-items-center color-fg-muted f6 mb-2"><time datetime="2026-07-02T15:06:31&#43;08:00">
-                2026-07-02
-              </time><span class="mx-2">&middot;</span><span>1 最短阅读时间</span><span class="mx-2">&middot;</span><span>蝴蝶飞</span></div><p class="color-fg-muted mb-2">路由规则集国内外分流</p><div class="d-flex flex-wrap"><a href="/tags/singbox/" class="Label Label--secondary mr-1 mb-1">singbox</a></div></div>
-        </article>
-      </div><div class="Box-row">
-        <article class="d-flex flex-column flex-md-row"><div class="mr-md-3 mb-2 mb-md-0" style="flex-shrink: 0;">
             <a href="/posts/singbox/"><img src="/images/guiforsingbox.jpg" alt="最新guisingbox路由规则" loading="lazy" class="rounded-2" style="width: 200px; height: 120px; object-fit: cover;"></a>
           </div><div class="flex-auto">
             <h3 class="f3 lh-condensed mb-1">
               <a href="/posts/singbox/" class="Link--primary">最新guisingbox路由规则</a>
             </h3><div class="d-flex flex-items-center color-fg-muted f6 mb-2"><time datetime="2026-07-01T22:24:49&#43;08:00">
                 2026-07-01
-              </time><span class="mx-2">&middot;</span><span>2 最短阅读时间</span><span class="mx-2">&middot;</span><span>蝴蝶飞</span></div><p class="color-fg-muted mb-2">最新guisingbox路由规则，规则-dns修改&mdash;
-🛠️ 第一部分：路由规则（Route Rules）大扫除与完美排序 请在客户端左侧菜单进入 **「路由规则 / Route Rules」** 页面，完成以下三步：
+              </time><span class="mx-2">&middot;</span><span>3 最短阅读时间</span><span class="mx-2">&middot;</span><span>蝴蝶飞</span></div><p class="color-fg-muted mb-2">最新guisingbox路由规则，规则-dns修改&mdash; 🛠️ 第一部分：路由规则（Route Rules）大扫除与完美排序 请在客户端左侧菜单进入 **「路由规则 / Route Rules」** 页面，完成以下三步：
 1. 清理垃圾与多余规则 点击规则右侧的 **「垃圾桶图标」**，彻底删除以下条目：
 * ❌ 删掉名字拼错的 `category-ad5-al-geosite.srs` …</p><div class="d-flex flex-wrap"><a href="/tags/guisingbox/" class="Label Label--secondary mr-1 mb-1">guisingbox</a></div></div>
-        </article>
-      </div><div class="Box-row">
-        <article class="d-flex flex-column flex-md-row"><div class="mr-md-3 mb-2 mb-md-0" style="flex-shrink: 0;">
-            <a href="/posts/singboxluyou/"><img src="/images/guisingbox1.jpg" alt="gui-singbox路由服务器设置" loading="lazy" class="rounded-2" style="width: 200px; height: 120px; object-fit: cover;"></a>
-          </div><div class="flex-auto">
-            <h3 class="f3 lh-condensed mb-1">
-              <a href="/posts/singboxluyou/" class="Link--primary">gui-singbox路由服务器设置</a>
-            </h3><div class="d-flex flex-items-center color-fg-muted f6 mb-2"><time datetime="2026-07-01T22:05:53&#43;08:00">
-                2026-07-01
-              </time><span class="mx-2">&middot;</span><span>1 最短阅读时间</span><span class="mx-2">&middot;</span><span>蝴蝶飞</span></div><p class="color-fg-muted mb-2">添加两组 DNS 服务器（Servers） 在添加规则之前，必须先在 “服务器 (Servers)” 列表里点击“添加”，建立好这两名接线员：
-1. 国内直连 DNS 类型： udp 名称： dns_direct 服务器/地址： 223.5.5.5 端口： 53 出站标签： direct 解析本 DNS 服务器域名的 DNS： 留空 / 无 2. 国外加密 DNS 类型： https 名称： …</p><div class="d-flex flex-wrap"><a href="/tags/singbox/" class="Label Label--secondary mr-1 mb-1">singbox</a></div></div>
         </article>
       </div><div class="Box-row">
         <article class="d-flex flex-column flex-md-row"><div class="mr-md-3 mb-2 mb-md-0" style="flex-shrink: 0;">
@@ -205,19 +309,19 @@
 <div class="color-bg-subtle rounded-2 p-3 mb-3">
   <h3 class="h5 mb-2">近期文章</h3>
   <ul class="list-style-none"><li class="mb-2">
-      <a href="/posts/hugotouxiangshezhi/" class="Link--primary">Hugo&#43;主题 头像设置参考</a><span class="color-fg-muted f6 d-block">
-        2026-07-02
+      <a href="/posts/hugo-search-tutorial/" class="Link--primary">为 Hugo Primer Blog 主题添加现代化智能自适应弹窗搜索功能</a><span class="color-fg-muted f6 d-block">
+        2026-07-03
       </span></li><li class="mb-2">
-      <a href="/posts/guisingbox-guise/" class="Link--primary">gui-singbox路由规则集设置</a><span class="color-fg-muted f6 d-block">
+      <a href="/posts/hugotouxiangshezhi/" class="Link--primary">Hugo&#43;主题 头像设置参考</a><span class="color-fg-muted f6 d-block">
         2026-07-02
       </span></li><li class="mb-2">
       <a href="/posts/singbox/" class="Link--primary">最新guisingbox路由规则</a><span class="color-fg-muted f6 d-block">
         2026-07-01
       </span></li><li class="mb-2">
-      <a href="/posts/singboxluyou/" class="Link--primary">gui-singbox路由服务器设置</a><span class="color-fg-muted f6 d-block">
+      <a href="/posts/banshengfuchen/" class="Link--primary">半生浮沉，看透人情世故</a><span class="color-fg-muted f6 d-block">
         2026-07-01
       </span></li><li class="mb-2">
-      <a href="/posts/banshengfuchen/" class="Link--primary">半生浮沉，看透人情世故</a><span class="color-fg-muted f6 d-block">
+      <a href="/posts/tabianshanhe/" class="Link--primary">踏遍壯麗山河</a><span class="color-fg-muted f6 d-block">
         2026-07-01
       </span></li></ul>
 </div><div class="color-bg-subtle rounded-2 p-3 mb-3">
@@ -233,8 +337,6 @@
       guisingbox
     </a><a href="/tags/hugo/" class="topic-tag">
       hugo
-    </a><a href="/tags/singbox/" class="topic-tag">
-      singbox
     </a><a href="/tags/%E4%BA%BA%E6%83%85%E4%B8%96%E6%95%85/" class="topic-tag">
       人情世故
     </a><a href="/tags/%E5%A4%A7%E6%B5%B7/" class="topic-tag">
@@ -262,7 +364,7 @@
       </a>
     </li><li class="mb-1">
       <a href="/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/" class="Link--secondary">
-        网络收藏 <span class="Counter Counter--secondary ml-1">7</span>
+        网络收藏 <span class="Counter Counter--secondary ml-1">6</span>
       </a>
     </li></ul>
 </div></aside></div></div></div>

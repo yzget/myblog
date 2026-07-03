@@ -3,31 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2026-07-02T19:46:51+08:00</lastmod>
+    <lastmod>2026-07-03T12:30:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/tags/hugo/</loc>
-    <lastmod>2026-07-02T19:46:51+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/posts/hugotouxiangshezhi/</loc>
-    <lastmod>2026-07-02T19:46:51+08:00</lastmod>
+    <lastmod>2026-07-03T12:30:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2026-07-02T19:46:51+08:00</lastmod>
+    <lastmod>2026-07-03T12:30:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-07-02T19:46:51+08:00</lastmod>
+    <lastmod>2026-07-03T12:30:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/</loc>
+    <lastmod>2026-07-03T12:30:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/posts/hugo-search-tutorial/</loc>
+    <lastmod>2026-07-03T12:30:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/posts/hugotouxiangshezhi/</loc>
     <lastmod>2026-07-02T19:46:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -129,6 +134,10 @@
   </url><url>
     <loc>http://localhost:1313/tags/%E8%87%AA%E7%84%B6/</loc>
     <lastmod>2026-07-01T20:10:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/search/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

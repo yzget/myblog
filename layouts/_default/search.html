@@ -1,0 +1,61 @@
+{{ define "main" }}
+<div class="search-container" style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+    <h1>{{ .Title }}</h1>
+    
+    <input type="text" id="search-input" placeholder="输入关键词搜索文章..." style="width: 100%; padding: 0.8rem; font-size: 1.1rem; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 2rem;">
+    
+    <div id="search-results"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+<script>
+let fuse;
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+
+// 1. 异步获取 Hugo 生成的 index.json
+fetch('{{ "index.json" | absURL }}')
+    .then(response => response.json())
+    .then(data => {
+        // 2. 配置 Fuse.js
+        fuse = new Fuse(data, {
+            keys: ['title', 'summary', 'content'], // 搜索这些字段
+            threshold: 0.4,                       // 匹配灵敏度 (0.0 精确 - 1.0 宽松)
+            includeMatches: true
+        });
+    });
+
+// 3. 监听输入框变化
+searchInput.addEventListener('input', (e) => {
+    const query = e.target.value;
+    if (!query) {
+        searchResults.innerHTML = '';
+        return;
+    }
+    
+    const results = fuse.search(query);
+    renderResults(results);
+});
+
+// 4. 渲染结果到页面
+function renderResults(results) {
+    if (results.length === 0) {
+        searchResults.innerHTML = '<p>没有找到相关文章</p>';
+        return;
+    }
+    
+    let html = '';
+    results.forEach(result => {
+        const item = result.item;
+        html += `
+            <article style="margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                <h2 style="margin-bottom: 0.5rem;"><a href="${item.permalink}">${item.title}</a></h2>
+                <p style="color: #666; font-size: 0.95rem;">${item.summary}</p>
+            </article>
+        `;
+    });
+    searchResults.innerHTML = html;
+}
+</script>
+{{ end }}
