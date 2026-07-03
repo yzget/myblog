@@ -1,0 +1,25 @@
+/* 确保代码块可以相对定位 */
+.highlight, pre {
+    position: relative;
+}
+
+/* 复制按钮样式 */
+.copy-code-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s;
+}
+
+/* 鼠标悬停时变亮 */
+.copy-code-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}

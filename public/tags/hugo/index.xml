@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Hugo on 蝴蝶飞</title>
+		<link>http://localhost:1313/tags/hugo/</link>
+		<description>Recent content in Hugo on 蝴蝶飞</description>
+		<generator>Hugo</generator>
+		<language>zh</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 12:30:08 +0800</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>为 Hugo Primer Blog 主题添加现代化智能自适应弹窗搜索功能</title>
+				<link>http://localhost:1313/posts/%E4%B8%BA-hugo-primer-blog-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E7%8E%B0%E4%BB%A3%E5%8C%96%E6%99%BA%E8%83%BD%E8%87%AA%E9%80%82%E5%BA%94%E5%BC%B9%E7%AA%97%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</link>
+				<pubDate>Fri, 03 Jul 2026 12:30:08 +0800</pubDate>
+				<guid>http://localhost:1313/posts/%E4%B8%BA-hugo-primer-blog-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E7%8E%B0%E4%BB%A3%E5%8C%96%E6%99%BA%E8%83%BD%E8%87%AA%E9%80%82%E5%BA%94%E5%BC%B9%E7%AA%97%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</guid>
+				<description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;本教程将介绍如何不修改主题源码，通过在 Hugo 站点根目录进行扩展，为 `Hugo Primer Blog` 主题添加一个**现代化的、圆角设计的、且能自动适应白天/夜间模式**的本地实时搜索弹窗（基于 Fuse.js）。&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## 🛠️ 核心原理与文件目录结构&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;本方案采用 **Hugo 模板覆写机制（Lookup Order）**，所有新建或修改的文件均位于你的**网站根目录**下，绝不破坏 `themes/` 里的主题源码，后续主题升级不受影响。&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;你需要准备或修改的文件目录结构如下：&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;```text&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;您的站点根目录/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── content/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── hugo.toml (或 config.toml)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└── layouts/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ├── _default/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    │   └── index.json        &amp;lt;-- 1. 负责生成搜索数据索引&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    └── partials/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── header.html       &amp;lt;-- 2. 覆写导航栏，挂载搜索按钮与组件&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        └── search-modal.html &amp;lt;-- 3. 弹窗的 HTML 结构、美化样式与搜索逻辑&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;详细实现步骤&#xA;第一步：配置 hugo.toml 生成 JSON 索引&#xA;我们需要让 Hugo 在打包网站时，自动将所有文章的标题、摘要和内容生成一个 index.json 文件，供前端检索。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Hugo&#43;主题 头像设置参考</title>
+				<link>http://localhost:1313/posts/hugo&#43;%E4%B8%BB%E9%A2%98-%E5%A4%B4%E5%83%8F%E8%AE%BE%E7%BD%AE%E5%8F%82%E8%80%83/</link>
+				<pubDate>Thu, 02 Jul 2026 19:46:51 +0800</pubDate>
+				<guid>http://localhost:1313/posts/hugo&#43;%E4%B8%BB%E9%A2%98-%E5%A4%B4%E5%83%8F%E8%AE%BE%E7%BD%AE%E5%8F%82%E8%80%83/</guid>
+				<description>&lt;p&gt;笔记&lt;/p&gt;&#xA;&lt;h2 id=&#34;hugo-头像与-favicon-完整配置hugo-primer-blog&#34;&gt;📘Hugo 头像与 Favicon 完整配置（hugo-primer-blog）&lt;/h2&gt;&#xA;&lt;h3 id=&#34;-一整体结构先理解非常重要&#34;&gt;🧭 一、整体结构先理解（非常重要）&lt;/h3&gt;&#xA;&lt;p&gt;在 Hugo 里，“头像/图标”通常分三类：&lt;/p&gt;&#xA;&lt;p&gt;类型 作用 本质&#xA;favicon 浏览器标签页图标 网站级静态资源&#xA;article avatar 文章/作者头像 主题 partial 渲染&#xA;sidebar avatar 侧边栏 aboutme 头像 partial 模块&lt;/p&gt;&#xA;&lt;h3 id=&#34;-二标签页头像favicon&#34;&gt;🟡 二、标签页头像（Favicon）&lt;/h3&gt;&#xA;&lt;h4 id=&#34;-1-真实生效代码位置&#34;&gt;📍 1. 真实生效代码位置&lt;/h4&gt;&#xA;&lt;p&gt;你的主题代码是：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;link rel=&amp;#34;icon&amp;#34; href=&amp;#34;{{ .Site.Params.faviconIco | default &amp;#34;favicon.ico&amp;#34; | relURL }}&amp;#34; type=&amp;#34;image/x-icon&amp;#34;&amp;gt; &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;2-读取优先级非常关键&#34;&gt;2. 读取优先级（非常关键）&lt;/h4&gt;&#xA;&lt;p&gt;✅ 优先级顺序： hugo.toml 里的配置 /static/favicon.ico（默认兜底）&lt;/p&gt;&#xA;&lt;h4 id=&#34;-3-可能存在的文件路径&#34;&gt;📂 3. 可能存在的文件路径&lt;/h4&gt;&#xA;&lt;p&gt;✔ 推荐标准路径： static/favicon.ico static/favicon.png static/apple-touch-icon.png&lt;/p&gt;&#xA;&lt;h4 id=&#34;-4-正确配置方式推荐&#34;&gt;⚙️ 4. 正确配置方式（推荐）&lt;/h4&gt;&#xA;&lt;p&gt;👉 hugo.toml [params] faviconIco = &amp;ldquo;/favicon.ico&amp;rdquo; faviconPng = &amp;ldquo;/favicon.png&amp;rdquo;&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

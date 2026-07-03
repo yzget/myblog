@@ -1,11 +1,11 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
+title: "{{ replace .Name "-" " " | title }}"    #  文档名
 date: {{ .Date }}
-draft: false
+draft: false    # false 为发布状态，如是草稿可用 true 
 author: "蝴蝶飞"
-description: ""
-image: "featured.jpg"
-tags: [""]
-categories: [""]
-archives: [""]
+description: ""  # 简介
+image: ""  # 图片格式："/images/featared.jpg"或同文件夹下"featared.jpg "
+tags: [""]  # 标签
+categories: [""]  # 类别
+archives: [""]  # 存档
 ---

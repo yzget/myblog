@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Demo on 蝴蝶飞</title>
+		<link>http://localhost:1313/en/tags/demo/</link>
+		<description>Recent content in Demo on 蝴蝶飞</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 20 Jan 2024 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/en/tags/demo/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>GitHub Flavored Markdown Demo</title>
+				<link>http://localhost:1313/en/posts/gfm-demo/</link>
+				<pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/en/posts/gfm-demo/</guid>
+				<description>&lt;p&gt;This post demonstrates all GitHub Flavored Markdown (GFM) features and code syntax highlighting supported by this theme.&lt;/p&gt;&#xA;&lt;h2 id=&#34;headings&#34;&gt;Headings&lt;/h2&gt;&#xA;&lt;h1 id=&#34;heading-1&#34;&gt;Heading 1&lt;/h1&gt;&#xA;&lt;h2 id=&#34;heading-2&#34;&gt;Heading 2&lt;/h2&gt;&#xA;&lt;h3 id=&#34;heading-3&#34;&gt;Heading 3&lt;/h3&gt;&#xA;&lt;h4 id=&#34;heading-4&#34;&gt;Heading 4&lt;/h4&gt;&#xA;&lt;h5 id=&#34;heading-5&#34;&gt;Heading 5&lt;/h5&gt;&#xA;&lt;h6 id=&#34;heading-6&#34;&gt;Heading 6&lt;/h6&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;text-formatting&#34;&gt;Text Formatting&lt;/h2&gt;&#xA;&lt;p&gt;Regular text paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Bold text&lt;/strong&gt; and &lt;strong&gt;also bold&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Italic text&lt;/em&gt; and &lt;em&gt;also italic&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;&lt;strong&gt;Bold and italic&lt;/strong&gt;&lt;/em&gt; and &lt;em&gt;&lt;strong&gt;also bold and italic&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;del&gt;Strikethrough text&lt;/del&gt;&lt;/p&gt;&#xA;&lt;p&gt;This is a &lt;sub&gt;subscript&lt;/sub&gt; and this is a &lt;sup&gt;superscript&lt;/sup&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Security on 蝴蝶飞</title>
+		<link>http://localhost:1313/en/tags/security/</link>
+		<description>Recent content in Security on 蝴蝶飞</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/en/tags/security/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Sample Post 10: Lorem Ipsum</title>
+				<link>http://localhost:1313/en/posts/sample-post-10/</link>
+				<pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/en/posts/sample-post-10/</guid>
+				<description>&lt;p&gt;This is sample post number 10. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.&lt;/p&gt;&#xA;&lt;h2 id=&#34;content&#34;&gt;Content&lt;/h2&gt;&#xA;&lt;p&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&lt;/p&gt;&#xA;&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;&#xA;&lt;p&gt;Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
