@@ -2,7 +2,7 @@
 title: "为 Hugo Primer Blog 主题添加现代化智能自适应弹窗搜索功能"
 date: 2026-07-03T12:30:08+08:00
 draft: false
-author: "蝴蝶飞"
+author: "M.Liu"
 description: "为主题添加现代化智能自适应弹窗搜索功能"
 image: "/images/sousuo.jpg"
 tags: ["hugo"]

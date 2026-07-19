@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>16G内存8G显存追求本地AI的探索之路：一个科技小白的硬核折腾与清醒感悟 | M.Liu</title><meta name="description" content="在人工智能技术日新月异的今天，大语言模型（LLM）的爆发让每一位开发者和科技爱好者都兴奋不已。看着各大平台、B站UP主们纷纷展示在自己电脑上流畅运行各种“私人定制”AI的视频，我也按捺不住内心的激动——谁不想拥有一款完全本地运行、数据私密、且完全免费的专属AI助手呢?"><meta name="author" content="M.Liu"><meta property="og:title" content="16G内存8G显存追求本地AI的探索之路：一个科技小白的硬核折腾与清醒感悟"><meta property="og:description" content="在人工智能技术日新月异的今天，大语言模型（LLM）的爆发让每一位开发者和科技爱好者都兴奋不已。看着各大平台、B站UP主们纷纷展示在自己电脑上流畅运行各种“私人定制”AI的视频，我也按捺不住内心的激动——谁不想拥有一款完全本地运行、数据私密、且完全免费的专属AI助手呢?"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/posts/bendimoxing/moxing/"><meta property="og:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=800&amp;q=80">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630"><meta property="og:site_name" content="M.Liu"><meta property="og:locale" content="zh">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="16G内存8G显存追求本地AI的探索之路：一个科技小白的硬核折腾与清醒感悟">
+<meta name="twitter:description" content="在人工智能技术日新月异的今天，大语言模型（LLM）的爆发让每一位开发者和科技爱好者都兴奋不已。看着各大平台、B站UP主们纷纷展示在自己电脑上流畅运行各种“私人定制”AI的视频，我也按捺不住内心的激动——谁不想拥有一款完全本地运行、数据私密、且完全免费的专属AI助手呢?"><meta name="twitter:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=800&amp;q=80"><meta name="twitter:site" content="@yzgetr">
+<link rel="canonical" href="http://localhost:1313/posts/bendimoxing/moxing/">
+
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/bendimoxing/moxing/index.md" title="M.Liu"><link rel="stylesheet" href="/css/primer.min.c12daf26af408c64f29cc993dd5ab422334e71e50fa7198111b729fdf674e34d.css" integrity="sha256-wS2vJq9AjGTynMmT3Vq0IjNOceUPpxmBEbcp/fZ0400=">
+
+<link rel="stylesheet" href="/css/custom.min.44f76475abc99bc3028656bd061d05d398c1b30eefd8ef829d03d0a85e7e5ff2.css" integrity="sha256-RPdkdavJm8MChla9Bh0F05jBsw7v2O&#43;CnQPQqF5&#43;X/I=">
+
+<link rel="stylesheet" href="/css/syntax.min.174c84898cba6753b1e76756faaba89295a9b36f5a52958e027f347103d8575d.css" integrity="sha256-F0yEiYy6Z1Ox52dW&#43;quokpWps29aUpWOAn80cQPYV10=">
+
+<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<style>
+  html,
+  html[data-color-mode="light"],
+  html[data-light-theme="light"][data-color-mode="auto"] {
+    --fgColor-accent: #f67717ff !important;
+    --bgColor-accent-emphasis: #f67717ff !important;
+    --bgColor-accent-muted: color-mix(in srgb, #f67717ff 15%, transparent) !important;
+  }
+  html[data-color-mode="dark"],
+  html[data-dark-theme="dark"][data-color-mode="auto"] {
+    --fgColor-accent: color-mix(in srgb, #f67717ff 80%, #ffffff) !important;
+    --bgColor-accent-emphasis: #f67717ff !important;
+    --bgColor-accent-muted: color-mix(in srgb, #f67717ff 20%, transparent) !important;
+  }
+  @media (prefers-color-scheme: dark) {
+    html[data-color-mode="auto"] {
+      --fgColor-accent: color-mix(in srgb, #f67717ff 80%, #ffffff) !important;
+      --bgColor-accent-emphasis: #f67717ff !important;
+      --bgColor-accent-muted: color-mix(in srgb, #f67717ff 20%, transparent) !important;
+    }
+  }
+</style>
+<script>
+  (function() {
+    const saved = localStorage.getItem('theme');
+    const html = document.documentElement;
+    if (saved === 'light' || saved === 'dark') {
+      html.setAttribute('data-color-mode', saved);
+    }
+  })();
+</script>
+
+
+<link rel="stylesheet" href="http://localhost:1313/css/custom.min.css">
+
+
+<script src="http://localhost:1313/js/custom.min.js" defer></script>
+</head>
+<body>
+  <div class="d-flex flex-column min-height-full"><header class="AppHeader">
+  <div class="AppHeader-globalBar">
+    <div class="AppHeader-globalBar-start">
+      <a href="/" class="AppHeader-logo" aria-label="M.Liu"><span class="AppHeader-logo-text">M.Liu</span></a>
+
+      <nav class="AppHeader-nav" aria-label="主导航"><a href="/" class="AppHeader-nav-item">首页</a><a href="/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/" class="AppHeader-nav-item">网络收藏</a><a href="/categories/%E7%90%90%E4%BA%8B/" class="AppHeader-nav-item">琐事</a><a href="#" onclick="openSearchModal(event)" class="AppHeader-nav-item" aria-label="Search" style="display: inline-flex; align-items: center; cursor: pointer;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>搜索</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="AppHeader-globalBar-end"><button type="button" id="theme-toggle"
+  class="tooltipped tooltipped-s"
+  aria-label="系统主题"
+  data-tooltip-light="浅色主题"
+  data-tooltip-dark="深色主题"
+  data-tooltip-auto="系统主题">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" class="octicon theme-icon-light" style="display: none;">
+    <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-1.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm5.657-8.157a.75.75 0 0 1 0 1.061l-1.061 1.06a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.06-1.06a.75.75 0 0 1 1.06 0Zm-9.193 9.193a.75.75 0 0 1 0 1.06l-1.06 1.061a.75.75 0 1 1-1.061-1.06l1.06-1.061a.75.75 0 0 1 1.061 0ZM8 0a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 8 0ZM3 8a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 3 8Zm13 0a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 16 8Zm-8 5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 8 13Zm3.536-1.464a.75.75 0 0 1 1.06 0l1.061 1.06a.75.75 0 0 1-1.06 1.061l-1.061-1.06a.75.75 0 0 1 0-1.061Zm-9.193-9.193a.75.75 0 0 1 1.06 0l1.061 1.06a.75.75 0 0 1-1.06 1.061L2.343 3.403a.75.75 0 0 1 0-1.06Z"></path>
+  </svg>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" class="octicon theme-icon-dark" style="display: none;">
+    <path d="M9.598 1.591a.749.749 0 0 1 .785-.175 7.001 7.001 0 1 1-8.967 8.967.75.75 0 0 1 .961-.96 5.5 5.5 0 0 0 7.046-7.046.75.75 0 0 1 .175-.786Zm1.616 1.945a7 7 0 0 1-7.678 7.678 5.499 5.499 0 1 0 7.678-7.678Z"></path>
+  </svg>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" class="octicon theme-icon-auto" style="display: none;">
+    <path d="M14.25 1c.966 0 1.75.784 1.75 1.75v7.5A1.75 1.75 0 0 1 14.25 12h-3.727c.099 1.041.52 1.872 1.292 2.757A.752.752 0 0 1 11.25 16h-6.5a.75.75 0 0 1-.565-1.243c.772-.885 1.193-1.716 1.292-2.757H1.75A1.75 1.75 0 0 1 0 10.25v-7.5C0 1.784.784 1 1.75 1ZM1.75 2.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25ZM9.018 13H6.982a5.72 5.72 0 0 1-.765 1.5h3.566a5.72 5.72 0 0 1-.765-1.5Z"></path>
+  </svg>
+</button>
+</div>
+  </div>
+</header>
+
+<div id="search-modal" class="search-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: flex-start; padding-top: 12vh; backdrop-filter: blur(2px);">
+    
+    <div id="modal-content" class="search-modal-content" style="width: 90%; max-width: 600px; border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; max-height: 70vh; display: flex; flex-direction: column; border: 1px solid rgba(128,128,128,0.2);">
+        
+        <button id="close-search" style="position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; line-height: 1; color: inherit; opacity: 0.7;">&times;</button>
+        
+        <h3 style="margin-top: 0; margin-bottom: 1.2rem; font-size: 1.25rem; font-weight: 600; color: inherit;">搜索文章</h3>
+        
+        <input type="text" id="modal-search-input" placeholder="输入关键词实时搜索... (Ctrl+K 快捷打开)" style="width: 100%; padding: 0.75rem 1.2rem; font-size: 1rem; border: 1px solid rgba(128,128,128,0.3); border-radius: 24px; outline: none; transition: all 0.2s ease;">
+        
+        <div id="search-hint" style="font-size: 0.75rem; opacity: 0.6; margin-top: 0.5rem; text-align: center;"></div>
+        
+        <div id="modal-search-results" style="margin-top: 0.5rem; overflow-y: auto; flex: 1; padding-right: 5px;"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let fuse;
+    let allData = [];
+    const searchModal = document.getElementById('search-modal');
+    const modalContent = document.getElementById('modal-content');
+    const searchInput = document.getElementById('modal-search-input');
+    const searchResults = document.getElementById('modal-search-results');
+    const closeSearch = document.getElementById('close-search');
+    const searchHint = document.getElementById('search-hint');
+
+    
+    searchInput.addEventListener('focus', () => {
+        searchInput.style.borderColor = '#0366d6';
+        searchInput.style.boxShadow = '0 0 0 3px rgba(3,102,214,0.25)';
+    });
+    searchInput.addEventListener('blur', () => {
+        searchInput.style.borderColor = 'rgba(128,128,128,0.3)';
+        searchInput.style.boxShadow = 'none';
+    });
+
+    
+    fetch('http:\/\/localhost:1313\/index.json')
+        .then(response => response.json())
+        .then(data => {
+            allData = data;
+            fuse = new Fuse(data, {
+                keys: [
+                    { name: 'title', weight: 3 },
+                    { name: 'content', weight: 2 },
+                    { name: 'summary', weight: 1.5 },
+                    { name: 'categories', weight: 1 },
+                    { name: 'tags', weight: 1 },
+                    { name: 'section', weight: 0.5 }
+                ],
+                threshold: 0.1,
+                distance: 100,
+                ignoreLocation: true,
+                includeMatches: true,
+                includeScore: true,
+                minMatchCharLength: 1,
+                findAllMatches: true,
+                useExtendedSearch: true
+            });
+            if (searchHint) {
+                searchHint.textContent = `已加载 ${data.length} 篇文章的索引`;
+            }
+        })
+        .catch(err => {
+            console.error('加载搜索索引失败:', err);
+            if (searchHint) {
+                searchHint.textContent = '搜索索引加载失败';
+            }
+        });
+
+    
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    
+    function highlightMatch(text, query) {
+        if (!query || !text) return text;
+        const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.replace(regex, '<mark style="background: rgba(3,102,214,0.15); color: inherit; padding: 0 2px; border-radius: 2px;">$1</mark>');
+    }
+
+    
+    function truncateContent(content, query, maxLength = 150) {
+        if (!content) return '';
+        
+        const lowerContent = content.toLowerCase();
+        const lowerQuery = query.toLowerCase();
+        const index = lowerContent.indexOf(lowerQuery);
+        
+        if (index !== -1) {
+            const start = Math.max(0, index - 50);
+            const end = Math.min(content.length, index + query.length + 100);
+            let excerpt = content.substring(start, end);
+            if (start > 0) excerpt = '...' + excerpt;
+            if (end < content.length) excerpt = excerpt + '...';
+            return highlightMatch(excerpt, query);
+        }
+        
+        
+        let excerpt = content.substring(0, maxLength);
+        if (content.length > maxLength) excerpt += '...';
+        return excerpt;
+    }
+
+    
+    function formatDate(dateStr) {
+        if (!dateStr) return '';
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    }
+
+    
+    const handleSearch = debounce((e) => {
+        const query = e.target.value.trim();
+        if (!query) {
+            searchResults.innerHTML = '';
+            if (searchHint) searchHint.textContent = allData.length ? `已加载 ${allData.length} 篇文章的索引` : '';
+            return;
+        }
+        if (!fuse) {
+            searchResults.innerHTML = '<p style="font-size:0.9rem; padding: 0 0.5rem; opacity: 0.7;">搜索索引加载中...</p>';
+            return;
+        }
+        
+        console.log('搜索关键词:', query);
+        const results = fuse.search(query);
+        console.log('搜索结果数量:', results.length);
+        
+        
+        const manualCheck = allData.filter(item => 
+            item.content && item.content.toLowerCase().includes(query.toLowerCase())
+        );
+        console.log('手动检查结果:', manualCheck.length, '篇文章包含该词');
+        if (manualCheck.length > 0) {
+            console.log('手动检查示例 - 第一篇:', {
+                title: manualCheck[0].title,
+                contentSnippet: manualCheck[0].content.substring(0, 100)
+            });
+        }
+        
+        if (results.length === 0) {
+            searchResults.innerHTML = '<p style="font-size:0.9rem; padding: 0 0.5rem; opacity: 0.7;">没有找到相关文章，请尝试其他关键词</p>';
+            if (searchHint) searchHint.textContent = '0 个结果';
+            return;
+        }
+        
+        if (searchHint) searchHint.textContent = `找到 ${results.length} 个结果`;
+        
+        let html = '';
+        results.forEach((result, index) => {
+            if (index >= 20) return; 
+            const item = result.item;
+            const score = result.score ? (1 - result.score).toFixed(2) : '1.00';
+            
+            
+            let metaHtml = '';
+            if (item.categories && item.categories.length > 0) {
+                metaHtml += `<span style="display:inline-block;background:rgba(3,102,214,0.1);color:#0366d6;padding:2px 8px;border-radius:12px;font-size:0.75rem;margin-right:6px;">${item.categories[0]}</span>`;
+            }
+            if (item.tags && item.tags.length > 0) {
+                metaHtml += `<span style="display:inline-block;background:rgba(128,128,128,0.1);color:inherit;padding:2px 8px;border-radius:12px;font-size:0.75rem;">${item.tags[0]}</span>`;
+            }
+            
+            
+            const contentPreview = truncateContent(item.content, query);
+            
+            html += `
+                <div class="search-item" style="margin-bottom: 1rem; border-bottom: 1px solid rgba(128,128,128,0.1); padding: 0.8rem; border-radius: 8px; transition: background 0.2s;" onmouseenter="this.style.background='rgba(3,102,214,0.05)'" onmouseleave="this.style.background='transparent'">
+                    <h4 style="margin: 0 0 0.4rem 0; font-size: 1.05rem;">
+                        <a href="${item.permalink}" style="color: #0366d6; text-decoration: none; font-weight: 600;">${highlightMatch(item.title, query)}</a>
+                    </h4>
+                    ${metaHtml ? `<div style="margin-bottom:0.4rem;">${metaHtml}</div>` : ''}
+                    <p style="font-size: 0.85rem; margin: 0; line-height: 1.6; opacity: 0.85;">${contentPreview}</p>
+                    ${item.date ? `<p style="font-size:0.75rem;opacity:0.6;margin-top:0.4rem;">发布于 ${formatDate(item.date)} · 匹配度: ${score}</p>` : ''}
+                </div>
+            `;
+        });
+        searchResults.innerHTML = html;
+    }, 150);
+
+    searchInput.addEventListener('input', handleSearch);
+
+    
+    window.openSearchModal = function(e) {
+        if(e) e.preventDefault();
+        
+        
+        const bodyStyles = window.getComputedStyle(document.body);
+        const currentBg = bodyStyles.backgroundColor;
+        const currentTextColor = bodyStyles.color;
+
+        
+        modalContent.style.backgroundColor = currentBg;
+        modalContent.style.color = currentTextColor;
+        searchInput.style.backgroundColor = currentBg === 'rgba(0, 0, 0, 0)' || currentBg === 'transparent' ? '#fff' : currentBg;
+        searchInput.style.color = currentTextColor;
+
+        searchModal.style.display = 'flex';
+        searchInput.focus();
+        
+        
+        if (searchInput.value.trim()) {
+            handleSearch({ target: searchInput });
+        }
+    }
+
+    window.closeSearchModal = function() {
+        searchModal.style.display = 'none';
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+        if (searchHint) searchHint.textContent = allData.length ? `已加载 ${allData.length} 篇文章的索引` : '';
+    }
+
+    closeSearch.addEventListener('click', closeSearchModal);
+    searchModal.addEventListener('click', (e) => { if (e.target === searchModal) closeSearchModal(); });
+    document.addEventListener('keydown', (e) => { 
+        if (e.key === 'Escape') closeSearchModal();
+        
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            openSearchModal();
+        }
+    });
+});
+</script>
+<main class="flex-auto">
+      <div class="container-xl px-3 px-md-4 px-lg-5 py-4"><div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-md">
+          <div class="Layout-main"><article>
+  <header class="mb-4">
+    <h1 class="f1 lh-condensed mb-2">16G内存8G显存追求本地AI的探索之路：一个科技小白的硬核折腾与清醒感悟</h1><div class="d-flex flex-items-center color-fg-muted f5 mb-3"><time datetime="2026-07-19T12:43:45&#43;08:00">
+        2026-07-19
+      </time><span class="mx-2">&middot;</span><span>1 最短阅读时间</span><span class="mx-2">&middot;</span><span>M.Liu</span></div><div class="d-flex flex-wrap mb-3" style="gap: 0.5rem;"><a href="/tags/ai/" class="topic-tag">AI</a></div><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="16G内存8G显存追求本地AI的探索之路：一个科技小白的硬核折腾与清醒感悟" loading="lazy" class="rounded-2 width-full mb-3" style="max-height: 400px; object-fit: cover;"></header>
+
+  <div class="markdown-body">
+    <h2 id="导语被科技浪潮卷入的普通人">导语：被科技浪潮卷入的普通人</h2>
+<p>在人工智能技术日新月异的今天，以大语言模型（LLM）为代表的“黑科技”彻底引爆了互联网。每天打开手机，朋友圈、知乎、各大数码科技媒体，尤其是B站（Bilibili）的UP主们，都在铺天盖地地宣传人工智能的强大。在那些精美的视频教程里，UP主们指尖飞舞，几行命令就能在自己的电脑上流畅运行各种“私人定制”的离线AI。他们展示着AI如何秒回问题、如何瞬间生成长篇文章，甚至是毫无保留地赞美本地模型的“数据私密性”、“完全免费”和“不依赖网络”等绝对优势。</p>
+<p>作为一个对前沿科技充满好奇，却没有任何编程基础、不懂代码语法的纯“技术小白”，我被这些视频深深地打动了。看着自己桌上那台配置为 <strong>16G内存 + 8G显存</strong> 的主流家用电脑，我的内心燃起了熊熊烈火——既然硬件门槛已经降得这么低了，我是不是也能在自己的电脑里“圈养”一只完全听命于我的私人AI助手呢？</p>
+<p>然而，理想有多丰满，现实就有多骨感。这台在日常娱乐、网服浏览和轻度网游中表现得游刃有余的电脑，在面对贪婪吞噬算力的AI大模型时，暴露出其最真实、最残酷的局限性。在这趟历时数周、耗费了无数睡眠时间的“本地AI追求之旅”中，我凭借着网络AI的在线指导，一步步跨越了技术壁垒，搭建起了复杂的环境，但最终却不得不面对硬件的物理壁垒。这是一场充满了成就感、挫败感、彻夜调试的疲惫，以及最终走向清醒的硬核旅程。</p>
+<hr>
+<h2 id="一-起源b站泛起的涟漪与网络ai指导下的疯狂炼丹">一、 起源：B站泛起的涟漪与网络AI指导下的“疯狂炼丹”</h2>
+<p>一切故事的开始，都显得那么美好而偶然。在B站的推荐算法下，我刷到了关于“零成本在本地部署DeepSeek”、“用Ollama几分钟让老电脑焕发新生”的保姆级教程。视频里那精美的UI交互、完全不受审查和断网限制的对话逻辑，对于我这样一个数码爱好者来说，有着致命的吸引力。哪怕我根本不懂什么是命令行，什么是运行环境，我也决定咬咬牙，跟着教程下场“折腾”一番。</p>
+<h3 id="1-跨越技术天堑网络ai成了我的盲人拐杖">1. 跨越技术天堑：网络AI成了我的“盲人拐杖”</h3>
+<p>对于一个真正的科技小白来说，部署本地AI的第一道难关不是硬件，而是那些晦涩难懂的技术术语和黑乎乎的终端窗口。什么是<code>CMD</code>？什么是<code>localhost</code>？什么是端口占用？在面对教程中一闪而过的命令时，我常常一头雾水。</p>
+<p>幸运的是，我虽然没有程序员的脑子，但我学会了寻找外援。我打开了在线的网页版AI，把它当成了我最贴身的“24小时技术导师”。每当我遇到一个不懂的操作，我就截图发给线上AI，或者把一整段报错信息复制给它。</p>
+<ul>
+<li>“请问怎么在Windows系统里配置环境变量？”</li>
+<li>“运行这个命令提示‘不是内部或外部命令’该怎么办？”</li>
+<li>“怎么检查我的显卡驱动是否支持CUDA？”</li>
+</ul>
+<p>在线网络AI以一种极具耐心的教学方式，一步一步指导我安装配置。正是在这位“云端导师”手把手的悉心指导下，我这个连代码都没写过一行的纯小白，竟然奇迹般地跨越了技术的鸿沟。我成功学会了使用以下这几款风靡开源社区的本地AI基建工具：</p>
+<ul>
+<li><strong>Ollama</strong>：这是整个本地AI生态的绝对基石。在网络AI的解释下，我明白它就像是一个专门用来下载和运行AI模型的“应用商店”。它的体积非常轻量，没有复杂的安装步骤，只需要在黑色的命令行窗口输入一行简单的 <code>ollama run [模型名]</code>，大模型就会自动下载并运行起来。在我的整个探索过程中，Ollama是表现最稳健、最让人省心的环节。</li>
+<li><strong>CCSwitch</strong>：由于命令行对于小白来说还是有些不够直观，网络AI推荐我搭配使用CCSwitch。这是一个专门针对本地模型切换与管理的桌面可视化面板。通过它，我可以直观地看到当前系统里运行的是哪个模型，随时一键切换、一键关闭，极大地降低了我日常交互的心理门槛。</li>
+<li><strong>LM Studio / AnythingLLM</strong>：为了追求更完美的视觉体验，我还尝试了这两个自带精美图形界面的软件。它们不仅提供了类似商业聊天软件的精美对话框，还能在侧边栏直观地显示当前显存占用的百分比、每秒生成Token的速度，以及支持各种诸如“温度值（Temperature）”等高级参数的微调，极具科技感和可玩性。</li>
+</ul>
+<p><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="电脑硬件、AI开发与代码类示意图" loading="lazy">
+
+<em>（图：在网络AI的指导下，小白也开始面对黑色的代码终端与充满未知数的环境配置）</em></p>
+<h3 id="2-化身模型收藏家在8g显存边缘疯狂试探">2. 化身“模型收藏家”：在8G显存边缘疯狂试探</h3>
+<p>当底层工具全部搭建完毕后，我正式进入了最让人兴奋的“疯狂炼丹”阶段。通过线上AI的科普，我得知在 <strong>16G系统内存 + 8G显卡显存</strong> 的物理限制下，我的电脑最多只能勉强吃得下 <strong>1.5B 到 9B（即15亿到90亿参数）</strong> 之间的轻量级量化模型。如果参数量再大（比如主流的14B、32B甚至70B模型），显存就会瞬间“爆掉”，模型会直接罢工，或者退化到由极其缓慢的系统内存来跑，速度会变成惨不忍睹的“一秒钟吐一个字”。</p>
+<p>为了找出那款能完美平衡“智商”与“速度”的本地模型，在随后的几天里，我化身成为了一个疯狂的“模型收藏家”。在网络AI的甄选建议和指令教导下，我将市面上能找到的、适配当前硬件的所有明星开源模型全部拉取到了本地：</p>
+<ul>
+<li><strong>DeepSeek-R1:8b</strong>：这是当时最火爆的带有推理思维链的明星模型。虽然只是8B的蒸馏版本，但它在回答问题前会先展示一段“思考过程”，在一些基础的逻辑推导和算术题上有模有样，是我最期待的模型。</li>
+<li><strong>Ornith:9b-q4_K_M</strong>：这是一款极限压榨9B参数的4位量化版模型。网络AI告诉我，“q4_K_M”代表对模型进行了高强度的压缩，用精度换取了体积，这刚好能塞进我那捉襟见肘的8G显存里。</li>
+<li><strong>Qwen2.5-Coder:7b-instruct-q4_K_M</strong>：由阿里巴巴开源的专业级编程辅助模型。虽然我不是开发者，但我经常需要AI帮我查一些电脑故障代码、或者写几行简单的自动化批处理脚本，因此对它寄予厚望。</li>
+<li><strong>Llama3.1:8b</strong>：Meta（原Facebook）开源界的“一代宗师”的升级版。社区生态庞大，网络AI说它有着极强的通用性，格式输出极为标准，说话风格很有礼貌。</li>
+<li><strong>Gemma4:e2b</strong>：谷歌出品的轻量化代表作。体积小巧精悍，运行起来速度极快，回答非常干脆，几乎不占用太多的显存资源。</li>
+<li><strong>IBM/Granite4.1:8b-q4_K_M</strong>：IBM主打企业级和高结构化文本能力的开源模型，在被压缩到4位量化后，刚好契合我的测试环境。</li>
+<li><strong>Qwen3:8b 与 Qwen3.5:9b</strong>：通义千问系列的最新几代小参数探索版。在中文理解、中国历史文化知识的对齐方面，它们天生比国外模型更懂中国人的梗和日常用语。</li>
+<li><strong>Qwen2.5-Coder:1.5b</strong>：这是一个极端备用的超轻量模型。它的体积小到不可思议，运行速度简直像加了火箭，但由于参数量实在太少，其“智商”在实际测试中经常让人哭笑不得。</li>
+</ul>
+<p>当我看着Ollama后台列表里密密麻麻的模型名字时，内心充满了前所未有的成就感。作为一个连一行代码都不会写的纯小白，我竟然靠着网络AI的教导，在自己的电脑上搭建出了一个看起来极其硬核的“AI矩阵”。那一刻，我真以为自己掌握了通往未来科技的钥匙。</p>
+<hr>
+<h2 id="二-实践从ide插件到桌面端高频交互下的降智打击">二、 实践：从IDE插件到桌面端，高频交互下的“降智打击”</h2>
+<p>有了本地大模型的驱动，下一步自然是把它们真正运用到我的日常生活和电脑使用中。虽然我不是专业写代码的程序员，但我平时经常需要用电脑处理大量的文字、配置一些复杂的数码软件、甚至希望AI能帮我“默写”一些固定格式的文章、电脑自动化脚本或简单的网页小工具。</p>
+<p>为了能获得像商业大厂那样丝滑的交互体验，我再次求助于网络AI，在它的指导下，我把本地AI的接口接入到了各种主流的应用场景和插件中。</p>
+<h3 id="1-全副武装的办公与代码工具">1. 全副武装的办公与代码工具</h3>
+<p>在网络AI的极力推荐下，我尝试配置了一系列原本属于专业开发者的工作流工具：</p>
+<ul>
+<li><strong>VSCode 里的 Cline 与 Continue 插件</strong>：虽然 VSCode 是一款大名鼎鼎的代码编辑器，但网络AI告诉我，它也可以是一个极强大的文本工具。通过 Cline 和 Continue，我可以用侧边栏连接本地运行的 <code>Qwen2.5-Coder:7b</code>。我期望它能根据我的日常中文描述，帮我默写出一些简单的电脑日常优化脚本，或者帮我检查一些软件的配置文件里有没有格式错误。</li>
+<li><strong>Zoo Code 插件与 Codex 插件</strong>：这些插件主打离线状态下的代码与文本优化，我试图在完全不连网的情况下，建立一套高私密性的文本交互辅助流。</li>
+</ul>
+<h3 id="2-桌面级独立客户端的尝试">2. 桌面级独立客户端的尝试</h3>
+<p>除了编辑器插件，我还配置了诸如桌面版 <strong>Claude（通过第三方开源客户端配置本地API代理）</strong> 以及 <strong>Codex 桌面独立端</strong>。我希望在更广阔、更干净的独立软件界面里，让本地AI帮我翻译英文科技文献、提炼长文本摘要，甚至是完成一些具有一定逻辑深度的默写和创作任务。</p>
+<p><img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="计算机显示器与AI代码界面" loading="lazy">
+
+<em>（图：通过各种精心配置的UI界面，本地模型开始尝试执行复杂的文本与脚本分析任务）</em></p>
+<h3 id="3-残酷的真相基础能力的物理天花板">3. 残酷的真相：基础能力的物理天花板</h3>
+<p>然而，当新鲜感逐渐退去，真正进入高频、深度使用阶段后，这套看似完美的本地AI矩阵开始让我抓狂。在网络AI的指导下，工具的通路是完全畅通的，但当本地小模型真正开始执行任务时，暴露出来的不是权限问题，而是赤裸裸的“智商硬伤”。</p>
+<p>我最常遇到的挫败场景，就是让本地AI帮我“默写”任务。比如，我希望它能帮我默写一段“具有特定排版格式的复杂Markdown系统配置指南”，或者写一段“能自动清理Windows临时文件并归类特定格式文件的批处理脚本”。</p>
+<p>在执行这些稍微需要一点复杂逻辑对齐、长文本记忆的任务时，本地的 7B/8B 模型表现得极其痛苦：</p>
+<ol>
+<li><strong>频繁的“断头句”与显存恐慌</strong>：因为8G显存的容量实在太小，当上下文稍微拉长，或者模型试图深入思考时，显存就会瞬间逼近物理极限。反映在界面上，就是AI的话写到一半突然戛然而止，卡在那里一动不动。我必须去终端重启Ollama服务，才能把卡死的系统拯救回来。</li>
+<li><strong>让人啼笑皆非的“胡言乱语（幻觉）”</strong>：7B、8B的量化模型在逻辑严密性上有着不可逾越的鸿沟。它们默写出来的东西，经常是前半段格式正确，后半段就开始胡编乱造，编造出一些系统中根本不存在的命令或参数。</li>
+<li><strong>对复杂指令的“左耳进右耳出”</strong>：如果我给出的指令里包含三个以上的限定条件（比如：“帮我写一段脚本，要求第一步做什么，第二步排除什么，第三步输出成什么格式，并且里面不能包含某种符号”），本地模型就会顾此失彼。它要么漏掉条件A，要么搞错条件B，反复修改十几次，都无法完美完成一次默写任务。</li>
+</ol>
+<p>更让人沮丧的是，这些模型在各种插件里频繁地报错，或者不断地向我抱怨：<strong>“对不起，作为一个本地模型，我没有足够的权限去读取你的其他文件，我无法查看你的系统目录，所以我无法完成你交代的默写和分析任务。”</strong></p>
+<hr>
+<h2 id="三-折腾引入mcp服务器通往底层管道后的终极撞墙">三、 折腾：引入MCP服务器，通往底层管道后的“终极撞墙”</h2>
+<p>看到本地AI频繁抱怨自己“权限不足”、“没有工具可用”，我那股不服输的折腾劲又上来了。我立刻再次咨询了我的网络AI导师：“既然它说没有权限、拿不到文件，那我怎么才能把电脑的控制权和工具借给它用？”</p>
+<p>网络AI导师很快给出了答案，它向我介绍了一个当时在科技圈前沿极为火爆的全新概念——<strong>MCP（Model Context Protocol，模型上下文协议）</strong>。</p>
+<h3 id="1-纯小白的地狱级硬核配置历程">1. 纯小白的“地狱级”硬核配置历程</h3>
+<p>网络AI告诉我，MCP 就像是一条神奇的管道。通过配置 MCP 服务器，我可以把本地电脑的文件系统、命令行终端甚至网络浏览器的控制权，全部当成“工具”打包送给 AI。这样一来，AI 就可以自己用工具去读写文件、自己去执行命令验证正确性，再也没有人能限制它的权限。</p>
+<p>听上去无比美好对不对？但对于一个没有任何编程基础的小白来说，配置 MCP 简直就是一场地狱级的折腾灾难。</p>
+<p>在网络AI的指导下，我开始战战兢兢地去修改那些结构极其严苛的配置文件（比如 <code>codexconfig</code>，或者各种插件底下的 JSON、TOML 文件）。JSON 格式只要多了一个逗号，或者少了一个双引号，整个软件就会直接崩溃闪退。</p>
+<ul>
+<li>我无数次在终端里输入网络AI发给我的 MCP 启动命令，却看到满屏幕红色的报错信息（Error）。</li>
+<li>遇到了各种匪夷所思的端口冲突、环境变量未定义、Node.js 版本不匹配等奇葩问题。</li>
+<li>每一个Bug的解决，都需要我把报错复制给网络AI，听从它的建议去改写配置文件，然后重启、再报错、再修改。</li>
+</ul>
+<p>那几天，我的桌面上堆满了黑色的命令行窗口和花花绿绿的配置文件。经过几个彻夜不眠的折腾，当我在软件的侧边栏终于看到那几盏代表文件系统MCP、终端MCP连接成功的“绿灯”亮起时，我兴奋得几乎要欢呼出来。我想，我这个小白不仅解开了AI的封印，还亲手为它打造了一条通往计算机核心的超级管道，这次总该彻底起飞了吧？</p>
+<p><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="服务器与底层硬件科技示意图" loading="lazy">
+
+<em>（图：纵横交错的系统管道与底座，就像是MCP协议试图在本地为大模型搭建的工具桥梁）</em></p>
+<h3 id="2-终极撞墙手握神兵利器的低智商悲剧">2. 终极撞墙：手握神兵利器的“低智商”悲剧</h3>
+<p>现实的耳光从来不会迟到，而且往往打得比以往更响。</p>
+<p>当权限全开、MCP工具完全齐备后，我满怀期待地再次向连接了本地 <code>DeepSeek-R1:8b</code> 的编辑器下达了一个相对复杂的自动化默写任务：“请读取我D盘底下的A文件夹里的配置文件，根据里面的参数规则，在B文件夹里默写出一套完整的自动化归类脚本，并自动在终端里运行测试，直到不报错为止。”</p>
+<p>这一次，本地 AI 确实不再抱怨自己权限不足了。它兴冲冲地闪烁着思维链，通过文件MCP成功读取了我的文件。紧接着，它调用了我的系统终端，极其硬核地自动输入了运行命令。</p>
+<p>然而，下一秒，终端弹出了刺眼的红字报错。本地AI看到了报错，思维链疯狂闪烁，它通过网络AI赋予它的改写工具，自作聪明地把我的代码改写了一遍，试图修复这个Bug。然后，它再次自动调用终端运行——<strong>又报错了</strong>。</p>
+<p>在接下来的时间里，我目瞪口呆地看着我的电脑屏幕像着了魔一样：<strong>本地AI拿着我给它的最高权限和MCP工具，在“生成错误代码-&gt;运行报错-&gt;根据报错生成更错误的修复代码-&gt;再次运行更严重报错”的恶性循环里无限死车。</strong> 它的智商根本无法理解为什么这段代码会报错，它只是在用它那可怜的参数量，在做盲目的概率碰撞。</p>
+<p>这一幕彻底击碎了我的幻想，也让我彻底清醒了。我终于明白：<strong>本地AI无法完成任务，根本就不是什么权限的问题，而是模型底层能力的降维打击！</strong></p>
+<p>在 <strong>16G内存 + 8G显存</strong> 的物理死线面前，我们能跑的极限就是 7B/8B 这种量级的轻量小模型。不论你怎么对它进行高强度的压缩量化，不论你给它配置多么豪华的外部工具（MCP），都无法改变一个残酷的物理现实——<strong>小参数模型存在着难以逾越的智商天花板</strong>。它的逻辑推理能力、长文本上下文记忆力、以及对复杂多条件指令的遵循能力，有着天然的硬伤。把MCP工具交到这样一个“心有余而力不足”的小模型手里，就像是把一套顶级的外科手术刀交给了一个三岁小孩，它除了把事情搞得一团糟之外，什么都做不了。</p>
+<hr>
+<h2 id="四-觉醒放弃本地折腾拥抱线上大模型的真香定律">四、 觉醒：放弃本地折腾，拥抱线上大模型的真香定律</h2>
+<p>在经历了无数个配置报错到凌晨三点的黑夜，看着因为显存爆满而不断卡顿、发烫、风扇狂吼甚至偶尔蓝屏的电脑系统，我坐在椅子上，只感到深深的精疲力尽和强烈的挫败感。我开始反思，我花了这么多时间和精力，到底是为了什么？我是为了成为一个环境配置专家，还是为了让AI帮我解决实际问题？</p>
+<p>痛定思痛之后，我做出了一个至今看来让我无比轻松且正确的决定：<strong>彻底卸载本地的这些“小神仙”，把所有本地大模型全部格式化，转身拥抱云端线上模型。</strong></p>
+<p>经过网络AI的客观对比，我将目光锁定在了<strong>线上版的 DeepSeek</strong> 上。而这一转换，直接把我从地狱拉回了天堂，彻底打开了新世界的大门。</p>
+<h3 id="云端算力并不廉价">云端算力并不廉价</h3>
+<p>在这里，作为经历过整个过程的小白，我也想客观地纠正许多人的一个盲目认知：<strong>云端的算力在当今时代其实非常昂贵，它绝对不是像白开水那样随处可见、可以毫无节制随意挥霍的低价值资源。</strong></p>
+<p>支撑顶级大模型运转的，是云端大厂动辄耗资数十亿、数亿美金搭建的顶级高性能GPU算力中心。那里的每一枚芯片、每一度电、每一次并发处理，都有着极高的工业成本。如果你去购买国外某些顶级的商业大模型官方API，高强度使用下来的账单依然会让人肉疼。</p>
+<p><strong>但是，为什么我依然觉得线上模型“真香”？因为以国内 DeepSeek 为代表的厂商，把性价比卷到了极致！</strong> 线上模型之所以显得便宜，是因为大厂通过极其恐怖的集群效应、独特的算法优化（如混合专家模型MoE架构）以及极致的工程商业化能力，把每一次交互的成本分摊到了极低。这使得我们作为普通个人用户，在调用满血版云端大模型时，付出的代价相对本地部署的沉重代价来说，变得微不足道。</p>
+<p><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="现代化科技数据中心与网络线条" loading="lazy">
+
+<em>（图：连接全球的云端高科技网络，将数以亿计的算力瞬间输送到普通人的屏幕前）</em></p>
+<h3 id="拥抱线上大模型带给我的四大降维打击级体验">拥抱线上大模型带给我的四大降维打击级体验：</h3>
+<ol>
+<li><strong>智商上的云泥之别（满血千亿参数 vs 阉割百亿参数）</strong>：
+这是最让我震撼的地方。我们在本地省吃俭用、把显存压榨到极限才跑起来的 8B（80亿参数）且被严重压缩的量化模型，在线上拥有几千亿参数、毫无保留的满血大模型面前，纯粹就是智力上的降维打击。
+当我把之前本地AI死活搞不定的多条件默写任务发给线上 DeepSeek 时，它不仅在几秒钟内就给出了结构完美、格式精准的Markdown指南，甚至连我没有想到的脚本边界漏洞都帮我写好了防错机制。那种丝滑、聪明、能够听懂人话的灵性，是本地小模型永远无法企及的。</li>
+<li><strong>让人惊叹的极高性价比（相对极其便宜好用）</strong>：
+相较于国外同行昂贵的API收费，线上的大模型价格真正做到了对普通人极其友好。一万个 Token 算下来可能只需要几分钱甚至几厘钱。我作为一个重度依赖者，哪怕天天高强度让它帮我查资料、改文章、写脚本，一个月下来花费的充值金额可能也就是一杯奶茶的钱。
+对比一下：为了在本地跑一个小模型，我需要让显卡长时间处于满载高温状态，家里电费蹭蹭往上涨；更别提为了追求那可怜的几帧速度，还要动辄花费几千元去升级显卡和内存。两相对比，使用线上的优秀模型，性价比高得令人感动。</li>
+<li><strong>零维护成本，把时间还给自己</strong>：
+自从切换到线上模型后，我再也不需要去管 Ollama 后台有没有报错，不需要去研究 MCP 那地狱般的 JSON 语法，不需要担心别的软件占用了 11434 端口，更不需要在看到显存溢出的红字时抓耳挠腮。所有的系统升级、模型微调、服务器并发优化，全部由云端大厂那些年薪百万的顶级架构师和工程师团队在幕后帮我做好了。我只需要打开网页，或者在插件里填入一串 API Key，就能瞬间享受到世界顶尖的AI智慧。</li>
+<li><strong>硬件的彻底解放与系统的宁静</strong>：
+把 AI 赶回云端后，我这台 <strong>16G内存 + 8G显存</strong> 的电脑终于迎来了久违的平静。我的显存不再被死死吃光，我的 CPU 不再无故发烫，机箱里的散热风扇再也不会发出像直升机起飞一样的轰鸣声。电脑的资源全部重新回到了它该去的地方——我可以一边流畅地开着几十个网页查资料，一边顺畅地开着编辑器，甚至在累了的时候还能毫无卡顿地打一把3A游戏。</li>
+</ol>
+<hr>
+<h2 id="结语给所有手握中端硬件朋友的清醒忠告">结语：给所有手握中端硬件朋友的清醒忠告</h2>
+<p>回首这段折腾本地AI的探索之路，虽然过程充满了坎坷，但我并不后悔。因为在网络AI导师那不知疲倦的在线教导下，我这个连代码门槛都没摸到的纯小白，硬是硬核地把大模型量化、Ollama架构以及前沿的MCP协议全部摸索了一遍，极大地拓宽了自己的数码科技眼界。</p>
+<p>但如果从“生产力投入产出比”和“时间成本”的角度来看，这是一场不折不扣的“时间黑洞”和自我消耗。</p>
+<p>在这里，我想以一个亲身经历过全套折腾、吃尽了苦头的纯小白身份，给所有手里拿着 <strong>16G内存 + 8G显存</strong>（或者类似中端配置显卡）并且正被网上的视频煽动得蠢蠢欲动、想要大搞本地部署AI的同学们，留下一个发自内心、最清醒的忠告：</p>
+<blockquote>
+<p><strong>在本地硬件无法从物理上支持满血版、高级别大模型的前提下，千万、尽量不要去盲目尝试本地部署！</strong></p>
+</blockquote>
+<p>请记住，那些层出不穷的环境配置Bug、完全无法对齐的指令逻辑、频繁爆显存带来的系统卡死与挫败感，以及本地小模型那让人抓狂的低情商和低智商表现，会狠狠地偷走你数个本该用来休息、陪伴家人或享受生活的宝贵周末。它会让你在无数个深夜里精疲力尽，甚至让你对人工智能这项伟大的技术产生怀疑和厌恶。</p>
+<p>在这个云端算力由优秀厂商帮我们把价格卷得如此亲民的时代，<strong>把专业而沉重的算力交给云端，把宝贵而有限的时间留给创造</strong>。</p>
+<p>放手对“完全本地化”的执念，勇敢地拥抱线上满血大模型。当你看到那些复杂的任务在云端瞬间被完美解决时，你会发现，放手之后，天空原来如此广阔。</p>
+
+    
+  <script src="https://giscus.app/client.js"
+        data-repo="yzget/myblog"
+        data-repo-id="R_kgDOTKXsIA"
+        data-category="hudiefei"
+        data-category-id="DIC_kwDOTKXsIM4DAW0G"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+  </div><div class="border-top pt-4 mt-4">
+    <p class="f5 text-bold mb-2">分享</p>
+    <div class="d-flex flex-wrap" style="gap: 0.5rem;">
+      <a href="https://twitter.com/intent/tweet?text=16G%E5%86%85%E5%AD%988G%E6%98%BE%E5%AD%98%E8%BF%BD%E6%B1%82%E6%9C%AC%E5%9C%B0AI%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E8%B7%AF%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%A7%91%E6%8A%80%E5%B0%8F%E7%99%BD%E7%9A%84%E7%A1%AC%E6%A0%B8%E6%8A%98%E8%85%BE%E4%B8%8E%E6%B8%85%E9%86%92%E6%84%9F%E6%82%9F&url=http%3A%2F%2Flocalhost%3A1313%2Fposts%2Fbendimoxing%2Fmoxing%2F" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="octicon mr-1" style="vertical-align: text-bottom;">
+          <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"></path>
+        </svg>
+        X
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A1313%2Fposts%2Fbendimoxing%2Fmoxing%2F" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="octicon mr-1" style="vertical-align: text-bottom;">
+          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>
+        </svg>
+        Facebook
+      </a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A1313%2Fposts%2Fbendimoxing%2Fmoxing%2F&title=16G%E5%86%85%E5%AD%988G%E6%98%BE%E5%AD%98%E8%BF%BD%E6%B1%82%E6%9C%AC%E5%9C%B0AI%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E8%B7%AF%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%A7%91%E6%8A%80%E5%B0%8F%E7%99%BD%E7%9A%84%E7%A1%AC%E6%A0%B8%E6%8A%98%E8%85%BE%E4%B8%8E%E6%B8%85%E9%86%92%E6%84%9F%E6%82%9F" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="octicon mr-1" style="vertical-align: text-bottom;">
+          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"></path>
+        </svg>
+        LinkedIn
+      </a>
+      <a href="https://bsky.app/intent/compose?text=16G%E5%86%85%E5%AD%988G%E6%98%BE%E5%AD%98%E8%BF%BD%E6%B1%82%E6%9C%AC%E5%9C%B0AI%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E8%B7%AF%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%A7%91%E6%8A%80%E5%B0%8F%E7%99%BD%E7%9A%84%E7%A1%AC%E6%A0%B8%E6%8A%98%E8%85%BE%E4%B8%8E%E6%B8%85%E9%86%92%E6%84%9F%E6%82%9F%20http%3A%2F%2Flocalhost%3A1313%2Fposts%2Fbendimoxing%2Fmoxing%2F" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="octicon mr-1" style="vertical-align: text-bottom;">
+          <path d="M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.724-1.498 2.697-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692-.572 2.04-2.653 2.561-4.504 2.246 3.236.551 4.06 2.375 2.281 4.2-3.376 3.464-4.852-.872-5.23-1.988-.07-.205-.103-.3-.103-.218 0-.081-.033.013-.103.218-.378 1.116-1.854 5.452-5.23 1.988-1.778-1.825-.955-3.649 2.28-4.2-1.85.315-3.93-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632 0 .186 2.145.955 3.468 1.948"></path>
+        </svg>
+        Bluesky
+      </a>
+    </div>
+  </div><nav class="border-top pt-4 mt-4">
+    <div class="d-flex flex-justify-between"><a href="/posts/hugo-primer-blog-zhutisousuo/" class="Link--secondary">
+        &larr; 为 Hugo Primer Blog 主题添加现代化智能自适应弹窗搜索功能
+      </a></div>
+  </nav>
+</article>
+<script src="https://giscus.app/client.js"
+        data-repo="yzget/myblog"
+        data-repo-id="R_kgDOTKXsIA"
+        data-category="hudiefei"
+        data-category-id="DIC_kwDOTKXsIM4DAW0G"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+          </div>
+          <div class="Layout-sidebar"><aside><div class="color-bg-subtle rounded-2 p-3 mb-3">
+  <h3 class="h5 mb-2">关于我</h3>
+  <div class="d-flex flex-items-center mb-2">
+    <img src="https://img.koa.cc.cd/file/1782737016761_tmChatGPT_Image_2026年6月29日_13_51_22.png" alt="Author" class="avatar avatar-6 mr-2" width="48" height="48">
+    <div>
+      <strong class="d-block">M.Liu</strong>
+      <span class="f6 color-fg-muted">本站博主</span>
+    </div>
+  </div>
+  <p class="f6 color-fg-muted mb-0">
+    嗨，我是 [M.Liu]！欢迎来到我的博客！我不是一个喜欢长篇大论的创作者，而是一个重度网络冲浪选手和实用工具收集者。
+  </p>
+</div>
+<div class="color-bg-subtle rounded-2 p-3 mb-3">
+  <h3 class="h5 mb-2">关注我</h3>
+  <div class="d-flex flex-wrap">
+    <a href="https://github.com" class="btn btn-sm mr-1 mb-1" target="_blank" rel="noopener">
+      <svg class="octicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
+      GitHub
+    </a>
+    <a href="https://twitter.com" class="btn btn-sm mr-1 mb-1" target="_blank" rel="noopener">
+      <svg class="octicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill="currentColor" d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"></path></svg>
+      X
+    </a>
+    <a href="/index.xml" class="btn btn-sm mb-1" target="_blank" rel="noopener">
+      <svg class="octicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill="currentColor" d="M2.002 2.725a.75.75 0 0 1 .797-.699C8.79 2.42 13.58 7.21 13.974 13.201a.75.75 0 0 1-1.497.098 10.502 10.502 0 0 0-9.776-9.776.747.747 0 0 1-.7-.798ZM2.84 7.05h-.002a7.002 7.002 0 0 1 6.113 6.111.75.75 0 0 1-1.49.178 5.503 5.503 0 0 0-4.8-4.8.75.75 0 0 1 .179-1.489ZM2 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"></path></svg>
+      RSS
+    </a>
+  </div>
+</div>
+<div class="color-bg-subtle rounded-2 p-3 mb-3">
+  <h3 class="h5 mb-2">近期文章</h3>
+  <ul class="list-style-none"><li class="mb-2">
+      <a href="/posts/bendimoxing/moxing/" class="Link--primary">16G内存8G显存追求本地AI的探索之路：一个科技小白的硬核折腾与清醒感悟</a><span class="color-fg-muted f6 d-block">
+        2026-07-19
+      </span></li><li class="mb-2">
+      <a href="/posts/hugo-primer-blog-zhutisousuo/" class="Link--primary">为 Hugo Primer Blog 主题添加现代化智能自适应弹窗搜索功能</a><span class="color-fg-muted f6 d-block">
+        2026-07-03
+      </span></li><li class="mb-2">
+      <a href="/posts/hugo&#43;zhutitouxiang/" class="Link--primary">Hugo&#43;主题 头像设置参考</a><span class="color-fg-muted f6 d-block">
+        2026-07-02
+      </span></li><li class="mb-2">
+      <a href="/posts/guisingbox/" class="Link--primary">最新guisingbox路由规则</a><span class="color-fg-muted f6 d-block">
+        2026-07-01
+      </span></li><li class="mb-2">
+      <a href="/posts/banshengfuchen/" class="Link--primary">半生浮沉，看透人情世故</a><span class="color-fg-muted f6 d-block">
+        2026-07-01
+      </span></li></ul>
+</div><div class="color-bg-subtle rounded-2 p-3 mb-3">
+  <h3 class="h5 mb-2">
+    <a href="/tags/" class="Link--primary">标签</a>
+  </h3>
+  <div class="sidebar-collapsible d-flex flex-wrap" style="gap: 0.5rem;"
+    data-max-height="150"
+    data-view-all="/tags/"
+    data-label-more="显示更多"
+    data-label-less="显示更少"
+    data-label-view-all="查看全部"><a href="/tags/ai/" class="topic-tag">
+      ai
+    </a><a href="/tags/guisingbox/" class="topic-tag">
+      guisingbox
+    </a><a href="/tags/hugo/" class="topic-tag">
+      hugo
+    </a><a href="/tags/%E9%9A%8F%E7%AC%94/" class="topic-tag">
+      随笔
+    </a></div>
+</div><div class="color-bg-subtle rounded-2 p-3 mb-3">
+  <h3 class="h5 mb-2">分类</h3>
+  <ul class="list-style-none"><li class="mb-1">
+      <a href="/categories/%E7%90%90%E4%BA%8B/" class="Link--secondary">
+        琐事 <span class="Counter Counter--secondary ml-1">3</span>
+      </a>
+    </li><li class="mb-1">
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/" class="Link--secondary">
+        网络收藏 <span class="Counter Counter--secondary ml-1">3</span>
+      </a>
+    </li></ul>
+</div></aside></div>
+        </div></div>
+    </main><footer class="color-bg-subtle border-top py-6 mt-6">
+  <div class="container-xl px-3 px-md-4 px-lg-5">
+    <div class="d-flex flex-column flex-md-row flex-justify-between flex-items-center">
+      <div class="mb-3 mb-md-0">
+        <p class="color-fg-muted mb-0">
+          &copy; 2026 M.Liu.</p>
+      </div><div class="d-flex flex-items-center"><a href="https://github.com/yzget" class="Link--secondary px-2" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" class="octicon">
+            <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+          </svg>
+        </a><a href="https://x.com/yzgetr" class="Link--secondary px-2" aria-label="X">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" class="octicon">
+            <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"></path>
+          </svg>
+        </a><a href="https://bsky.app/profile/hudiefei.bsky.social" class="Link--secondary px-2" aria-label="Bluesky">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" class="octicon">
+            <path d="M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.724-1.498 2.697-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692-.572 2.04-2.653 2.561-4.504 2.246 3.236.551 4.06 2.375 2.281 4.2-3.376 3.464-4.852-.872-5.23-1.988-.07-.205-.103-.3-.103-.218 0-.081-.033.013-.103.218-.378 1.116-1.854 5.452-5.23 1.988-1.778-1.825-.955-3.649 2.28-4.2-1.85.315-3.93-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632 0 .186 2.145.955 3.468 1.948"></path>
+          </svg>
+        </a></div></div>
+
+    <p class="color-fg-muted f6 mt-4 text-center">
+      由【Atsushi Nagase】提供支持
+      <a href="https://github.com/ngs/hugo-primer-blog" class="Link--secondary">Hugo Primer Blog</a>
+    </p>
+  </div>
+</footer>
+</div><script src="/js/theme-switcher.min.7378bbae7a4bc4b974611d68fe84197c86faf4bb09e4744c2789f4bd36159a0b.js" integrity="sha256-c3i7rnpLxLl0YR1o/oQZfIb69LsJ5HRMJ4n0vTYVmgs="></script><script src="/js/sidebar.min.8d897965d82e39784b4da02d345c06f44ecdff6252fcf44c20eeb421f1027114.js" integrity="sha256-jYl5ZdguOXhLTaAtNFwG9E7N/2JS/PRMIO60IfECcRQ="></script>
+</body>
+</html>

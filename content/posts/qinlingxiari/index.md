@@ -1,10 +1,10 @@
 ---
 title: "秦岭山中的夏日"    #  文档名
-date: 2026-07-03T17:43:45+08:00
+date: 2026-07-19T17:43:45+08:00
 draft: false    # false 为发布状态，如是草稿可用 true 
-author: "蝴蝶飞"
+author: "M.Liu"
 description: "夏日的秦岭-随笔"  # 简介
-image: "/images/qinling.jpg"  # 图片格式："/images/featared.jpg"或同文件夹下"featared.jpg "
+image: "qinling.jpg"  # 图片格式："/images/featared.jpg"或同文件夹下"featared.jpg "
 tags: ["随笔"]  # 标签
 categories: ["琐事"]  # 类别
 archives: [""]  # 存档

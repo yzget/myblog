@@ -2,7 +2,7 @@
 title: "Hugo+主题 头像设置参考"
 date: 2026-07-02T19:46:51+08:00
 draft: false
-author: "蝴蝶飞"
+author: "M.Liu"
 description: "主题所带头像可能放置的位置和更改自己头像的一些方法"
 image: "/images/shujia.jpg"
 tags: ["hugo"]

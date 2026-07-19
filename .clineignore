@@ -1,0 +1,13 @@
+# 忽略前端依赖
+node_modules/
+
+# 忽略博客生成、编译出来的静态网页目录（Hugo 通常是 public，Hexo 通常是 public/db.json）
+public/
+dist/
+.hugo_build.lock
+
+# 忽略大型媒体资产（如果你的博客里存了大量高清晰度图片或视频）
+*.jpg
+*.png
+*.mp4
+*.zip

@@ -1,8 +1,19 @@
 {{ define "main" }}
 <div class="search-container" style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
-    <h1>{{ .Title }}</h1>
+    <h1 style="margin-bottom: 0.5rem;">{{ .Title }}</h1>
+    <p style="opacity: 0.7; margin-bottom: 1.5rem;">全局搜索所有文章的标题、内容、分类和标签</p>
     
-    <input type="text" id="search-input" placeholder="输入关键词搜索文章..." style="width: 100%; padding: 0.8rem; font-size: 1.1rem; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 2rem;">
+    <div style="position: relative; margin-bottom: 1.5rem;">
+        <input type="text" id="search-input" placeholder="输入关键词搜索全站内容..." style="width: 100%; padding: 1rem 1.2rem; font-size: 1.1rem; border: 2px solid #ccc; border-radius: 8px; outline: none; transition: all 0.2s ease;">
+        <div id="search-hint" style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.5rem; text-align: center;"></div>
+    </div>
+    
+    <div id="search-filters" style="margin-bottom: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <button onclick="filterType('all')" class="filter-btn active" style="padding: 0.4rem 1rem; border: 1px solid #ccc; border-radius: 20px; background: none; cursor: pointer; font-size: 0.85rem;">全部</button>
+        <button onclick="filterType('posts')" class="filter-btn" style="padding: 0.4rem 1rem; border: 1px solid #ccc; border-radius: 20px; background: none; cursor: pointer; font-size: 0.85rem;">文章</button>
+        <button onclick="filterType('categories')" class="filter-btn" style="padding: 0.4rem 1rem; border: 1px solid #ccc; border-radius: 20px; background: none; cursor: pointer; font-size: 0.85rem;">分类</button>
+        <button onclick="filterType('tags')" class="filter-btn" style="padding: 0.4rem 1rem; border: 1px solid #ccc; border-radius: 20px; background: none; cursor: pointer; font-size: 0.85rem;">标签</button>
+    </div>
     
     <div id="search-results"></div>
 </div>
@@ -11,51 +22,185 @@
 
 <script>
 let fuse;
+let allData = [];
+let currentFilter = 'all';
 const searchInput = document.getElementById('search-input');
 const searchResults = document.getElementById('search-results');
+const searchHint = document.getElementById('search-hint');
 
-// 1. 异步获取 Hugo 生成的 index.json
+// 1. 异步获取 Hugo 生成的 index.json - 全局搜索
 fetch('{{ "index.json" | absURL }}')
     .then(response => response.json())
     .then(data => {
-        // 2. 配置 Fuse.js
+        allData = data;
+        // 2. 配置 Fuse.js - 支持更多字段
         fuse = new Fuse(data, {
-            keys: ['title', 'summary', 'content'], // 搜索这些字段
-            threshold: 0.4,                       // 匹配灵敏度 (0.0 精确 - 1.0 宽松)
-            includeMatches: true
+keys: [
+    { name: 'title', weight: 3 },
+    { name: 'content', weight: 2 },
+    { name: 'summary', weight: 1.5 },
+    { name: 'categories', weight: 1 },
+    { name: 'tags', weight: 1 }
+],
+            threshold: 0.1,
+            distance: 100,
+            ignoreLocation: true,
+            includeMatches: true,
+            includeScore: true,
+            minMatchCharLength: 1,
+            useExtendedSearch: true
         });
+        if (searchHint) {
+            searchHint.textContent = `已索引 ${data.length} 篇文章，支持标题、内容、分类、标签搜索`;
+        }
+    })
+    .catch(err => {
+        console.error('加载搜索索引失败:', err);
+        if (searchHint) {
+            searchHint.textContent = '搜索索引加载失败';
+        }
     });
 
+// 防抖函数
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
+// 高亮匹配文本
+function highlightMatch(text, query) {
+    if (!query || !text) return text;
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(regex, '<mark style="background: rgba(3,102,214,0.15); padding: 0 2px; border-radius: 2px;">$1</mark>');
+}
+
+// 截取内容
+function truncateContent(content, query, maxLength = 200) {
+    if (!content) return '';
+    const lowerContent = content.toLowerCase();
+    const lowerQuery = query.toLowerCase();
+    const index = lowerContent.indexOf(lowerQuery);
+    
+    if (index !== -1) {
+        const start = Math.max(0, index - 60);
+        const end = Math.min(content.length, index + query.length + 140);
+        let excerpt = content.substring(start, end);
+        if (start > 0) excerpt = '...' + excerpt;
+        if (end < content.length) excerpt = excerpt + '...';
+        return highlightMatch(excerpt, query);
+    }
+    
+    let excerpt = content.substring(0, maxLength);
+    if (content.length > maxLength) excerpt += '...';
+    return excerpt;
+}
+
+// 格式化日期
+function formatDate(dateStr) {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+}
+
+// 类型筛选
+function filterType(type) {
+    currentFilter = type;
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.style.background = 'none';
+    });
+    event.target.classList.add('active');
+    event.target.style.background = 'rgba(3,102,214,0.1)';
+    
+    // 重新搜索
+    if (searchInput.value.trim()) {
+        handleSearch({ target: searchInput });
+    }
+}
+
+// 筛选数据
+function filterData(data) {
+    if (currentFilter === 'all') return data;
+    return data.filter(item => {
+        if (currentFilter === 'posts') return item.type === 'post' || item.section === 'posts';
+        if (currentFilter === 'categories') return item.categories && item.categories.length > 0;
+        if (currentFilter === 'tags') return item.tags && item.tags.length > 0;
+        return true;
+    });
+}
+
 // 3. 监听输入框变化
-searchInput.addEventListener('input', (e) => {
-    const query = e.target.value;
+const handleSearch = debounce((e) => {
+    const query = e.target.value.trim();
     if (!query) {
         searchResults.innerHTML = '';
+        if (searchHint && allData.length) {
+            searchHint.textContent = `已索引 ${allData.length} 篇文章`;
+        }
+        return;
+    }
+    
+    if (!fuse) {
+        searchResults.innerHTML = '<p style="opacity: 0.7;">搜索索引加载中...</p>';
         return;
     }
     
     const results = fuse.search(query);
-    renderResults(results);
-});
-
-// 4. 渲染结果到页面
-function renderResults(results) {
-    if (results.length === 0) {
-        searchResults.innerHTML = '<p>没有找到相关文章</p>';
+    const filteredResults = filterData(results);
+    
+    if (filteredResults.length === 0) {
+        searchResults.innerHTML = '<p style="opacity: 0.7;">没有找到相关文章，请尝试其他关键词</p>';
+        if (searchHint) searchHint.textContent = '0 个结果';
         return;
     }
     
+    if (searchHint) searchHint.textContent = `找到 ${filteredResults.length} 个结果`;
+    
     let html = '';
-    results.forEach(result => {
+    filteredResults.forEach((result, index) => {
+        if (index >= 20) return; // 最多显示20条
         const item = result.item;
+        const score = result.score ? (1 - result.score).toFixed(2) : '1.00';
+        
+        // 类型标签
+        let typeLabel = '';
+        if (item.section === 'posts') typeLabel = '<span style="background:rgba(3,102,214,0.1);color:#0366d6;padding:2px 8px;border-radius:12px;font-size:0.75rem;">文章</span>';
+        else if (item.type === 'term') typeLabel = '<span style="background:rgba(128,128,128,0.1);padding:2px 8px;border-radius:12px;font-size:0.75rem;">分类/标签</span>';
+        
+        // 分类和标签
+        let metaHtml = '';
+        if (item.categories && item.categories.length > 0) {
+            metaHtml += `<span style="display:inline-block;background:rgba(3,102,214,0.1);color:#0366d6;padding:2px 8px;border-radius:12px;font-size:0.75rem;margin-right:6px;">${item.categories[0]}</span>`;
+        }
+        if (item.tags && item.tags.length > 0) {
+            metaHtml += `<span style="display:inline-block;background:rgba(128,128,128,0.1);padding:2px 8px;border-radius:12px;font-size:0.75rem;">${item.tags[0]}</span>`;
+        }
+        
+        const contentPreview = truncateContent(item.content, query);
+        
         html += `
-            <article style="margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
-                <h2 style="margin-bottom: 0.5rem;"><a href="${item.permalink}">${item.title}</a></h2>
-                <p style="color: #666; font-size: 0.95rem;">${item.summary}</p>
+            <article style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(128,128,128,0.15); padding-bottom: 1rem; transition: background 0.2s;" onmouseenter="this.style.background='rgba(3,102,214,0.03)'" onmouseleave="this.style.background='transparent'">
+<h2 style="margin-bottom: 0.5rem; font-size: 1.2rem;">
+    <a href="${item.permalink}" style="color: #0366d6; text-decoration: none;">M.Liu</a>
+</h2>
+                <div style="margin-bottom: 0.5rem;">
+                    ${typeLabel}
+                    ${metaHtml}
+                </div>
+                <p style="color: inherit; opacity: 0.85; font-size: 0.92rem; line-height: 1.6; margin-bottom: 0.5rem;">${contentPreview}</p>
+                ${item.date ? `<p style="font-size:0.8rem;opacity:0.6;">发布于 ${formatDate(item.date)} · 匹配度: ${score}</p>` : ''}
             </article>
         `;
     });
     searchResults.innerHTML = html;
-}
+}, 200);
+
+searchInput.addEventListener('input', handleSearch);
+
+// 页面加载后自动聚焦
+searchInput.focus();
 </script>
 {{ end }}

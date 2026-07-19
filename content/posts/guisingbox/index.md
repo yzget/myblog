@@ -2,7 +2,7 @@
 title: "最新guisingbox路由规则"
 date: 2026-07-01T22:24:49+08:00
 draft: false
-author: "蝴蝶飞"
+author: "M.Liu"
 description: ""
 image: "/images/guiforsingbox.jpg"
 tags: ["guisingbox"]

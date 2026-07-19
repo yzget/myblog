@@ -4,9 +4,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Categories | 蝴蝶飞</title><meta name="description" content="一个由 Hugo 和 Primer CSS 驱动的博客"><meta name="author" content="蝴蝶飞"><meta property="og:title" content="Categories"><meta property="og:description" content="一个由 Hugo 和 Primer CSS 驱动的博客"><meta property="og:type" content="website"><meta property="og:url" content="http://localhost:1313/categories/"><meta property="og:image" content="https://picsum.photos/seed/ogimage/1200/630">
+<title>Categories | M.Liu</title><meta name="description" content="一个由 Hugo 和 Primer CSS 驱动的博客"><meta name="author" content="M.Liu"><meta property="og:title" content="Categories"><meta property="og:description" content="一个由 Hugo 和 Primer CSS 驱动的博客"><meta property="og:type" content="website"><meta property="og:url" content="http://localhost:1313/categories/"><meta property="og:image" content="https://picsum.photos/seed/ogimage/1200/630">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630"><meta property="og:site_name" content="蝴蝶飞"><meta property="og:locale" content="zh">
+<meta property="og:image:height" content="630"><meta property="og:site_name" content="M.Liu"><meta property="og:locale" content="zh">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Categories">
 <meta name="twitter:description" content="一个由 Hugo 和 Primer CSS 驱动的博客"><meta name="twitter:image" content="https://picsum.photos/seed/ogimage/1200/630"><meta name="twitter:site" content="@yzgetr">
@@ -62,7 +62,7 @@
   <div class="d-flex flex-column min-height-full"><header class="AppHeader">
   <div class="AppHeader-globalBar">
     <div class="AppHeader-globalBar-start">
-      <a href="/" class="AppHeader-logo" aria-label="蝴蝶飞"><span class="AppHeader-logo-text">蝴蝶飞</span></a>
+      <a href="/" class="AppHeader-logo" aria-label="M.Liu"><span class="AppHeader-logo-text">M.Liu</span></a>
 
       <nav class="AppHeader-nav" aria-label="主导航"><a href="/" class="AppHeader-nav-item">首页</a><a href="/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/" class="AppHeader-nav-item">网络收藏</a><a href="/categories/%E7%90%90%E4%BA%8B/" class="AppHeader-nav-item">琐事</a><a href="#" onclick="openSearchModal(event)" class="AppHeader-nav-item" aria-label="Search" style="display: inline-flex; align-items: center; cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
@@ -105,9 +105,11 @@
         
         <h3 style="margin-top: 0; margin-bottom: 1.2rem; font-size: 1.25rem; font-weight: 600; color: inherit;">搜索文章</h3>
         
-        <input type="text" id="modal-search-input" placeholder="输入关键词实时搜索..." style="width: 100%; padding: 0.75rem 1.2rem; font-size: 1rem; border: 1px solid rgba(128,128,128,0.3); border-radius: 24px; outline: none; transition: all 0.2s ease;">
+        <input type="text" id="modal-search-input" placeholder="输入关键词实时搜索... (Ctrl+K 快捷打开)" style="width: 100%; padding: 0.75rem 1.2rem; font-size: 1rem; border: 1px solid rgba(128,128,128,0.3); border-radius: 24px; outline: none; transition: all 0.2s ease;">
         
-        <div id="modal-search-results" style="margin-top: 1.2rem; overflow-y: auto; flex: 1; padding-right: 5px;"></div>
+        <div id="search-hint" style="font-size: 0.75rem; opacity: 0.6; margin-top: 0.5rem; text-align: center;"></div>
+        
+        <div id="modal-search-results" style="margin-top: 0.5rem; overflow-y: auto; flex: 1; padding-right: 5px;"></div>
     </div>
 </div>
 
@@ -116,11 +118,13 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     let fuse;
+    let allData = [];
     const searchModal = document.getElementById('search-modal');
     const modalContent = document.getElementById('modal-content');
     const searchInput = document.getElementById('modal-search-input');
     const searchResults = document.getElementById('modal-search-results');
     const closeSearch = document.getElementById('close-search');
+    const searchHint = document.getElementById('search-hint');
 
     
     searchInput.addEventListener('focus', () => {
@@ -136,39 +140,156 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch('http:\/\/localhost:1313\/index.json')
         .then(response => response.json())
         .then(data => {
+            allData = data;
             fuse = new Fuse(data, {
-                keys: ['title', 'summary', 'content'],
-                threshold: 0.4
+                keys: [
+                    { name: 'title', weight: 3 },
+                    { name: 'content', weight: 2 },
+                    { name: 'summary', weight: 1.5 },
+                    { name: 'categories', weight: 1 },
+                    { name: 'tags', weight: 1 },
+                    { name: 'section', weight: 0.5 }
+                ],
+                threshold: 0.1,
+                distance: 100,
+                ignoreLocation: true,
+                includeMatches: true,
+                includeScore: true,
+                minMatchCharLength: 1,
+                findAllMatches: true,
+                useExtendedSearch: true
             });
+            if (searchHint) {
+                searchHint.textContent = `已加载 ${data.length} 篇文章的索引`;
+            }
+        })
+        .catch(err => {
+            console.error('加载搜索索引失败:', err);
+            if (searchHint) {
+                searchHint.textContent = '搜索索引加载失败';
+            }
         });
 
     
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value;
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    
+    function highlightMatch(text, query) {
+        if (!query || !text) return text;
+        const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.replace(regex, '<mark style="background: rgba(3,102,214,0.15); color: inherit; padding: 0 2px; border-radius: 2px;">$1</mark>');
+    }
+
+    
+    function truncateContent(content, query, maxLength = 150) {
+        if (!content) return '';
+        
+        const lowerContent = content.toLowerCase();
+        const lowerQuery = query.toLowerCase();
+        const index = lowerContent.indexOf(lowerQuery);
+        
+        if (index !== -1) {
+            const start = Math.max(0, index - 50);
+            const end = Math.min(content.length, index + query.length + 100);
+            let excerpt = content.substring(start, end);
+            if (start > 0) excerpt = '...' + excerpt;
+            if (end < content.length) excerpt = excerpt + '...';
+            return highlightMatch(excerpt, query);
+        }
+        
+        
+        let excerpt = content.substring(0, maxLength);
+        if (content.length > maxLength) excerpt += '...';
+        return excerpt;
+    }
+
+    
+    function formatDate(dateStr) {
+        if (!dateStr) return '';
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    }
+
+    
+    const handleSearch = debounce((e) => {
+        const query = e.target.value.trim();
         if (!query) {
             searchResults.innerHTML = '';
+            if (searchHint) searchHint.textContent = allData.length ? `已加载 ${allData.length} 篇文章的索引` : '';
             return;
         }
-        if(!fuse) return;
+        if (!fuse) {
+            searchResults.innerHTML = '<p style="font-size:0.9rem; padding: 0 0.5rem; opacity: 0.7;">搜索索引加载中...</p>';
+            return;
+        }
+        
+        console.log('搜索关键词:', query);
         const results = fuse.search(query);
+        console.log('搜索结果数量:', results.length);
+        
+        
+        const manualCheck = allData.filter(item => 
+            item.content && item.content.toLowerCase().includes(query.toLowerCase())
+        );
+        console.log('手动检查结果:', manualCheck.length, '篇文章包含该词');
+        if (manualCheck.length > 0) {
+            console.log('手动检查示例 - 第一篇:', {
+                title: manualCheck[0].title,
+                contentSnippet: manualCheck[0].content.substring(0, 100)
+            });
+        }
         
         if (results.length === 0) {
-            searchResults.innerHTML = '<p style="font-size:0.9rem; padding: 0 0.5rem; opacity: 0.7;">没有找到相关文章</p>';
+            searchResults.innerHTML = '<p style="font-size:0.9rem; padding: 0 0.5rem; opacity: 0.7;">没有找到相关文章，请尝试其他关键词</p>';
+            if (searchHint) searchHint.textContent = '0 个结果';
             return;
         }
         
+        if (searchHint) searchHint.textContent = `找到 ${results.length} 个结果`;
+        
         let html = '';
-        results.forEach(result => {
+        results.forEach((result, index) => {
+            if (index >= 20) return; 
             const item = result.item;
+            const score = result.score ? (1 - result.score).toFixed(2) : '1.00';
+            
+            
+            let metaHtml = '';
+            if (item.categories && item.categories.length > 0) {
+                metaHtml += `<span style="display:inline-block;background:rgba(3,102,214,0.1);color:#0366d6;padding:2px 8px;border-radius:12px;font-size:0.75rem;margin-right:6px;">${item.categories[0]}</span>`;
+            }
+            if (item.tags && item.tags.length > 0) {
+                metaHtml += `<span style="display:inline-block;background:rgba(128,128,128,0.1);color:inherit;padding:2px 8px;border-radius:12px;font-size:0.75rem;">${item.tags[0]}</span>`;
+            }
+            
+            
+            const contentPreview = truncateContent(item.content, query);
+            
             html += `
-                <div class="search-item" style="margin-bottom: 0.8rem; border-bottom: 1px solid rgba(128,128,128,0.1); padding: 0.6rem 0.8rem; border-radius: 8px; transition: background 0.2s;">
-                    <h4 style="margin: 0 0 0.3rem 0; font-size: 1.05rem;"><a href="${item.permalink}" style="color: #0366d6; text-decoration: none; font-weight: 600;">${item.title}</a></h4>
-                    <p style="font-size: 0.88rem; margin: 0; line-height: 1.5; opacity: 0.8;">${item.summary}</p>
+                <div class="search-item" style="margin-bottom: 1rem; border-bottom: 1px solid rgba(128,128,128,0.1); padding: 0.8rem; border-radius: 8px; transition: background 0.2s;" onmouseenter="this.style.background='rgba(3,102,214,0.05)'" onmouseleave="this.style.background='transparent'">
+                    <h4 style="margin: 0 0 0.4rem 0; font-size: 1.05rem;">
+                        <a href="${item.permalink}" style="color: #0366d6; text-decoration: none; font-weight: 600;">${highlightMatch(item.title, query)}</a>
+                    </h4>
+                    ${metaHtml ? `<div style="margin-bottom:0.4rem;">${metaHtml}</div>` : ''}
+                    <p style="font-size: 0.85rem; margin: 0; line-height: 1.6; opacity: 0.85;">${contentPreview}</p>
+                    ${item.date ? `<p style="font-size:0.75rem;opacity:0.6;margin-top:0.4rem;">发布于 ${formatDate(item.date)} · 匹配度: ${score}</p>` : ''}
                 </div>
             `;
         });
         searchResults.innerHTML = html;
-    });
+    }, 150);
+
+    searchInput.addEventListener('input', handleSearch);
 
     
     window.openSearchModal = function(e) {
@@ -186,36 +307,50 @@ document.addEventListener("DOMContentLoaded", function() {
         searchInput.style.color = currentTextColor;
 
         searchModal.style.display = 'flex';
-        searchInput.focus(); 
+        searchInput.focus();
+        
+        
+        if (searchInput.value.trim()) {
+            handleSearch({ target: searchInput });
+        }
     }
 
     window.closeSearchModal = function() {
         searchModal.style.display = 'none';
         searchInput.value = '';
         searchResults.innerHTML = '';
+        if (searchHint) searchHint.textContent = allData.length ? `已加载 ${allData.length} 篇文章的索引` : '';
     }
 
     closeSearch.addEventListener('click', closeSearchModal);
     searchModal.addEventListener('click', (e) => { if (e.target === searchModal) closeSearchModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearchModal(); });
+    document.addEventListener('keydown', (e) => { 
+        if (e.key === 'Escape') closeSearchModal();
+        
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            openSearchModal();
+        }
+    });
 });
-</script><main class="flex-auto">
+</script>
+<main class="flex-auto">
       <div class="container-xl px-3 px-md-4 px-lg-5 py-4"><div class="Layout Layout--sidebarPosition-end Layout--flowRow-until-md">
           <div class="Layout-main"><div class="Subhead mb-4">
   <h1 class="Subhead-heading">Categories</h1></div><div class="Box"><div class="Box-row">
     <article class="d-flex flex-column flex-md-row"><div class="flex-auto">
         <h2 class="f3 lh-condensed mb-1">
-          <a href="/categories/%E7%90%90%E4%BA%8B/" class="Link--primary">琐事</a>
-        </h2><div class="d-flex flex-items-center color-fg-muted f6 mb-2"><time datetime="2026-07-03T17:43:45&#43;08:00">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/" class="Link--primary">网络收藏</a>
+        </h2><div class="d-flex flex-items-center color-fg-muted f6 mb-2"><time datetime="2026-07-03T12:30:08&#43;08:00">
             2026-07-03
           </time><span class="mx-2">&middot;</span><span>0 最短阅读时间</span></div></div>
     </article>
   </div><div class="Box-row">
     <article class="d-flex flex-column flex-md-row"><div class="flex-auto">
         <h2 class="f3 lh-condensed mb-1">
-          <a href="/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/" class="Link--primary">网络收藏</a>
-        </h2><div class="d-flex flex-items-center color-fg-muted f6 mb-2"><time datetime="2026-07-03T12:30:08&#43;08:00">
-            2026-07-03
+          <a href="/categories/%E7%90%90%E4%BA%8B/" class="Link--primary">琐事</a>
+        </h2><div class="d-flex flex-items-center color-fg-muted f6 mb-2"><time datetime="2026-07-01T20:15:00&#43;08:00">
+            2026-07-01
           </time><span class="mx-2">&middot;</span><span>0 最短阅读时间</span></div></div>
     </article>
   </div></div>
@@ -225,12 +360,12 @@ document.addEventListener("DOMContentLoaded", function() {
   <div class="d-flex flex-items-center mb-2">
     <img src="https://img.koa.cc.cd/file/1782737016761_tmChatGPT_Image_2026年6月29日_13_51_22.png" alt="Author" class="avatar avatar-6 mr-2" width="48" height="48">
     <div>
-      <strong class="d-block">蝴蝶飞</strong>
+      <strong class="d-block">M.Liu</strong>
       <span class="f6 color-fg-muted">本站博主</span>
     </div>
   </div>
   <p class="f6 color-fg-muted mb-0">
-    嗨，我是 [蝴蝶飞]！欢迎来到我的博客！我不是一个喜欢长篇大论的创作者，而是一个重度网络冲浪选手和实用工具收集者。
+    嗨，我是 [M.Liu]！欢迎来到我的博客！我不是一个喜欢长篇大论的创作者，而是一个重度网络冲浪选手和实用工具收集者。
   </p>
 </div>
 <div class="color-bg-subtle rounded-2 p-3 mb-3">
@@ -253,19 +388,19 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="color-bg-subtle rounded-2 p-3 mb-3">
   <h3 class="h5 mb-2">近期文章</h3>
   <ul class="list-style-none"><li class="mb-2">
-      <a href="/posts/%E7%A7%A6%E5%B2%AD%E5%B1%B1%E4%B8%AD%E7%9A%84%E5%A4%8F%E6%97%A5%E6%B8%85%E5%87%89/" class="Link--primary">秦岭山中的夏日</a><span class="color-fg-muted f6 d-block">
+      <a href="/posts/bendimoxing/moxing/" class="Link--primary">16G内存8G显存追求本地AI的探索之路：一个科技小白的硬核折腾与清醒感悟</a><span class="color-fg-muted f6 d-block">
+        2026-07-19
+      </span></li><li class="mb-2">
+      <a href="/posts/hugo-primer-blog-zhutisousuo/" class="Link--primary">为 Hugo Primer Blog 主题添加现代化智能自适应弹窗搜索功能</a><span class="color-fg-muted f6 d-block">
         2026-07-03
       </span></li><li class="mb-2">
-      <a href="/posts/%E4%B8%BA-hugo-primer-blog-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E7%8E%B0%E4%BB%A3%E5%8C%96%E6%99%BA%E8%83%BD%E8%87%AA%E9%80%82%E5%BA%94%E5%BC%B9%E7%AA%97%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" class="Link--primary">为 Hugo Primer Blog 主题添加现代化智能自适应弹窗搜索功能</a><span class="color-fg-muted f6 d-block">
-        2026-07-03
-      </span></li><li class="mb-2">
-      <a href="/posts/hugo&#43;%E4%B8%BB%E9%A2%98-%E5%A4%B4%E5%83%8F%E8%AE%BE%E7%BD%AE%E5%8F%82%E8%80%83/" class="Link--primary">Hugo&#43;主题 头像设置参考</a><span class="color-fg-muted f6 d-block">
+      <a href="/posts/hugo&#43;zhutitouxiang/" class="Link--primary">Hugo&#43;主题 头像设置参考</a><span class="color-fg-muted f6 d-block">
         2026-07-02
       </span></li><li class="mb-2">
-      <a href="/posts/%E6%9C%80%E6%96%B0guisingbox%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99/" class="Link--primary">最新guisingbox路由规则</a><span class="color-fg-muted f6 d-block">
+      <a href="/posts/guisingbox/" class="Link--primary">最新guisingbox路由规则</a><span class="color-fg-muted f6 d-block">
         2026-07-01
       </span></li><li class="mb-2">
-      <a href="/posts/%E5%8D%8A%E7%94%9F%E6%B5%AE%E6%B2%89%E7%9C%8B%E9%80%8F%E4%BA%BA%E6%83%85%E4%B8%96%E6%95%85/" class="Link--primary">半生浮沉，看透人情世故</a><span class="color-fg-muted f6 d-block">
+      <a href="/posts/banshengfuchen/" class="Link--primary">半生浮沉，看透人情世故</a><span class="color-fg-muted f6 d-block">
         2026-07-01
       </span></li></ul>
 </div><div class="color-bg-subtle rounded-2 p-3 mb-3">
@@ -277,7 +412,9 @@ document.addEventListener("DOMContentLoaded", function() {
     data-view-all="/tags/"
     data-label-more="显示更多"
     data-label-less="显示更少"
-    data-label-view-all="查看全部"><a href="/tags/guisingbox/" class="topic-tag">
+    data-label-view-all="查看全部"><a href="/tags/ai/" class="topic-tag">
+      ai
+    </a><a href="/tags/guisingbox/" class="topic-tag">
       guisingbox
     </a><a href="/tags/hugo/" class="topic-tag">
       hugo
@@ -288,7 +425,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <h3 class="h5 mb-2">分类</h3>
   <ul class="list-style-none"><li class="mb-1">
       <a href="/categories/%E7%90%90%E4%BA%8B/" class="Link--secondary">
-        琐事 <span class="Counter Counter--secondary ml-1">4</span>
+        琐事 <span class="Counter Counter--secondary ml-1">3</span>
       </a>
     </li><li class="mb-1">
       <a href="/categories/%E7%BD%91%E7%BB%9C%E6%94%B6%E8%97%8F/" class="Link--secondary">
@@ -302,7 +439,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="d-flex flex-column flex-md-row flex-justify-between flex-items-center">
       <div class="mb-3 mb-md-0">
         <p class="color-fg-muted mb-0">
-          &copy; 2026 蝴蝶飞.</p>
+          &copy; 2026 M.Liu.</p>
       </div><div class="d-flex flex-items-center"><a href="https://github.com/yzget" class="Link--secondary px-2" aria-label="GitHub">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" class="octicon">
             <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>

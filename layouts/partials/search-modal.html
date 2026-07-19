@@ -6,9 +6,11 @@
         
         <h3 style="margin-top: 0; margin-bottom: 1.2rem; font-size: 1.25rem; font-weight: 600; color: inherit;">搜索文章</h3>
         
-        <input type="text" id="modal-search-input" placeholder="输入关键词实时搜索..." style="width: 100%; padding: 0.75rem 1.2rem; font-size: 1rem; border: 1px solid rgba(128,128,128,0.3); border-radius: 24px; outline: none; transition: all 0.2s ease;">
+        <input type="text" id="modal-search-input" placeholder="输入关键词实时搜索... (Ctrl+K 快捷打开)" style="width: 100%; padding: 0.75rem 1.2rem; font-size: 1rem; border: 1px solid rgba(128,128,128,0.3); border-radius: 24px; outline: none; transition: all 0.2s ease;">
         
-        <div id="modal-search-results" style="margin-top: 1.2rem; overflow-y: auto; flex: 1; padding-right: 5px;"></div>
+        <div id="search-hint" style="font-size: 0.75rem; opacity: 0.6; margin-top: 0.5rem; text-align: center;"></div>
+        
+        <div id="modal-search-results" style="margin-top: 0.5rem; overflow-y: auto; flex: 1; padding-right: 5px;"></div>
     </div>
 </div>
 
@@ -17,11 +19,13 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     let fuse;
+    let allData = [];
     const searchModal = document.getElementById('search-modal');
     const modalContent = document.getElementById('modal-content');
     const searchInput = document.getElementById('modal-search-input');
     const searchResults = document.getElementById('modal-search-results');
     const closeSearch = document.getElementById('close-search');
+    const searchHint = document.getElementById('search-hint');
 
     // 输入框聚焦时的发光效果
     searchInput.addEventListener('focus', () => {
@@ -33,45 +37,162 @@ document.addEventListener("DOMContentLoaded", function() {
         searchInput.style.boxShadow = 'none';
     });
 
-    // 异步获取索引
+    // 异步获取索引 - 全局搜索所有页面
     fetch('{{ "index.json" | absURL }}')
         .then(response => response.json())
         .then(data => {
+            allData = data;
             fuse = new Fuse(data, {
-                keys: ['title', 'summary', 'content'],
-                threshold: 0.4
+                keys: [
+                    { name: 'title', weight: 3 },
+                    { name: 'content', weight: 2 },
+                    { name: 'summary', weight: 1.5 },
+                    { name: 'categories', weight: 1 },
+                    { name: 'tags', weight: 1 },
+                    { name: 'section', weight: 0.5 }
+                ],
+                threshold: 0.1,
+                distance: 100,
+                ignoreLocation: true,
+                includeMatches: true,
+                includeScore: true,
+                minMatchCharLength: 1,
+                findAllMatches: true,
+                useExtendedSearch: true
             });
+            if (searchHint) {
+                searchHint.textContent = `已加载 ${data.length} 篇文章的索引`;
+            }
+        })
+        .catch(err => {
+            console.error('加载搜索索引失败:', err);
+            if (searchHint) {
+                searchHint.textContent = '搜索索引加载失败';
+            }
         });
 
-    // 监听输入搜索
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value;
+    // 防抖函数
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // 高亮匹配文本
+    function highlightMatch(text, query) {
+        if (!query || !text) return text;
+        const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.replace(regex, '<mark style="background: rgba(3,102,214,0.15); color: inherit; padding: 0 2px; border-radius: 2px;">$1</mark>');
+    }
+
+    // 截取摘要
+    function truncateContent(content, query, maxLength = 150) {
+        if (!content) return '';
+        // 尝试在查询词附近截取
+        const lowerContent = content.toLowerCase();
+        const lowerQuery = query.toLowerCase();
+        const index = lowerContent.indexOf(lowerQuery);
+        
+        if (index !== -1) {
+            const start = Math.max(0, index - 50);
+            const end = Math.min(content.length, index + query.length + 100);
+            let excerpt = content.substring(start, end);
+            if (start > 0) excerpt = '...' + excerpt;
+            if (end < content.length) excerpt = excerpt + '...';
+            return highlightMatch(excerpt, query);
+        }
+        
+        // 如果没有匹配，返回开头
+        let excerpt = content.substring(0, maxLength);
+        if (content.length > maxLength) excerpt += '...';
+        return excerpt;
+    }
+
+    // 格式化日期
+    function formatDate(dateStr) {
+        if (!dateStr) return '';
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    }
+
+    // 监听输入搜索（带防抖）
+    const handleSearch = debounce((e) => {
+        const query = e.target.value.trim();
         if (!query) {
             searchResults.innerHTML = '';
+            if (searchHint) searchHint.textContent = allData.length ? `已加载 ${allData.length} 篇文章的索引` : '';
             return;
         }
-        if(!fuse) return;
+        if (!fuse) {
+            searchResults.innerHTML = '<p style="font-size:0.9rem; padding: 0 0.5rem; opacity: 0.7;">搜索索引加载中...</p>';
+            return;
+        }
+        
+        console.log('搜索关键词:', query);
         const results = fuse.search(query);
+        console.log('搜索结果数量:', results.length);
+        
+        // 调试：手动检查是否包含该关键词
+        const manualCheck = allData.filter(item => 
+            item.content && item.content.toLowerCase().includes(query.toLowerCase())
+        );
+        console.log('手动检查结果:', manualCheck.length, '篇文章包含该词');
+        if (manualCheck.length > 0) {
+            console.log('手动检查示例 - 第一篇:', {
+                title: manualCheck[0].title,
+                contentSnippet: manualCheck[0].content.substring(0, 100)
+            });
+        }
         
         if (results.length === 0) {
-            searchResults.innerHTML = '<p style="font-size:0.9rem; padding: 0 0.5rem; opacity: 0.7;">没有找到相关文章</p>';
+            searchResults.innerHTML = '<p style="font-size:0.9rem; padding: 0 0.5rem; opacity: 0.7;">没有找到相关文章，请尝试其他关键词</p>';
+            if (searchHint) searchHint.textContent = '0 个结果';
             return;
         }
         
+        if (searchHint) searchHint.textContent = `找到 ${results.length} 个结果`;
+        
         let html = '';
-        results.forEach(result => {
+        results.forEach((result, index) => {
+            if (index >= 20) return; // 最多显示20条结果
             const item = result.item;
+            const score = result.score ? (1 - result.score).toFixed(2) : '1.00';
+            
+            // 生成分类和标签HTML
+            let metaHtml = '';
+            if (item.categories && item.categories.length > 0) {
+                metaHtml += `<span style="display:inline-block;background:rgba(3,102,214,0.1);color:#0366d6;padding:2px 8px;border-radius:12px;font-size:0.75rem;margin-right:6px;">${item.categories[0]}</span>`;
+            }
+            if (item.tags && item.tags.length > 0) {
+                metaHtml += `<span style="display:inline-block;background:rgba(128,128,128,0.1);color:inherit;padding:2px 8px;border-radius:12px;font-size:0.75rem;">${item.tags[0]}</span>`;
+            }
+            
+            // 内容预览
+            const contentPreview = truncateContent(item.content, query);
+            
             html += `
-                <div class="search-item" style="margin-bottom: 0.8rem; border-bottom: 1px solid rgba(128,128,128,0.1); padding: 0.6rem 0.8rem; border-radius: 8px; transition: background 0.2s;">
-                    <h4 style="margin: 0 0 0.3rem 0; font-size: 1.05rem;"><a href="${item.permalink}" style="color: #0366d6; text-decoration: none; font-weight: 600;">${item.title}</a></h4>
-                    <p style="font-size: 0.88rem; margin: 0; line-height: 1.5; opacity: 0.8;">${item.summary}</p>
+                <div class="search-item" style="margin-bottom: 1rem; border-bottom: 1px solid rgba(128,128,128,0.1); padding: 0.8rem; border-radius: 8px; transition: background 0.2s;" onmouseenter="this.style.background='rgba(3,102,214,0.05)'" onmouseleave="this.style.background='transparent'">
+                    <h4 style="margin: 0 0 0.4rem 0; font-size: 1.05rem;">
+                        <a href="${item.permalink}" style="color: #0366d6; text-decoration: none; font-weight: 600;">${highlightMatch(item.title, query)}</a>
+                    </h4>
+                    ${metaHtml ? `<div style="margin-bottom:0.4rem;">${metaHtml}</div>` : ''}
+                    <p style="font-size: 0.85rem; margin: 0; line-height: 1.6; opacity: 0.85;">${contentPreview}</p>
+                    ${item.date ? `<p style="font-size:0.75rem;opacity:0.6;margin-top:0.4rem;">发布于 ${formatDate(item.date)} · 匹配度: ${score}</p>` : ''}
                 </div>
             `;
         });
         searchResults.innerHTML = html;
-    });
+    }, 150);
 
-    // 💡 核心改动：打开弹窗时，实时“偷取”网页当前的背景色和文字颜色
+    searchInput.addEventListener('input', handleSearch);
+
+    // 打开搜索模态框
     window.openSearchModal = function(e) {
         if(e) e.preventDefault();
         
@@ -87,17 +208,30 @@ document.addEventListener("DOMContentLoaded", function() {
         searchInput.style.color = currentTextColor;
 
         searchModal.style.display = 'flex';
-        searchInput.focus(); 
+        searchInput.focus();
+        
+        // 如果有已输入的内容，重新搜索
+        if (searchInput.value.trim()) {
+            handleSearch({ target: searchInput });
+        }
     }
 
     window.closeSearchModal = function() {
         searchModal.style.display = 'none';
         searchInput.value = '';
         searchResults.innerHTML = '';
+        if (searchHint) searchHint.textContent = allData.length ? `已加载 ${allData.length} 篇文章的索引` : '';
     }
 
     closeSearch.addEventListener('click', closeSearchModal);
     searchModal.addEventListener('click', (e) => { if (e.target === searchModal) closeSearchModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearchModal(); });
+    document.addEventListener('keydown', (e) => { 
+        if (e.key === 'Escape') closeSearchModal();
+        // Ctrl+K 或 Cmd+K 打开搜索
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            openSearchModal();
+        }
+    });
 });
 </script>

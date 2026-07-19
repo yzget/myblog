@@ -1,11 +1,19 @@
 [
   {{- range $index, $page := .Site.RegularPages }}
+  {{- if and (ne $page.Type "page") (ne $page.Layout "search") $page.Title }}
   {{- if $index }},{{ end }}
   {
     "title": {{ $page.Title | jsonify }},
     "permalink": {{ $page.Permalink | jsonify }},
     "summary": {{ $page.Summary | plainify | jsonify }},
-    "content": {{ $page.Content | plainify | jsonify }}
+    "content": {{ $page.Content | plainify | jsonify }},
+    "type": {{ $page.Type | jsonify }},
+    "section": {{ $page.Section | jsonify }},
+    "categories": [{{ range $i, $c := $page.Params.categories }}{{ if $i }},{{ end }}{{ $c | jsonify }}{{ end }}],
+    "tags": [{{ range $i, $t := $page.Params.tags }}{{ if $i }},{{ end }}{{ $t | jsonify }}{{ end }}],
+    "date": {{ $page.Date.Format "2006-01-02" | jsonify }},
+    "draft": {{ $page.Draft }}
   }
+  {{- end }}
   {{- end }}
 ]

@@ -1,6 +1,6 @@
 baseURL = "https://hgbk.mll.cc.cd/"
 theme = "hugo-primer-blog"
-title = "蝴蝶飞"
+title = "M.Liu"
 
 defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = false
@@ -54,7 +54,7 @@ term = ["HTML", "RSS"]
       weight = 3
 
 [params]
-author = "蝴蝶飞" 
+author = "M.Liu" 
 dateFormat = "2006-01-02" 
 defaultTheme = "auto" 
 description = "A blog powered by Hugo and Primer CSS" 
